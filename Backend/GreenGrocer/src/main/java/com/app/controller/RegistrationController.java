@@ -14,7 +14,7 @@ import com.app.entities.UserRegistration;
 import com.app.service.RegisterInterface;
 
 @RestController
-@RequestMapping("/Registration")
+@RequestMapping("/user")
 @CrossOrigin
 public class RegistrationController {
 	
@@ -30,9 +30,16 @@ public class RegistrationController {
 	//branch Niraj
 	//At ost Washi
 	//Branch Vinayak Testing
-	
+	//Sp
 	//try shivshankar
 	//branch ruturaj
+	
+	@GetMapping("/login/{email}")
+	public UserRegistration getUserByEmail(@PathVariable String email, String password)
+	{
+		return register.findUserByEmail(email,password);
+	}
+	
 	@PostMapping("/newUser")
 	public String addUser(@RequestBody UserRegistration user) {
 		return register.addUser(user);
