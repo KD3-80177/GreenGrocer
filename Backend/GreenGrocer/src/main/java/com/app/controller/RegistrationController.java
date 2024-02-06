@@ -27,6 +27,7 @@ public class RegistrationController {
 		return register.getUserInfo(id);
 	}
 	//branch Shivshakar
+	//At ost Washi
 	//Branch Vinayak Testing
 	@PostMapping("/newUser")
 	public String addUser(@RequestBody UserRegistration user) {
