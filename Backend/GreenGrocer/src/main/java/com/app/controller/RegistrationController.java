@@ -27,6 +27,7 @@ public class RegistrationController {
 		return register.getUserInfo(id);
 	}
 	
+	//branch ruturaj
 	@PostMapping("/newUser")
 	public String addUser(@RequestBody UserRegistration user) {
 		return register.addUser(user);
