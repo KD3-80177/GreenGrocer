@@ -29,6 +29,8 @@ public class RegistrationController {
 	//branch Shivshakar
 	//branch Niraj
 	//Branch Vinayak Testing
+	
+	//branch ruturaj
 	@PostMapping("/newUser")
 	public String addUser(@RequestBody UserRegistration user) {
 		return register.addUser(user);
