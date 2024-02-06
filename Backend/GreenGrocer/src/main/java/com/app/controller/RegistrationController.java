@@ -30,7 +30,7 @@ public class RegistrationController {
 	//branch Niraj
 	//At ost Washi
 	//Branch Vinayak Testing
-	
+	//Sp
 	//try shivshankar
 	//branch ruturaj
 	@PostMapping("/newUser")
