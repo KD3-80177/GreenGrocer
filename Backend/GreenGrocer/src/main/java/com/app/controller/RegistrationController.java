@@ -15,7 +15,7 @@ import com.app.service.RegisterInterface;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 public class RegistrationController {
 	
 	@Autowired
@@ -26,15 +26,8 @@ public class RegistrationController {
 	{
 		return register.getUserInfo(id);
 	}
-	//branch Shivshakar
-	//branch Niraj
-	//At ost Washi
-	//Branch Vinayak Testing
-	//Sp
-	//try shivshankar
-	//branch ruturaj
 	
-	@GetMapping("/login/{email}")
+	@GetMapping("/login/{email}/{password}")
 	public UserRegistration getUserByEmail(@PathVariable String email, String password)
 	{
 		return register.findUserByEmail(email,password);
