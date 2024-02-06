@@ -26,6 +26,10 @@ public class RegistrationController {
 	{
 		return register.getUserInfo(id);
 	}
+<<<<<<< HEAD
+=======
+	//branch Shivshakar
+>>>>>>> Shivshankar
 	//Branch Vinayak Testing
 	@PostMapping("/newUser")
 	public String addUser(@RequestBody UserRegistration user) {
