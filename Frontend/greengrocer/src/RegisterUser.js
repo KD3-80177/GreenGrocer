@@ -8,7 +8,7 @@ function RegisterUser(){
     const [user, setUser] = useState({fullName:"",mobileNo:"",email:"",password:"",address:"",city:"",state:"",pinCode:""});
     const [message,setMessage] = useState("");
 
-    const url = "http://localhost:8080/Registration/newUser";
+    const url = "http://localhost:8080/user/newUser";
 
     const OnTextChange = (args) =>{
         var user1 = {...user};
