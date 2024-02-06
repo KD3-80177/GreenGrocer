@@ -1,9 +1,9 @@
 import { useState,useEffect } from "react";
 import { Link,useNavigate,useParams } from "react-router-dom";
-import GreenGrocerService from './Services/greengrocer.service';
 
-const Login = () =>{
+function Login() {
 
+    const url = "http://localhost:8080/user/login";
     const [email,setEMail] = useState('');
     const [passord,setPassword] = useState('');
     return (
@@ -17,7 +17,7 @@ const Login = () =>{
                     <input
                     type="text"
                     className="form-control col-4"
-                    id="email"
+                    name="email"
                     onChange={(e)=>setEMail(e.target.value)}
                     placeholder="Enter Email Address Here"></input>
                 </div>
@@ -26,9 +26,13 @@ const Login = () =>{
                     <input
                     type="password"
                     className="form-control col-4"
-                    id="password"
+                    name="password"
                     onChange={(e)=>setPassword(e.target.value)}
                     placeholder="Enter Password Here"></input>
+                </div>
+                <div>
+                    <button
+                    className="btn btn-primary" onClick={Login}>Login</button>
                 </div>
             </form>
         </div>
