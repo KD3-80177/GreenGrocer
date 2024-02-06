@@ -28,4 +28,17 @@ public class RegisterUserImpl implements RegisterInterface{
 		return user;
 	}
 
+	@Override
+	public UserRegistration findUserByEmail(String email,String password) {
+		UserRegistration user=registerDao.findUserRegistrationByEmail(email);
+		if(user!=null)
+		{
+			if(user.getPassword().equals(password))
+			{
+				return user;
+			}
+		}
+		return null;
+	}
+
 }

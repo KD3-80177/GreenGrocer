@@ -6,4 +6,5 @@ import com.app.entities.UserRegistration;
 
 public interface RegisterUserDao extends JpaRepository<UserRegistration, Long> {
 	
+	UserRegistration findUserRegistrationByEmail(String email);
 }
