@@ -16,6 +16,10 @@ function RegisterUser(){
         setUser(user1);
     }
 
+    const Reset = ()=>
+    {
+        setUser({fullName:"",mobileNo:"",email:"",password:"",address:"",city:"",state:"",pinCode:""})
+    }
     const showMessage = (msgText) =>{
         setMessage(msgText);
         window.setTimeout(()=>{
@@ -23,89 +27,107 @@ function RegisterUser(){
         },3000);
     }
     const saveUser=()=>{
+       
         axios.post(url,user)
         .then((result)=>{
             if(result.data.affectedRows !== undefined && result.data.affectedRows>0){
-                showMessage("Record added");
+                showMessage("Customer Added Successfully!!!!!");
+                Reset();
             }
         });
         
     }
 
 return(
+    <center>
+        <h1><strong>Registration</strong></h1>
     <div className="container">
-        <hr></hr>
+    <div className="jumbotron">
+            
         <div className="table-responsive">
-            <table className="table table-bordered">
+            <table className="table table-dark table-striped"  style={{width:500,textAlign:"center"}}>
                 <tbody>
                     <tr>
-                        <td>Enter Full Name</td>
+                        <td><b>Enter Full Name</b></td>
                         <td>
                             <input name="fullName"
                             value={user.fullName}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Enter Mobile</td>
+                        <td><b>Enter Mobile</b></td>
                         <td>
                             <input name="mobileNo"
                             value={user.mobileNo}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Enter Email</td>
+                        <td><b>Enter Email</b></td>
                         <td>
-                            <input name="email"
+                            <input type="email" name="email"
                             value={user.email}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Enter Password</td>
+                        <td><b>Enter Password</b></td>
                         <td>
-                            <input name="password"
+                            <input type="password" name="password"
                             value={user.password}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Enter Address</td>
+                        <td><b>Enter Address</b></td>
                         <td>
                             <input name="address"
                             value={user.address}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Enter City</td>
+                        <td><b>Enter City</b></td>
                         <td>
                             <input name="city"
                             value={user.city}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Enter State</td>
+                        <td><b>Enter State</b></td>
                         <td>
                             <input name="state"
                             value={user.state}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td>Enter Pincode</td>
+                        <td><b>Enter Pincode</b></td>
                         <td>
                             <input name="pinCode"
                             value={user.pinCode}
+                            required
                             onChange={OnTextChange}/>
                         </td>
                     </tr>
                     <tr>
-                        <td></td>
+
+                         <td>
+                            <button className="btn btn-primary" onClick={Reset}>
+                                    Reset
+                            </button>
+                        </td>
                         <td>
-                            <button className="btn btn-primary" onClick = {saveUser}>
+                            <button className="btn btn-success" onClick = {saveUser}>
                                     Register
                             </button>
                         </td>
@@ -114,6 +136,8 @@ return(
             </table>
         </div>
     </div>
+    </div>
+    </center>
 )
 };
 
