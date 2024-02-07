@@ -1,12 +1,22 @@
 package com.app.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -42,11 +52,31 @@ public class Seller {
 	@Column(name="s_state",length = 20, nullable = false)
 	private String state;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "seller",fetch=FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<DeliveryBoy> deliveryBoyList = new ArrayList<DeliveryBoy>();
+	
+	
+	public void addDeliveryBoy(List<DeliveryBoy> deliveryBoyList)
+	{
+		this.deliveryBoyList = deliveryBoyList;
+	}
+	
+	public void removeDeliveryBoy(DeliveryBoy dboy)
+	{
+		this.deliveryBoyList.remove(dboy);
+		dboy.setSeller(null);
+	}
+	
 	public Seller(String email,String password)
 	{
 		this.email = email;
 		this.password = password;
 	}
 
+	public Seller(Long id)
+	{
+		this.sid = id;
+	}
 	
 }

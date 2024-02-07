@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.service.SellerInterface;
 
@@ -36,5 +37,11 @@ public class SellerController {
 	public Seller getSellerByEmail(@RequestBody Seller findSeller)
 	{
 		return sellerService.findSellerByEmail(findSeller);
+	}
+	
+	@PostMapping("/addProduct/{sid}")
+	public String addProduct(@PathVariable Long sid,@RequestBody Product product)
+	{
+		return sellerService.addNewProduct(sid,product);
 	}
 }
