@@ -13,8 +13,8 @@ function Login() {
     const[email,setEmail] = useState("");
     const[password,setPassword] = useState("");
 
-    const DoLogin = ()=>
-    {
+   const DoLogin = ()=>
+   {
       
         const newUrl = url  + "/" + email+ "/"+ password;
         axios.get(newUrl).then((result)=>{
@@ -30,7 +30,16 @@ function Login() {
             }
 
         });
-    }
+   }
+   useEffect(() => {
+    const newUrl = url  + "/" + email+ "/"+ password;
+    fetch(newUrl)
+     .then((response) => response.json())
+     .then((actualData) => console.log(actualData))
+     .catch((err) => {
+      console.log(err.message);
+     });
+   }, []);
     return (
         <center>
         <div className='table-responsive'>
