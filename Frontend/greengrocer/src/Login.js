@@ -1,55 +1,70 @@
-import { useState,useEffect } from "react";
-import { Link,useNavigate,useParams } from "react-router-dom";
+import { useState,useEffect} from "react";
+import { Link,useNavigate,useParams} from "react-router-dom";
 import axios from "axios";
+
+
 
 function Login() {
 
-    const url = "http://localhost:8080/user/login";
-    const [email,setEMail] = useState('');
-    const [pass,setPass] = useState('');
+   
 
-    const CheckLogin = ()=>
+    const url = "http://localhost:8080/user/login";
+    const[message,setMessage] = useState("");
+    const[email,setEmail] = useState("");
+    const[password,setPassword] = useState("");
+
+    const DoLogin = ()=>
     {
-        const getUrl = url + "/" + email + "/" + pass;
-        axios.get(getUrl).then((result)=>{
+      
+        const newUrl = url  + "/" + email+ "/"+ password;
+        axios.get(newUrl).then((result)=>{
             var validUser = result.data;
-            if(validUser !== null){
-                console.log("Found");
-                setTimeout(5000);
+           
+            if(validUser!= null)
+            {
+                console.log("Found!!!");
+                setTimeout(()=>
+                {
+                    console.log(validUser);       
+                },6000);
             }
+
         });
     }
     return (
-        <div className="container">
-            <h3>
-                Login
-            </h3>
-            <hr/>
-            <form>
-                <div className="form-group">
-                    <input
-                    type="text"
-                    className="form-control col-4"
-                    name="email"
-                    onChange={(e)=>setEMail(e.target.value)}
-                    placeholder="Enter Email Address Here"></input>
-                </div>
-                <hr/>
-                <div className="form-group">
-                    <input
-                    type="password"
-                    className="form-control col-4"
-                    name="pass"
-                    onChange={(e)=>setPass(e.target.value)}
-                    placeholder="Enter Password Here"></input>
-                </div>
-                <div>
-                    <button
-                    className="btn btn-primary" onClick={CheckLogin}>Login</button>
-                </div>
-            </form>
+        <center>
+        <div className='table-responsive'>
+            <table className='table table-bordered'>
+            <tbody>
+                <tr>
+                    <td>User Name</td>
+                    <td>
+                        <input type='text'
+                               name="email" 
+                               onChange={(e)=>setEmail(e.target.value)}/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>
+                        <input type='password'
+                               name="password" 
+                               onChange={(e)=>setPassword(e.target.value)}/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td></td>
+                    <td>
+                       <button className='btn btn-primary' onClick={DoLogin}>Login</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div className='alert alert-warning'>{message}</div>
         </div>
-      );
+  </center>
+  );
+      
 }
 
 

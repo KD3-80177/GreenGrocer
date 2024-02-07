@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +30,7 @@ public class RegistrationController {
 	}
 	
 	@GetMapping("/login/{email}/{password}")
-	public UserRegistration getUserByEmail(@PathVariable String email, String password)
+	public UserRegistration getUserByEmail(@PathVariable String email,String password)
 	{
 		return register.findUserByEmail(email,password);
 	}

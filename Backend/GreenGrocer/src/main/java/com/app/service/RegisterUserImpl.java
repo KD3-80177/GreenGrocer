@@ -34,7 +34,7 @@ public class RegisterUserImpl implements RegisterInterface{
 		UserRegistration user=registerDao.findUserRegistrationByEmail(email);
 		if(user!=null)
 		{
-			if(user.getPassword() == password)
+			if(user.getPassword()==password)
 			{
 				return user;
 			}
