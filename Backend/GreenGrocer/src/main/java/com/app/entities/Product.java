@@ -35,6 +35,11 @@ public class Product {
 	@JoinColumn(name = "s_id", nullable = false)
 	private Seller seller;
 	
+	public Product(Long pid)
+	{
 	
+		this.pid = pid;
+	
+	}
 	
 }

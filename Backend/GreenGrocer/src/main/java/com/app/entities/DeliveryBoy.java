@@ -1,10 +1,13 @@
 package com.app.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -54,6 +57,10 @@ public class DeliveryBoy {
 	
 	@Column(name="salary")
 	private double salary;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="s_id")
+	private Seller seller;
 	
 	public DeliveryBoy(String email,String password)
 	{
