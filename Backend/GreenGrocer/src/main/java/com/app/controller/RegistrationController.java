@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entities.UserRegistration;
@@ -17,7 +16,7 @@ import com.app.service.RegisterInterface;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RegistrationController {
 	
 	@Autowired
@@ -29,10 +28,10 @@ public class RegistrationController {
 		return register.getUserInfo(id);
 	}
 	
-	@GetMapping("/login/{email}/{password}")
-	public UserRegistration getUserByEmail(@PathVariable String email,String password)
+	@PostMapping("/login")
+	public UserRegistration getUserByEmail(@RequestBody UserRegistration user)
 	{
-		return register.findUserByEmail(email,password);
+		return register.findUserByEmail(user);
 	}
 	
 	@PostMapping("/newUser")

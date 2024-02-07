@@ -33,5 +33,13 @@ public class UserRegistration extends BaseEntity{
 	@Column(length = 20, nullable = false)
 	private String state;
 	
+	public UserRegistration(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+	
+	
+	
 	
 }

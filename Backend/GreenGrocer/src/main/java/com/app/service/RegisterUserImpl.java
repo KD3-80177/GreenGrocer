@@ -30,7 +30,9 @@ public class RegisterUserImpl implements RegisterInterface{
 	}
 
 	@Override
-	public UserRegistration findUserByEmail(String email,String password) {
+	public UserRegistration findUserByEmail(UserRegistration u) {
+		String email = u.getEmail();
+		String password = u.getPassword();
 		UserRegistration user=registerDao.findUserRegistrationByEmail(email);
 		if(user!=null)
 		{
@@ -39,7 +41,7 @@ public class RegisterUserImpl implements RegisterInterface{
 				return user;
 			}
 		}
-		return null;
+		return user;
 	}
 
 }

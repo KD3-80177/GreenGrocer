@@ -7,5 +7,5 @@ public interface RegisterInterface {
 
 	UserRegistration getUserInfo(Long id);
 
-	UserRegistration findUserByEmail(String email, String password);
+	UserRegistration findUserByEmail(UserRegistration user);
 }
