@@ -23,6 +23,12 @@ public class SellerImpl implements SellerInterface{
 	}
 	
 	@Override
+	public Seller findSellerById(Long id) {
+		Seller tempSeller = sellerDao.findById(id).orElseThrow();
+		return tempSeller;
+	}
+	
+	@Override
 	public Seller findSellerByEmail(Seller findSeller) {
 		String email = findSeller.getEmail();
 		String password =  findSeller.getPassword();
