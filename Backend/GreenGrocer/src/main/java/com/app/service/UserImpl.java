@@ -5,35 +5,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.dao.RegisterUserDao;
-import com.app.entities.UserRegistration;
+import com.app.dao.UserDao;
+import com.app.entities.User;
 
 @Service
 @Transactional
-public class RegisterUserImpl implements RegisterInterface{
+public class UserImpl implements UserInterface{
 	
 	@Autowired
-	private RegisterUserDao registerDao;
+	private UserDao registerDao;
 
 	@Override
-	public String addUser(UserRegistration user) {
+	public String addUser(User user) {
 		// TODO Auto-generated method stub
 		registerDao.save(user);
 		return "user added succesfully";
 	}
 
 	@Override
-	public UserRegistration getUserInfo(Long id) {
+	public User getUserInfo(Long id) {
 		// TODO Auto-generated method stub
-		UserRegistration user=registerDao.findById(id).orElseThrow();
+		User user=registerDao.findById(id).orElseThrow();
 		return user;
 	}
 
 	@Override
-	public UserRegistration findUserByEmail(UserRegistration u) {
+	public User findUserByEmail(User u) {
 		String email = u.getEmail();
 		String password = u.getPassword();
-		UserRegistration user=registerDao.findUserRegistrationByEmail(email);
+		User user=registerDao.findUserRegistrationByEmail(email);
 		if(user!=null)
 		{
 			if(user.getPassword()==password)

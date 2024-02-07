@@ -11,31 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.entities.UserRegistration;
-import com.app.service.RegisterInterface;
+import com.app.entities.User;
+import com.app.service.UserInterface;
 
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class RegistrationController {
+public class UserController {
 	
 	@Autowired
-	private RegisterInterface register;
+	private UserInterface register;
 	
 	@GetMapping("/getUser/{id}")
-	public UserRegistration getUserInfo(@PathVariable Long id)
+	public User getUserInfo(@PathVariable Long id)
 	{
 		return register.getUserInfo(id);
 	}
 	
 	@PostMapping("/login")
-	public UserRegistration getUserByEmail(@RequestBody UserRegistration user)
+	public User getUserByEmail(@RequestBody User user)
 	{
 		return register.findUserByEmail(user);
 	}
 	
 	@PostMapping("/newUser")
-	public String addUser(@RequestBody UserRegistration user) {
+	public String addUser(@RequestBody User user) {
 		return register.addUser(user);
 	}
+	
+	
 }

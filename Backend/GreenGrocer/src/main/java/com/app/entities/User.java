@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "User")
-public class UserRegistration extends BaseEntity{
+public class User extends BaseEntity{
 	@Column(length = 50, nullable = false)
 	private String fullName;
 	@Column(length = 50, unique = true, nullable = false)
@@ -33,7 +33,7 @@ public class UserRegistration extends BaseEntity{
 	@Column(length = 20, nullable = false)
 	private String state;
 	
-	public UserRegistration(String email, String password) {
+	public User(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
