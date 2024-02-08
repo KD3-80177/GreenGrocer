@@ -33,7 +33,7 @@ public class Product {
 	private int availableQuantity;
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "s_id", nullable = false)
-	private Seller sid;
+	private Seller seller;
 	
 	public Product(Long pid)
 	{
