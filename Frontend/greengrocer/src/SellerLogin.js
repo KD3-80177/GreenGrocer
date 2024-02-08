@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
+import { Toast } from "bootstrap";
 function SellerLogin()
 {
     const url = "http://localhost:8080/seller/login";
@@ -25,10 +26,10 @@ function SellerLogin()
     {
         console.log(loginDetails);
         if(loginDetails.email === null){
-            toast.error("Email is required");
+           // toast.error("Email is required");
         }
         if(loginDetails.password === null){
-            toast.error("Password is required");
+            //toast.error("Password is required");
         }
 
         axios.post(url,loginDetails)
