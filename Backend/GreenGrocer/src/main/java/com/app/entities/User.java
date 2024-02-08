@@ -2,6 +2,8 @@ package com.app.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +17,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "User")
-public class User extends BaseEntity{
+public class User {
+	
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long uid;
 	@Column(length = 50, nullable = false)
 	private String fullName;
 	@Column(length = 50, unique = true, nullable = false)
@@ -39,7 +45,9 @@ public class User extends BaseEntity{
 		this.password = password;
 	}
 	
-	
-	
-	
+	public User(Long id)
+	{
+		this.uid=id;
+	}
+
 }
