@@ -1,5 +1,8 @@
 package com.app.entities;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,26 +16,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="admin")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
+@Table(name="adminlog")
+public class AdminLog {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="a_id")
+	int id;
+	
 	@Column(name="admin_id")
-	private Long adminId;
+	int adminId;
 	
-	@Column(name="email",length=50,nullable = false)
-	private String email;
+	@Column(name="operation")
+	String operation;
 	
-	@Column(name="full_name",length = 50,nullable = false)
-	private String fullName;
+	@Column(name="date_time")
+	LocalDate date;
 	
-	@Column(name="username",length = 50,nullable = false)
-	private String userName;
+	@Column(name="uid",nullable = true)
+	int userId;
 	
-	@Column(name="mobile",length=10,nullable = false)
-	private String mobile;
+	@Column(name="s_id",nullable = true)
+	int sellerId;
 }
