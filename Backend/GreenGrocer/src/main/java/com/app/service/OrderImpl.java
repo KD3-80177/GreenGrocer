@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,7 +69,36 @@ public class OrderImpl implements OrderInterface {
 		double bill = price*quantity;
 		order.setBill(bill);
 		order.setQuantity(orderDto.getQuantity());
+		int updatedQuantity = prod.getAvailableQuantity() - quantity;
+		prod.setAvailableQuantity(updatedQuantity);
+		prodDao.save(prod);
 		orderDao.save(order);
-		return "Order Placed but we aren't";
+		return "Order Placed...";
+	}
+
+	@Override
+	public String addOrderList(List<OrdersDTO> orders) {
+		// TODO Auto-generated method stub
+		for (OrdersDTO orderDto : orders) {
+			Product prod = prodDao.findById(orderDto.getPid()).orElseThrow();
+			Seller seller = sellerDao.findById(orderDto.getSid()).orElseThrow();
+			User user = userDao.findById(orderDto.getUid()).orElseThrow();
+			Orders order = new Orders();
+			order.setOdate(LocalDate.now());
+			order.setProduct(prod);
+			order.setSeller(seller);
+			order.setUser(user);
+			order.setStatus("pending");
+			int quantity = orderDto.getQuantity();
+			int price = prod.getPrice();
+			double bill = price*quantity;
+			order.setBill(bill);
+			order.setQuantity(orderDto.getQuantity());
+			int updatedQuantity = prod.getAvailableQuantity() - quantity;
+			prod.setAvailableQuantity(updatedQuantity);
+			prodDao.save(prod);
+			orderDao.save(order);
+		}
+		return "All order placed";
 	}
 }

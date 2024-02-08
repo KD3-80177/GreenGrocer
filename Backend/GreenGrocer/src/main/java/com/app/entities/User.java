@@ -20,7 +20,7 @@ import lombok.Setter;
 @Table(name = "User")
 public class User {
 	@Id
-	@Column(name="id")
+	@Column(name="uid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uid;
 	@Column(length = 50, nullable = false)
