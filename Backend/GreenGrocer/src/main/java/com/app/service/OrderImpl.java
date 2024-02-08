@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,9 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dao.DeliveryBoyDao;
 import com.app.dao.OrderDao;
 import com.app.dao.ProductDao;
+import com.app.dao.SellerDao;
+import com.app.dao.UserDao;
+import com.app.dto.OrdersDTO;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Orders;
 import com.app.entities.Product;
+import com.app.entities.Seller;
+import com.app.entities.User;
 
 @Service
 @Transactional
@@ -19,6 +26,10 @@ public class OrderImpl implements OrderInterface {
 	private OrderDao orderDao;
 	@Autowired
 	private ProductDao prodDao;
+	@Autowired
+	private UserDao userDao;
+	@Autowired
+	private SellerDao sellerDao;
 	
 	
 	@Override
@@ -37,5 +48,27 @@ public class OrderImpl implements OrderInterface {
 	{	
 		orderDao.save(order);
 		return "Order Placed!!!!!";
+	}
+
+	@Override
+	public String addOrderDto(OrdersDTO orderDto) {
+		// TODO Auto-generated method stub
+		Long pid = orderDto.getPid();
+		Product prod = prodDao.findById(pid).orElseThrow();
+		Seller seller = sellerDao.findById(orderDto.getSid()).orElseThrow();
+		User user = userDao.findById(orderDto.getUid()).orElseThrow();
+		Orders order = new Orders();
+		order.setOdate(LocalDate.now());
+		order.setProduct(prod);
+		order.setSeller(seller);
+		order.setUser(user);
+		order.setStatus("pending");
+		int quantity = orderDto.getQuantity();
+		int price = prod.getPrice();
+		double bill = price*quantity;
+		order.setBill(bill);
+		order.setQuantity(orderDto.getQuantity());
+		orderDao.save(order);
+		return "Order Placed but we aren't";
 	}
 }

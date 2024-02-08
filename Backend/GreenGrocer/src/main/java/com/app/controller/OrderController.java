@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.OrdersDTO;
 import com.app.entities.Orders;
 import com.app.entities.Product;
 import com.app.service.OrderInterface;
@@ -33,6 +34,11 @@ public class OrderController {
 		System.out.println(userId);
 		System.out.println(order.getQuantity());
 		return orderService.addNewOrder(userId,order);
+	}
+	
+	@PostMapping("/addOrder")
+	public String addOrderByDto(@RequestBody OrdersDTO orderDto) {
+		return orderService.addOrderDto(orderDto);
 	}
 	
 }
