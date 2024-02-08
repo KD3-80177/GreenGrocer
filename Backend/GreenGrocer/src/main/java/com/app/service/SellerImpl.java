@@ -43,6 +43,7 @@ public class SellerImpl implements SellerInterface{
 		{
 			if(seller.getPassword()==password)
 			{
+				
 				return seller;
 			}
 		}
