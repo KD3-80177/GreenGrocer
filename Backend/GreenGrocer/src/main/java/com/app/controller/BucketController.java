@@ -26,4 +26,9 @@ public class BucketController {
 	public String addToCart(@RequestBody BucketDTO bucket) {
 		return bucketService.addToBucket(bucket);
 	}
+	
+	@GetMapping
+	public List<Bucket> getAllBucket(){
+		return bucketService.getBucket();
+	}
 }

@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,12 +27,20 @@ public class BucketImpl implements BucketInterface{
 		// TODO Auto-generated method stub
 		Product prod = prodDao.findById(bucket.getPid()).orElseThrow();
 		Bucket b = new Bucket();
-		b.setProduct(prod);
+		b.setPname(prod.getPname());
+		b.setPrice(prod.getPrice());
 		b.setQuantity(bucket.getQuantity());
 		double bill = bucket.getQuantity() * prod.getPrice();
 		b.setBill(bill);
 		bucketDao.save(b);
-		return null;
+		return "Added to bucket";
+	}
+
+	@Override
+	public List<Bucket> getBucket() {
+		// TODO Auto-generated method stub
+		List<Bucket> bList = bucketDao.findAll();
+		return bList;
 	}
 	
 	

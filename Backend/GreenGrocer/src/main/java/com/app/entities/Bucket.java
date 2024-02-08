@@ -31,9 +31,11 @@ public class Bucket {
 	@Column(name = "quantity", nullable = false)
 	private int quantity;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="pid",nullable = false)
-	private Product product;
+	@Column(name = "ProductName",nullable = false)
+	private String pname;
+	
+	@Column(name = "PricePerProduct",nullable = false)
+	private int price;
 	
 	@Column(name = "bill", nullable = false)
 	private double bill;
