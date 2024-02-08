@@ -69,6 +69,9 @@ public class OrderImpl implements OrderInterface {
 		double bill = price*quantity;
 		order.setBill(bill);
 		order.setQuantity(orderDto.getQuantity());
+		int updatedQuantity = prod.getAvailableQuantity() - quantity;
+		prod.setAvailableQuantity(updatedQuantity);
+		prodDao.save(prod);
 		orderDao.save(order);
 		return "Order Placed...";
 	}
@@ -91,6 +94,9 @@ public class OrderImpl implements OrderInterface {
 			double bill = price*quantity;
 			order.setBill(bill);
 			order.setQuantity(orderDto.getQuantity());
+			int updatedQuantity = prod.getAvailableQuantity() - quantity;
+			prod.setAvailableQuantity(updatedQuantity);
+			prodDao.save(prod);
 			orderDao.save(order);
 		}
 		return "All order placed";

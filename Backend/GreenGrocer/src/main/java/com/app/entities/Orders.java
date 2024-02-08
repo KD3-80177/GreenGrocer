@@ -47,7 +47,7 @@ public class Orders {
 	private Product product;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="sid",nullable = false)
+	@JoinColumn(name="s_id",nullable = false)
 	private Seller seller;
 	
 	
