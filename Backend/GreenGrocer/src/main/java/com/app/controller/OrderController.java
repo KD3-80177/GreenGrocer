@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +41,11 @@ public class OrderController {
 	@PostMapping("/addOrder")
 	public String addOrderByDto(@RequestBody OrdersDTO orderDto) {
 		return orderService.addOrderDto(orderDto);
+	}
+	
+	@PostMapping("/listOrder")
+	public String addOrderList(@RequestBody List<OrdersDTO> orders) {
+		return orderService.addOrderList(orders);
 	}
 	
 }
