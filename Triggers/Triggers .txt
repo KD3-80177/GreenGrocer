@@ -1,0 +1,22 @@
+delimiter //
+create trigger maintainSellerDeletelog
+after delete on seller
+for each row
+begin
+	declare adminid int;
+	select admin_id into adminid from admin where username= (select current_user());
+	insert into adminlog values (default,adminid,now(),"Seller deleted",old.s_id,null);
+end //
+delimiter ;
+
+
+delimiter //
+create trigger maintainsUserDeleteLog
+after delete on user
+for each row
+begin
+	declare adminid int;
+	select admin_id into adminid from admin where username= (select current_user());
+	insert into adminlog values (default,adminid,now(),"User deleted",null,old.uid);
+end //
+delimiter ;
