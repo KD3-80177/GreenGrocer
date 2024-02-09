@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.entities.AssignedOrderDto;
 import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.service.SellerInterface;
@@ -43,5 +44,10 @@ public class SellerController {
 	public String addProduct(@PathVariable Long sid,@RequestBody Product product)
 	{
 		return sellerService.addNewProduct(sid,product);
+	}
+	
+	@PostMapping("/assignSeller/{did}")
+	public String assignSeller(@PathVariable Long did, @RequestBody AssignedOrderDto assignedOrderDto){
+		return sellerService.assignSeller(did,assignedOrderDto);
 	}
 }
