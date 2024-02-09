@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
-import { Toast } from "bootstrap";
+
 function SellerLogin()
 {
     const url = "http://localhost:8080/seller/login";
