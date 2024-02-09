@@ -43,6 +43,17 @@ public class BucketImpl implements BucketInterface{
 		return bList;
 	}
 	
+	@Override
+	public String deleteMyBucket(Long id) {
+		Bucket bkt = bucketDao.findById(id).orElseThrow();
+		if(bkt!=null)
+		{
+			bucketDao.delete(bkt);
+			return "Bucket Deleted Successfully!!!!";
+		}
+		
+		return "Bucket Not Deleted";
+	}
 	
 
 }
