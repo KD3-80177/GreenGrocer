@@ -29,5 +29,12 @@ public class ProductImpl implements ProductInterface{
 		List<Product> prodList = prod.findByPname(name);
 		return prodList;
 	}
+	
+	@Override
+	public String deleteProductById(Long pid) {
+		Product prod1 = prod.findById(pid).orElseThrow();
+		prod.delete(prod1);
+		return "Product Deleted!!!";
+	}
 
 }

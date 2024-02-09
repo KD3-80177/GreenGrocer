@@ -31,7 +31,7 @@ public class Product {
 	private int price;
 	@Column(name = "availableQuantity", nullable = false)
 	private int availableQuantity;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "s_id", nullable = false)
 	private Seller seller;
 	
