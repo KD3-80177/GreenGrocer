@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import UserRegistration from './UserRegistration';
 import UserLogin from './UserLogin';
-
+import UpdateUser from './UpdateUser';
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +12,7 @@ function App() {
           /*<Route exact path = '/login' element={<Login/>}/> */}
           <Route exact path = '/Registration' element={<UserRegistration/>}/>
           {/* <Route exact path = '*' element={<Login/>}/> */}
+          {<Route exact path = '/Update' element={<UpdateUser/>}/>}
         </Routes>
       </div>
     </BrowserRouter>
