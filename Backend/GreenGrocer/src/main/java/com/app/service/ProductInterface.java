@@ -10,4 +10,6 @@ public interface ProductInterface {
 
 	List<Product> getProdByName(String name);
 
+	String deleteProductById(Long pid);
+
 }
