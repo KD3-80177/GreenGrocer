@@ -1,6 +1,7 @@
 package com.app.service;
 
 
+import com.app.dto.DeliveryBoyDTO;
 import com.app.entities.DeliveryBoy;
 
 public interface DeliveryBoyInterface {
@@ -10,5 +11,9 @@ public interface DeliveryBoyInterface {
 	DeliveryBoy findById(Long id);
 
 	String addDeliveryBoy(DeliveryBoy deliveryBoy);
+
+	String updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto);
+
+	String deleteDeliveryBoy(Long id);
 
 }
