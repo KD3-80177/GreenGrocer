@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,5 +32,11 @@ public class BucketController {
 	@GetMapping
 	public List<Bucket> getAllBucket(){
 		return bucketService.getBucket();
+	}
+	
+	@DeleteMapping("/{bucketId}")
+	public String deleteBucket(@PathVariable Long bucketId)
+	{
+		return bucketService.deleteMyBucket(bucketId);
 	}
 }

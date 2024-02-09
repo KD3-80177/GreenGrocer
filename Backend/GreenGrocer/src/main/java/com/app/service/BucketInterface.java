@@ -9,4 +9,6 @@ public interface BucketInterface {
 	String addToBucket(BucketDTO bucket);
 
 	List<Bucket> getBucket();
+
+	String deleteMyBucket(Long id);	
 }
