@@ -2,10 +2,11 @@ import { useState,useEffect} from "react";
 import { Link,useNavigate,useParams} from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 
 
-function Login() {
+function UserLogin() {
 
    
 
@@ -53,17 +54,30 @@ function Login() {
         //             console.log(validUser);       
         //         },6000);
         //     }
-
+        //   
         // });
+        //
+        //<div className='alert alert-warning'>{message}</div>
     }
    
     return (
+            
+        <html>
+
         <center>
-        <div className='table-responsive'>
-            <table className='table table-bordered'>
+        <div className="container" style={{height:200,width:500,textAlign:"center",margin:50 }} >
+            <h1><strong>User Login  </strong></h1>
+         <div className="jumbotron" style={{height:200,width:500,textAlign:"center",margin:0}}>
+
+        <div className="table-responsive" >
+            <table 
+               className="table"
+               style={{width:500,textAlign:"center",}} >
             <tbody>
+            
+            
                 <tr>
-                    <td>User Name</td>
+                    <td>User Name: </td>
                     <td>
                         <input type='text'
                                name="email" 
@@ -71,8 +85,9 @@ function Login() {
                                onChange={(e)=>handleChange(e,'email')}/>
                     </td>
                 </tr>
+            
                 <tr>
-                    <td>Password</td>
+                    <td>Password: </td>
                     <td>
                         <input type='password'
                                name="password" 
@@ -80,23 +95,32 @@ function Login() {
                                onChange={(e)=>handleChange(e,'password')}/>
                     </td>
                 </tr>
+                
                  <tr>
-                    <td></td>
+                    <td><button
+                           className='btn btn-primary' onClick={DoLogin}>Login</button></td>
+                    
                     <td>
-                       <button className='btn btn-primary' onClick={DoLogin}>Login</button>
-                    </td>
-                    <td>
-                       <button className='btn btn-primary' onClick={Reset}>Reset</button>
+                       <button 
+                       className='btn btn-primary' onClick={Reset}>Reset</button>
                     </td>
                 </tr>
+                
             </tbody>
         </table>
-        <div className='alert alert-warning'>{message}</div>
+        
         </div>
+        </div>
+        </div>
+        
   </center>
+  <div class="pass" style={{textAlign:"center" ,margin:"100"}}> Forget Password
+  <input type="submit" name="" value="Reset Pass"></input>
+  </div>
+  </html>
   );
       
 }
 
 
-export default Login;
+export default UserLogin;

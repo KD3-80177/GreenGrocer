@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-function RegisterUser(){
+function UserRegistration(){
     
     const [user, setUser] = useState({fullName:"",mobileNo:"",email:"",password:"",address:"",city:"",state:"",pinCode:""});
     const [message,setMessage] = useState("");
@@ -141,4 +141,4 @@ return(
 )
 };
 
-export default RegisterUser;
+export default UserRegistration;
