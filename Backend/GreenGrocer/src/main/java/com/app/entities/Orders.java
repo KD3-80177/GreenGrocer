@@ -1,6 +1,8 @@
  package com.app.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,9 +31,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "orders")
 public class Orders {
-
-	@Embedded
-	private Oid oid;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long none;
+	@Column(name = "oid")
+	private Long oid;
 	@Column(name = "quantity", nullable = false)
 	private int quantity;
 	@Column(name = "bill", nullable = false)
@@ -38,16 +45,13 @@ public class Orders {
 	private String status;
 	@Column(name = "order_date")
 	private LocalDate odate;
-	
 	@OneToOne
 	@JoinColumn(name="uid",nullable = false)
 	private User user;
-	
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name="pid",nullable = false)
 	private Product product;
-	
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name="s_id",nullable = false)
 	private Seller seller;
 	
