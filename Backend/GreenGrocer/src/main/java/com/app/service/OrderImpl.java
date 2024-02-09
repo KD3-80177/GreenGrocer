@@ -101,4 +101,11 @@ public class OrderImpl implements OrderInterface {
 		}
 		return "All order placed";
 	}
+	
+	@Override
+	public String deleteOrderById(Long oid) {
+		Orders order = orderDao.findById(oid).orElseThrow();
+		orderDao.delete(order);
+		return "Order Deleted Successfully!!!!";
+	}
 }
