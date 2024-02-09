@@ -79,6 +79,7 @@ public class OrderImpl implements OrderInterface {
 	@Override
 	public String addOrderList(List<OrdersDTO> orders) {
 		// TODO Auto-generated method stub
+		
 		for (OrdersDTO orderDto : orders) {
 			Product prod = prodDao.findById(orderDto.getPid()).orElseThrow();
 			Seller seller = sellerDao.findById(orderDto.getSid()).orElseThrow();

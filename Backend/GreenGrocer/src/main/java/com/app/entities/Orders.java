@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,9 +27,8 @@ import lombok.Setter;
 @Table(name = "orders")
 public class Orders {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long oid;
+	@Embedded
+	private Oid oid;
 	@Column(name = "quantity", nullable = false)
 	private int quantity;
 	@Column(name = "bill", nullable = false)
