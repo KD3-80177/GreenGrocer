@@ -16,5 +16,7 @@ public interface OrderInterface {
 
 	String addOrderList(List<OrdersDTO> orders);
 
+	String deleteOrderById(Long oid);
+
 
 }
