@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.DeliveryBoyDao;
+import com.app.dao.OidDao;
 import com.app.dao.OrderDao;
 import com.app.dao.ProductDao;
 import com.app.dao.SellerDao;
 import com.app.dao.UserDao;
 import com.app.dto.OrdersDTO;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.Oid;
 import com.app.entities.Orders;
 import com.app.entities.Product;
 import com.app.entities.Seller;
@@ -31,6 +33,8 @@ public class OrderImpl implements OrderInterface {
 	private UserDao userDao;
 	@Autowired
 	private SellerDao sellerDao;
+	@Autowired
+	private OidDao oDao;
 	
 	
 	@Override
@@ -79,11 +83,21 @@ public class OrderImpl implements OrderInterface {
 	@Override
 	public String addOrderList(List<OrdersDTO> orders) {
 		// TODO Auto-generated method stub
+		Oid oid = new Oid();
+		for (OrdersDTO ordersDTO : orders) {
+			Long uid = ordersDTO.getUid();
+			oid.setUid(uid);
+		}
+		oDao.save(oid);
+		
+		Long oid1 = oid.getOid();
+		
 		for (OrdersDTO orderDto : orders) {
 			Product prod = prodDao.findById(orderDto.getPid()).orElseThrow();
 			Seller seller = sellerDao.findById(orderDto.getSid()).orElseThrow();
 			User user = userDao.findById(orderDto.getUid()).orElseThrow();
 			Orders order = new Orders();
+			order.setOid(oid1);
 			order.setOdate(LocalDate.now());
 			order.setProduct(prod);
 			order.setSeller(seller);
@@ -100,5 +114,12 @@ public class OrderImpl implements OrderInterface {
 			orderDao.save(order);
 		}
 		return "All order placed";
+	}
+	
+	@Override
+	public String deleteOrderById(Long oid) {
+		Orders order = orderDao.findById(oid).orElseThrow();
+		orderDao.delete(order);
+		return "Order Deleted Successfully!!!!";
 	}
 }

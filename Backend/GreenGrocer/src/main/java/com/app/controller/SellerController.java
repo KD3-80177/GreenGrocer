@@ -5,11 +5,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entities.AssignedOrderDto;
+import com.app.dto.SellerDTO;
 import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.service.SellerInterface;
@@ -49,5 +51,10 @@ public class SellerController {
 	@PostMapping("/assignSeller/{did}")
 	public String assignSeller(@PathVariable Long did, @RequestBody AssignedOrderDto assignedOrderDto){
 		return sellerService.assignSeller(did,assignedOrderDto);
+	}
+	@PutMapping("/updateSeller/{sid}")
+	public String updateSeller(@PathVariable Long sid,@RequestBody SellerDTO seller)
+	{
+		return sellerService.updateSeller(sid,seller);
 	}
 }

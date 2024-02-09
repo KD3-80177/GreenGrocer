@@ -12,6 +12,11 @@ import com.app.dao.UserDao;
 import com.app.entities.AssigndOrders;
 import com.app.entities.AssignedOrderDto;
 import com.app.entities.Orders;
+import com.app.dao.DeliveryBoyDao;
+import com.app.dao.ProductDao;
+import com.app.dao.SellerDao;
+import com.app.dto.SellerDTO;
+import com.app.entities.DeliveryBoy;
 import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.entities.User;
@@ -34,6 +39,7 @@ public class SellerImpl implements SellerInterface{
 	
 	@Autowired
 	private OrderDao orderDao;
+	private DeliveryBoyDao dbDao;
 	
 	@Override
 	public String addNewSeller(Seller seller) {
@@ -88,6 +94,24 @@ public class SellerImpl implements SellerInterface{
 		assignedOrder.setDelId(did);
 		assignedOrderDao.save(assignedOrder);
 		return "Delivery Assigned Successfully";
+	}
+	
+	@Override
+	public String updateSeller( Long sid,SellerDTO seller) {
+		
+		Seller s =sellerDao.findById(sid).orElseThrow();
+		
+		s.setAddress(seller.getAddress());
+		s.setCity(seller.getCity());
+		s.setEmail(seller.getEmail());
+		s.setFullName(seller.getFullName());
+		s.setMobileNo(seller.getMobileNo());
+		s.setPassword(seller.getPassword());
+		s.setPinCode(seller.getPinCode());
+		s.setState(seller.getState());
+		
+		sellerDao.save(s);
+		return "Seller Updated";
 	}
 	
 }
