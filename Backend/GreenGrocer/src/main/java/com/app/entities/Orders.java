@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,19 +39,16 @@ public class Orders {
 	@Column(name = "order_date")
 	private LocalDate odate;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="uid",nullable = false)
 	private User user;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToMany
 	@JoinColumn(name="pid",nullable = false)
 	private Product product;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToMany
 	@JoinColumn(name="s_id",nullable = false)
 	private Seller seller;
-	
-	
-	
 	
 }
