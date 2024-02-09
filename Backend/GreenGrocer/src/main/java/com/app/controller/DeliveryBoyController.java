@@ -49,6 +49,6 @@ public class DeliveryBoyController {
 	@GetMapping("/delete/{id}")
 	public String deleteDeliveryBoy(@PathVariable Long id)
 	{
-		return deliveryBoyService.addDeliveryBoy(id);
+		return deliveryBoyService.deleteDeliveryBoy(id);
 	}
 }
