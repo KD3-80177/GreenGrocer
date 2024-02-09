@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.DeliveryBoyDTO;
 import com.app.entities.DeliveryBoy;
 import com.app.service.DeliveryBoyInterface;
 
@@ -37,5 +38,17 @@ public class DeliveryBoyController {
 	public String addDeliveryBoy(@RequestBody DeliveryBoy deliveryBoy)
 	{
 		return deliveryBoyService.addDeliveryBoy(deliveryBoy);
+	}
+	
+	@PostMapping("/update")
+	public String updateDeliveryBoy(@RequestBody DeliveryBoyDTO deliveryBoyDto)
+	{
+		return deliveryBoyService.updateDeliveryBoy(deliveryBoyDto);
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteDeliveryBoy(@PathVariable Long id)
+	{
+		return deliveryBoyService.deleteDeliveryBoy(id);
 	}
 }
