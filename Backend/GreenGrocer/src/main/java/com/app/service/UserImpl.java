@@ -44,4 +44,27 @@ public class UserImpl implements UserInterface{
 		return user;
 	}
 
+	@Override
+	public String updateUser(User user) {
+		// TODO Auto-generated method stub
+		User u = registerDao.findById(user.getUid()).orElseThrow();
+		u.setFullName(user.getFullName());
+		u.setAddress(user.getAddress());
+		u.setCity(user.getCity());
+		u.setEmail(user.getEmail());
+		u.setMobileNo(user.getMobileNo());
+		u.setPassword(user.getPassword());
+		u.setPinCode(user.getPinCode());
+		u.setState(user.getState());
+		registerDao.save(u);
+		return "User Updated Succesfully";
+	}
+
+	@Override
+	public String delUser(Long userId) {
+		// TODO Auto-generated method stub
+		registerDao.deleteById(userId);
+		return "User Deleted Succesfully";
+	}
+
 }

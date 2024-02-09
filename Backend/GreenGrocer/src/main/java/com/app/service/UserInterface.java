@@ -8,4 +8,8 @@ public interface UserInterface {
 	User getUserInfo(Long id);
 
 	User findUserByEmail(User user);
+
+	String updateUser(User user);
+
+	String delUser(Long userId);
 }
