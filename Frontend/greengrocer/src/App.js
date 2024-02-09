@@ -3,9 +3,10 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 
 import UserRegistration from './UserRegistration';
 import UserLogin from './UserLogin';
-import RegisterUser from './RegisterUser';
+
 import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
+import ResetPassword from './ResetPassword';
 
 
 
@@ -21,9 +22,10 @@ function App() {
 
           <Route exact path = '/Registration' element={<UserRegistration/>}/>
 
-          <Route exact path = '/Registration' element={<RegisterUser/>}/>
+         
           <Route exact path = '/SellerRegistration' element={<SellerRegistration/>}/>
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
+          <Route exact path = '/Forget' element={<ResetPassword/>}/>
 
 
           {/* <Route exact path = '*' element={<Login/>}/> */}
