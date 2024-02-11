@@ -1,5 +1,7 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
+import {Form  ,Item,Input,BreadcrumbItemPropsnput,message, Typography, Divider} from "antd"; 
+import "./style.css";
 
 function SellerLogin()
 {
@@ -42,40 +44,43 @@ function SellerLogin()
     return (
 
         <center>
-        <div className='table-responsive'>
-            <table className='table table-bordered'>
-            <tbody>
-                <tr>
-                    <td>User Name</td>
-                    <td>
-                        <input type='text'
-                               name="email" 
-                               value={loginDetails.email}
-                               onChange={(e)=>handleChange(e,'email')}/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td>
-                        <input type='password'
-                               name="password" 
-                               value={loginDetails.password}
-                               onChange={(e)=>handleChange(e,'password')}/>
-                    </td>
-                </tr>
-                 <tr>
-                    <td></td>
-                    <td>
-                       <button className='btn btn-primary' onClick={DoLogin}>Login</button>
-                    </td>
-                    <td>
-                       <button className='btn btn-primary' onClick={Reset}>Reset</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div className='alert alert-warning'>{message}</div>
-        </div>
+         
+         <div className="appBg">
+        <Form className="loginForm">
+          <Typography.Title>Welcome Back!</Typography.Title>
+          <Form.Item 
+          rules={[
+            {
+              required:true,
+              type:"email",
+              message:"Please Enter Valid Email!!"
+            },
+              ]} label="Email" name={'email'}>
+            <Input required placeholder="Enter your email" 
+                            name="email" 
+                            type="email"
+                            value={loginDetails.email}
+                            onChange={(e)=>handleChange(e,'email')} />
+          </Form.Item>
+          <Form.Item rules={[
+            {
+              required:true,
+              message:"Please Enter Valid Password!!"
+            },
+               ]}label="Password" name={'password'}>
+            <Input.Password  required placeholder="Enter your password" 
+                                      type='password'
+                                      name="password" 
+                                      value={loginDetails.password}
+                                      onChange={(e)=>handleChange(e,'password')} />
+          </Form.Item>
+          <button className="btn btn-primary" type="submit" style={{display:"block"}} onClick={DoLogin} >
+            Login
+          </button>
+          
+          <Divider style={{borderColor:'black'}}></Divider>
+        </Form>
+    </div>
   </center>
     )
 }
