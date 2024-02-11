@@ -116,7 +116,7 @@ function UserLogin() {
     */}
          
         <div className="appBg">
-        <form className="loginForm">
+        <Form className="loginForm">
           <Typography.Title>Welcome Back!</Typography.Title>
           <Form.Item 
           rules={[
@@ -149,7 +149,7 @@ function UserLogin() {
           </button>
           
           <Divider style={{borderColor:'black'}}></Divider>
-        </form>
+        </Form>
     </div>
           {/* <div class="pass" style={{textAlign:"center" ,margin:"100"}}> Forget Password
   <input type="submit" name="" value="Reset Pass"></input>
