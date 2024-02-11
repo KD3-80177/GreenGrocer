@@ -7,8 +7,8 @@ import UserLogin from './UserLogin';
 import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
 import ResetPassword from './ResetPassword';
-
-
+import DeliveryBoyLogin from './DeliveryBoyLogin';
+import DeliveryBoyRegistration from './DeliveryBoyRegistration';
 
 import UpdateUser from './UpdateUser';
 
@@ -26,7 +26,8 @@ function App() {
           <Route exact path = '/SellerRegistration' element={<SellerRegistration/>}/>
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
-
+          <Route exact path = '/DeliveryBoyLogin' element={<DeliveryBoyLogin/>}/>
+          <Route exact path = '/DeliveryBoyRegistration' element={<DeliveryBoyRegistration/>}/>
 
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
