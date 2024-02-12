@@ -5,7 +5,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: url('./images/img6.jpg');
+  background: url('./images/img.jpg');
   background-size: cover;
 }
 
@@ -14,6 +14,16 @@
   background-color: rgba(255, 255, 255, 0.33);
   box-shadow: 0px 8px 32px 0 rgb(0, 0,255,0.33);
   backdrop-filter:blur(3px); 
+  padding: 0px 16px 16px 16px;
+  border-radius: 16px;
+}
+
+
+.registerForm
+{
+  background-color: rgba(255, 255, 255, 0.33);
+  box-shadow: 0px 8px 32px 0 rgb(0, 0,255,0.33);
+  backdrop-filter:blur(8px); 
   padding: 0px 16px 16px 16px;
   border-radius: 16px;
 }
@@ -29,4 +39,15 @@
 .socialIcon
 {
   cursor: pointer;
+}
+
+.userRegBg
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: url('./images/img6.jpg');
+  background-size: cover;
 }
