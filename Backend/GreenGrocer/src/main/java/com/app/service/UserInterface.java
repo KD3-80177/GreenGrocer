@@ -2,6 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.dto.ApiResponse;
 import com.app.entities.User;
 
 public interface UserInterface {
@@ -9,7 +10,7 @@ public interface UserInterface {
 
 	User getUserInfo(Long id);
 
-	User findUserByEmail(User user);
+	ApiResponse findUserByEmail(User user);
 
 	User updateUser(User user);
 
