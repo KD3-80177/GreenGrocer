@@ -26,9 +26,7 @@ function App() {
           <Route exact path = '/SellerRegistration' element={<SellerRegistration/>}/>
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
-          <Route exact path = '/DeliveryBoyLogin' element={<DeliveryBoyLogin/>}/>
-          <Route exact path = '/DeliveryBoyRegistration' element={<DeliveryBoyRegistration/>}/>
-
+          
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
         </Routes>
