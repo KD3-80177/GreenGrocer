@@ -36,8 +36,7 @@ public class UserImpl implements UserInterface{
 	@Override
 	public ApiResponse findUserByEmail(User u) {
 		String email = u.getEmail();
-		String password = u.getPassword();
-		User user=registerDao.findUserRegistrationByEmail(email);
+		User user=registerDao.findUserByEmail(email);
 		if(user!=null)
 		{
 			if(user.getPassword().equals(u.getPassword()))

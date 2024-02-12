@@ -7,6 +7,8 @@ import UserLogin from './UserLogin';
 import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
 import ResetPassword from './ResetPassword';
+import DeliveryLogin from './DeliveryLogin';
+import DeliveryRegistration from './DeliveryRegistration';
 
 
 
@@ -17,19 +19,14 @@ function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          { <Route exact path = '/UserLogin' element={<UserLogin/>}/>
-          /*<Route exact path = '/login' element={<Login/>}/> */}
-
+          <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
-
-         
+          <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>
+          <Route exact path= '/DeliveryRegistration' element={<DeliveryRegistration />}/>
           <Route exact path = '/SellerRegistration' element={<SellerRegistration/>}/>
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
-
-
-          {/* <Route exact path = '*' element={<Login/>}/> */}
-          {<Route exact path = '/Update' element={<UpdateUser/>}/>}
+          <Route exact path = '/Update' element={<UpdateUser/>}/>
         </Routes>
       </div>
     </BrowserRouter>
