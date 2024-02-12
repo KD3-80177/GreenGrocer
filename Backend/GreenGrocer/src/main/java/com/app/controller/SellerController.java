@@ -1,6 +1,8 @@
 package com.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entities.AssignedOrderDto;
+import com.app.dto.ApiResponse;
 import com.app.dto.SellerDTO;
 import com.app.entities.Product;
 import com.app.entities.Seller;
@@ -25,21 +28,27 @@ public class SellerController {
 	private SellerInterface sellerService;
 	
 	@PostMapping("/newSeller")
-	public String addSeller(@RequestBody Seller newSeller)
+	public ResponseEntity<Seller> addSeller(@RequestBody Seller newSeller)
 	{
-		return sellerService.addNewSeller(newSeller);
+		Seller sel = sellerService.addNewSeller(newSeller);
+		return new ResponseEntity<>(sel,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{id}")
-	public Seller getSellerById(@PathVariable Long id)
+	public ResponseEntity<Seller> getSellerById(@PathVariable Long id)
 	{
-		return sellerService.findSellerById(id);
+		return ResponseEntity.ok(sellerService.findSellerById(id));
 	}
 	
 	@PostMapping("/login")
-	public Seller getSellerByEmail(@RequestBody Seller findSeller)
+	public ApiResponse getSellerByEmail(@RequestBody Seller findSeller)
 	{
-		return sellerService.findSellerByEmail(findSeller);
+		ApiResponse api = sellerService.findSellerByEmail(findSeller);
+		if(api.getSuccess()) {
+			return new ApiResponse("Login Succesfull",true);
+		}else {
+			return new ApiResponse("Login failed",false);
+		}
 	}
 	
 	@PostMapping("/addProduct/{sid}")

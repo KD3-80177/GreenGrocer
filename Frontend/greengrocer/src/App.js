@@ -17,10 +17,10 @@ function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          { <Route exact path = '/Login' element={<UserLogin/>}/>
+          { <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           /*<Route exact path = '/login' element={<Login/>}/> */}
 
-          <Route exact path = '/Registration' element={<UserRegistration/>}/>
+          <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
 
          
           <Route exact path = '/SellerRegistration' element={<SellerRegistration/>}/>

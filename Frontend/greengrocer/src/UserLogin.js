@@ -3,7 +3,8 @@ import { Link,useNavigate,useParams} from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+import {Form  ,Item,Input,BreadcrumbItemPropsnput,message, Typography, Divider} from "antd"; 
+import "./style.css";
 
 
 function UserLogin() {
@@ -62,10 +63,10 @@ function UserLogin() {
    
     return (
             
-        <html>
+       
 
         <center>
-        <div className="container" style={{height:200,width:500,textAlign:"center",margin:50 }} >
+        {/* <div className="container" style={{height:200,width:500,textAlign:"center",margin:50 }} >
             <h1><strong>User Login  </strong></h1>
          <div className="jumbotron" style={{height:200,width:500,textAlign:"center",margin:0}}>
 
@@ -112,12 +113,50 @@ function UserLogin() {
         </div>
         </div>
         </div>
-        
-  </center>
-  <div class="pass" style={{textAlign:"center" ,margin:"100"}}> Forget Password
+    */}
+         
+        <div className="appBg">
+        <Form className="loginForm">
+          <Typography.Title>Welcome Back!</Typography.Title>
+          <Form.Item 
+          rules={[
+            {
+              required:true,
+              type:"email",
+              message:"Please Enter Valid Email!!"
+            },
+              ]} label="Email" name={'email'}>
+            <Input required placeholder="Enter your email" 
+                            name="email" 
+                            type="email"
+                            value={loginDetails.email}
+                            onChange={(e)=>handleChange(e,'email')} />
+          </Form.Item>
+          <Form.Item rules={[
+            {
+              required:true,
+              message:"Please Enter Valid Password!!"
+            },
+               ]}label="Password" name={'password'}>
+            <Input.Password  required placeholder="Enter your password" 
+                                      type='password'
+                                      name="password" 
+                                      value={loginDetails.password}
+                                      onChange={(e)=>handleChange(e,'password')} />
+          </Form.Item>
+          <button className="btn btn-primary" type="submit" style={{display:"block"}} onClick={DoLogin} >
+            Login
+          </button>
+          
+          <Divider style={{borderColor:'black'}}></Divider>
+        </Form>
+    </div>
+          {/* <div class="pass" style={{textAlign:"center" ,margin:"100"}}> Forget Password
   <input type="submit" name="" value="Reset Pass"></input>
-  </div>
-  </html>
+  </div> */}
+  </center>
+ 
+ 
   );
       
 }

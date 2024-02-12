@@ -1,8 +1,11 @@
 package com.app.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.ApiResponse;
 import com.app.entities.User;
 import com.app.service.UserInterface;
 
@@ -24,30 +28,43 @@ public class UserController {
 	@Autowired
 	private UserInterface register;
 	
+	@GetMapping
+	public ResponseEntity<List<User>> getAllUsers(){
+		return ResponseEntity.ok(register.getAllUsers());
+	}
+	
 	@GetMapping("/getUser/{id}")
-	public User getUserInfo(@PathVariable Long id)
+	public ResponseEntity<User> getUserInfo(@PathVariable Long id)
 	{
-		return register.getUserInfo(id);
+		return ResponseEntity.ok(register.getUserInfo(id));
 	}
 	
 	@PostMapping("/login")
-	public User getUserByEmail(@RequestBody User user)
+	public ApiResponse getUserByEmail(@RequestBody User user)
 	{
-		return register.findUserByEmail(user);
+		ApiResponse api = register.findUserByEmail(user);
+		if(api.getSuccess()) {
+			return new ApiResponse("Login Succesfull",true);
+		}else {
+			return new ApiResponse("Login failed",false);
+		}
 	}
 	
 	@PostMapping("/newUser")
-	public String addUser(@RequestBody User user) {
-		return register.addUser(user);
+	public ResponseEntity<User> addUser(@RequestBody User user) {
+		User createdUser = register.addUser(user);
+		return new ResponseEntity<>(createdUser,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/updateUser")
-	public String updateUser(@RequestBody User user) {
-		return register.updateUser(user);
+	public ResponseEntity<User> updateUser(@RequestBody User user) {
+		User u = register.updateUser(user);
+		return ResponseEntity.ok(u);
 	}
 	
 	@DeleteMapping("/{userId}")
-	public String deleteUser(@PathVariable Long userId) {
-		return register.delUser(userId);
+	public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long userId) {
+		register.delUser(userId);
+		return new ResponseEntity(new ApiResponse("User Deleted Succesfully",true),HttpStatus.OK);
 	}
 }

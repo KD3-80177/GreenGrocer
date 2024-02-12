@@ -1,15 +1,20 @@
 package com.app.service;
 
+import java.util.List;
+
+import com.app.dto.ApiResponse;
 import com.app.entities.User;
 
 public interface UserInterface {
-	String addUser(User user);
+	User addUser(User user);
 
 	User getUserInfo(Long id);
 
-	User findUserByEmail(User user);
+	ApiResponse findUserByEmail(User user);
 
-	String updateUser(User user);
+	User updateUser(User user);
 
-	String delUser(Long userId);
+	void delUser(Long userId);
+
+	List<User> getAllUsers();
 }

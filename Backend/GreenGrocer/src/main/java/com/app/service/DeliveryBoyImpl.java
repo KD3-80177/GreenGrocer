@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.custome_exception.ResourceNotFoundException;
 import com.app.dao.DeliveryBoyDao;
 import com.app.dao.SellerDao;
+import com.app.dto.ApiResponse;
 import com.app.dto.DeliveryBoyDTO;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Seller;
@@ -21,40 +23,32 @@ public class DeliveryBoyImpl implements DeliveryBoyInterface {
 	private SellerDao sellerDao;
 	
 	@Override
-	public DeliveryBoy findDeliveryBoyByEmail(DeliveryBoy deliveryBoy) {
+	public ApiResponse findDeliveryBoyByEmail(DeliveryBoy deliveryBoy) {
 		DeliveryBoy tempDeliveryBoy=deliveryBoyDao.findDeliveryBoyByEmail(deliveryBoy.getEmail());
-		if(tempDeliveryBoy!=null)
-		{
-			if(tempDeliveryBoy.getPassword().equals(deliveryBoy.getPassword()))
+		if(tempDeliveryBoy.getPassword().equals(deliveryBoy.getPassword()))
 			{
-				return tempDeliveryBoy;
+				return new ApiResponse("Login Succesfull",true);
 			}
-		}
-		return null;
+		return new ApiResponse("Invalid Username or password",false);
 	}
 
 	@Override
 	public DeliveryBoy findById(Long id) {
-		DeliveryBoy tempDeliveryBoy=deliveryBoyDao.findById(id).orElseThrow();
-		if(tempDeliveryBoy!=null)
-		{
-			return tempDeliveryBoy;
-		}
-		return null;
+		DeliveryBoy tempDeliveryBoy=deliveryBoyDao.findById(id).orElseThrow(()->new ResourceNotFoundException("Delivery Boy", "Id", id));
+		return tempDeliveryBoy;
 	}
 
 	@Override
-	public String addDeliveryBoy(DeliveryBoy deliveryBoy) {
+	public DeliveryBoy addDeliveryBoy(DeliveryBoy deliveryBoy) {
 		String message="Sorry we are unable to process we can't add right now";
-		deliveryBoyDao.save(deliveryBoy);
-		message="Welcome to GG family";
-		return message;
+		DeliveryBoy del = deliveryBoyDao.save(deliveryBoy);
+		return del;
 	}
 
 	@Override
-	public String updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto) {
+	public DeliveryBoy updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto) {
 		DeliveryBoy dBoy=new DeliveryBoy();
-		Seller seller=sellerDao.findById(deliveryBoyDto.getSellerId()).orElseThrow();
+		Seller seller=sellerDao.findById(deliveryBoyDto.getSellerId()).orElseThrow(()->new ResourceNotFoundException("Delivery Boy", "id", deliveryBoyDto.getDelId()));
 		dBoy.setAadhar(deliveryBoyDto.getAadhar());
 		dBoy.setAddress(deliveryBoyDto.getAddress());
 		dBoy.setCity(deliveryBoyDto.getCity());
@@ -68,23 +62,14 @@ public class DeliveryBoyImpl implements DeliveryBoyInterface {
 		dBoy.setState(deliveryBoyDto.getState());
 		dBoy.setDelId(deliveryBoyDto.getDelId());
 		dBoy.setPincode(deliveryBoyDto.getPincode());
-		deliveryBoyDao.save(dBoy);
-		if(dBoy!=null)
-		{
-			return "Data updated";
-		}
-		return "Unable to update";
+		DeliveryBoy del = deliveryBoyDao.save(dBoy);
+		
+		return del;
 	}
 
 	@Override
-	public String deleteDeliveryBoy(Long id) {
-		DeliveryBoy dboy=deliveryBoyDao.findById(id).orElseThrow();
-		if(dboy!=null)
-		{
-			deliveryBoyDao.deleteById(id);
-			return "User deleted";
-		}
-		
-		return "User not found";
+	public void deleteDeliveryBoy(Long id) {
+		DeliveryBoy dboy=deliveryBoyDao.findById(id).orElseThrow(()->new ResourceNotFoundException("Delivery Boy", "id", id));
+		deliveryBoyDao.deleteById(id);
 	}
 }
