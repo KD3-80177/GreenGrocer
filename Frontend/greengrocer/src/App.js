@@ -7,8 +7,7 @@ import UserLogin from './UserLogin';
 import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
 import ResetPassword from './ResetPassword';
-import DeliveryBoyLogin from './DeliveryBoyLogin';
-import DeliveryBoyRegistration from './DeliveryBoyRegistration';
+import AdminDashboard from './AdminDashboard';
 
 import UpdateUser from './UpdateUser';
 
@@ -26,6 +25,7 @@ function App() {
           <Route exact path = '/SellerRegistration' element={<SellerRegistration/>}/>
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
+          <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
           
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}

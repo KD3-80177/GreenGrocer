@@ -48,11 +48,12 @@ return(
     </head>
     <body>
         <center>
-        <h1><strong> Reset Password </strong></h1>
         <div className="container">
-        <div className="jumbotron">
-    <div className="table-responsive">
-            <table className="table table-dark table-striped"  style={{width:500,textAlign:"center",margin:100}}>
+        <div className="table-responsive" style={{width:"500px", border:"solid green", marginTop:"100px"}}>
+        <br/><br/><br/>
+        <h1> Forgot Password </h1>
+        <p>Enter your email and reset your password.</p>
+            <table className="table table-dark table-striped"  style={{width:350,textAlign:"center",margin:70}}>
                 <tbody>
                     <tr>
                         <td><b>Mail</b></td>
@@ -78,20 +79,16 @@ return(
                             <button className="btn btn-primary" onClick={Reset}>
                                     Reset
                             </button>
-                        </td>
+                    </td>
                    
-                    <td>
-                        
-                   
-                            <button input type="submit" onClick={savePssword}>
+                        <td>
+                            <button className="btn btn-success" onClick={savePssword}>
                                     Save
-                            </button>
-                                 
+                            </button>         
                         </td>
                         
                     </tbody>
             </table>
-        </div>
         </div>
         </div>
         </center>
