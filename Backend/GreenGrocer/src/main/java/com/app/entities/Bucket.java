@@ -1,6 +1,6 @@
 package com.app.entities;
 
-import java.time.LocalDate;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,6 +26,9 @@ import lombok.Setter;
 public class Bucket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long temp;
+	
+	@Column(name="bid")
 	private Long bid;
 	
 	@Column(name = "quantity", nullable = false)
@@ -40,6 +43,16 @@ public class Bucket {
 	@Column(name = "bill", nullable = false)
 	private double bill;
 	
+	@OneToOne
+	@JoinColumn (name="uid",nullable = false)
+	private User user;
 	
+	@OneToOne
+	@JoinColumn (name="pid",nullable = false)
+	private Product product;
+	
+	@OneToOne
+	@JoinColumn (name="s_id",nullable = false)
+	private Seller seller;
 	
 }

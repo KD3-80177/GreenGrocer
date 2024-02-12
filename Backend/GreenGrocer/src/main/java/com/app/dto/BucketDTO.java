@@ -10,6 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BucketDTO {
+	private Long uid;
+	private Long sid;
 	private Long pid;
 	private int quantity;
 }
