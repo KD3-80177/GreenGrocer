@@ -21,5 +21,15 @@ public class AdminImpl implements AdminInterface{
 		return null;
 	}
 	
+	@Override
+	public String addNewAdmin(Admin admin) {
+		if(admin!=null)
+		{
+			adminDao.save(admin);
+			return "Admin added successfully!!!";
+		}
+		
+		return "FAILED!!!";
+	}
 	
 }

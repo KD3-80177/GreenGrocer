@@ -6,4 +6,6 @@ public interface AdminInterface {
 
 	Admin findAdmin(Long id);
 
+	String addNewAdmin(Admin admin);
+
 }
