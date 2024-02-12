@@ -6,11 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.custome_exception.ResourceNotFoundException;
+import com.app.dao.BidDao;
 import com.app.dao.BucketDao;
 import com.app.dao.ProductDao;
+import com.app.dao.SellerDao;
+import com.app.dao.UserDao;
+import com.app.dto.ApiResponse;
 import com.app.dto.BucketDTO;
+import com.app.dto.SellerDTO;
+import com.app.entities.Bid;
 import com.app.entities.Bucket;
+import com.app.entities.Orders;
 import com.app.entities.Product;
+import com.app.entities.Seller;
+import com.app.entities.User;
 
 @Service
 @Transactional
@@ -20,20 +30,48 @@ public class BucketImpl implements BucketInterface{
 	private ProductDao prodDao;
 	
 	@Autowired
+	private BidDao bdao;
+	
+	@Autowired
 	private BucketDao bucketDao;
+	
+	@Autowired
+	private SellerDao sellerDao;
+	
+	@Autowired
+	private UserDao ud;
 
 	@Override
-	public String addToBucket(BucketDTO bucket) {
+	public ApiResponse addToBucket(List<BucketDTO> bucket) {
 		// TODO Auto-generated method stub
-		Product prod = prodDao.findById(bucket.getPid()).orElseThrow();
-		Bucket b = new Bucket();
-		b.setPname(prod.getPname());
-		b.setPrice(prod.getPrice());
-		b.setQuantity(bucket.getQuantity());
-		double bill = bucket.getQuantity() * prod.getPrice();
-		b.setBill(bill);
-		bucketDao.save(b);
-		return "Added to bucket";
+		Bid bid = new Bid();
+		for (BucketDTO bucketDTO : bucket) {
+			Long uid = bucketDTO.getUid();
+			bid.setUid(uid);
+		}
+		bdao.save(bid);
+		
+		Long bid1 = bid.getBid();
+		for (BucketDTO bucketsDTO : bucket) {
+			Product product = prodDao.findById(bucketsDTO.getPid()).orElseThrow(()->new ResourceNotFoundException("product","id",bucketsDTO.getPid() ));
+			Seller  seller = sellerDao.findById(bucketsDTO.getSid()).orElseThrow(()-> new ResourceNotFoundException("Seller","id",bucketsDTO.getSid()));
+			User user = ud.findById(bucketsDTO.getUid()).orElseThrow(()->new ResourceNotFoundException("User", "id", bucketsDTO.getUid()));
+	        
+			Bucket b =new Bucket();
+			b.setBid(bid1);
+			b.setPname(product.getPname());
+			b.setPrice(product.getPrice());
+			b.setProduct(product);
+			b.setQuantity(bucketsDTO.getQuantity());
+			b.setSeller(seller);
+			b.setUser(user);
+			double bill = product.getPrice()*bucketsDTO.getQuantity();
+			b.setBill(bill);
+			
+			bucketDao.save(b);
+			
+		}
+		return new ApiResponse("Added to cart",true);
 	}
 
 	@Override
