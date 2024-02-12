@@ -45,7 +45,7 @@ public class SellerController {
 	{
 		ApiResponse api = sellerService.findSellerByEmail(findSeller);
 		if(api.getSuccess()) {
-			return new ApiResponse("Login Suucesfull",true);
+			return new ApiResponse("Login Succesfull",true);
 		}else {
 			return new ApiResponse("Login failed",false);
 		}
