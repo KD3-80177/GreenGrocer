@@ -1,26 +1,24 @@
-import { useState, useEffect } from "react";
-//import GreenGrocer from '../Services/greengrocer.service';
+import { useState,useEffect } from "react";
 import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {Form  ,Item,Input,BreadcrumbItemPropsnput,message, Typography, Divider} from "antd"; 
 import "./style.css";
 
-function UserRegistration(){
-    
-    const [user, setUser] = useState({fullName:"",mobileNo:"",email:"",password:"",address:"",city:"",state:"",pinCode:""});
-    const [message,setMessage] = useState("");
-
-    const url = "http://localhost:8080/user/newUser";
+function DeliveryRegistration()
+{
+    const[deliveryboy,setDeliveryBoy] = useState({fullName:"",mobile:"",email:"",password:"",address:"",city:"",state:"",pincode:"",aadhar:"",salary:""});
+    const[message,setMessage] = useState("");
+    const url = "http://localhost:8080/deliveryboy/addDeliveryboy";
 
     const OnTextChange = (args) =>{
-        var user1 = {...user};
-        user1[args.target.name] = args.target.value;
-        setUser(user1);
+        var del1 = {...deliveryboy};
+        del1[args.target.name] = args.target.value;
+        setDeliveryBoy(del1);
     }
 
     const Reset = ()=>
     {
-        setUser({fullName:"",mobileNo:"",email:"",password:"",address:"",city:"",state:"",pinCode:""})
+        setDeliveryBoy({fullName:"",mobile:"",email:"",password:"",address:"",city:"",state:"",pincode:"",aadhar:"",salary:""})
     }
     const showMessage = (msgText) =>{
         setMessage(msgText);
@@ -28,9 +26,9 @@ function UserRegistration(){
             setMessage("");
         },3000);
     }
-    const saveUser=()=>{
+    const saveDeliveryBoy=()=>{
        
-        axios.post(url,user)
+        axios.post(url,deliveryboy)
         .then((result)=>{
             if(result.data.affectedRows !== undefined && result.data.affectedRows>0){
                 showMessage("Customer Added Successfully!!!!!");
@@ -40,15 +38,17 @@ function UserRegistration(){
         
     }
 
-return(
-    <center>
-        
-     <div className="userRegBg">
+
+    return(
+        <center>
+
+
+            <div className="userRegBg">
     <div className="container">
        
 
 <Form className="registerForm" >
-              <Typography.Title style={{fontFamily:"sans-serif",textAlign:"center",color:"green",marginTop:"20px"}}>USER REGISTRATION</Typography.Title>
+              <Typography.Title style={{fontFamily:"sans-serif",textAlign:"center",color:"green",marginTop:"20px"}}>SELLER REGISTRATION</Typography.Title>
               <Divider style={{borderColor:'green'}}></Divider>
 
               <Form.Item rules={[
@@ -57,16 +57,16 @@ return(
                 },
                    ]}label="FullName" name={'fullName'}>
                 <Input  required placeholder="Enter your Full Name"  name="fullName"
-                            value={user.fullName}
+                            value={deliveryboy.fullName}
                             onChange={OnTextChange} />
               </Form.Item>
               <Form.Item rules={[
                 {
                   required:true,
                 },
-                   ]}label="mobileNo" name={'mobileNo'}>
-                <Input  required placeholder="Enter your mobileNo" name="mobileNo"
-                            value={user.mobileNo}
+                   ]}label="mobile" name={'mobile'}>
+                <Input  required placeholder="Enter your mobile" name="mobile"
+                            value={deliveryboy.mobile}
                             onChange={OnTextChange} />
               </Form.Item>
              
@@ -79,7 +79,7 @@ return(
                 },
                   ]} label="Email" name={'email'}>
                 <Input required placeholder="Enter your email"  name="email"
-                            value={user.email}
+                            value={deliveryboy.email}
                             onChange={OnTextChange}/>
               </Form.Item>
               <Form.Item rules={[
@@ -89,7 +89,7 @@ return(
                 },
                    ]}label="Password" name={'password'}>
                 <Input.Password  required placeholder="Enter your password"  name="password"
-                            value={user.password}
+                            value={deliveryboy.password}
                             onChange={OnTextChange} />
               </Form.Item>
               <Form.Item rules={[
@@ -98,7 +98,7 @@ return(
                 },
                    ]}label="Address" name={'address'}>
                 <Input  required placeholder="Enter your address"  name="address"
-                            value={user.address}
+                            value={deliveryboy.address}
                             onChange={OnTextChange} />
               </Form.Item>
               <Form.Item rules={[
@@ -107,7 +107,7 @@ return(
                 },
                    ]}label="city" name={'city'}>
                 <Input  required placeholder="Enter your city" name="city"
-                            value={user.city}
+                            value={deliveryboy.city}
                             onChange={OnTextChange} />
               </Form.Item>
               <Form.Item rules={[
@@ -116,19 +116,37 @@ return(
                 },
                    ]}label="state" name={'state'}>
                 <Input  required placeholder="Enter your state" name="state"
-                            value={user.state}
+                            value={deliveryboy.state}
                             onChange={OnTextChange}/>
               </Form.Item>
               <Form.Item rules={[
                 {
                   required:true,
                 },
-                   ]}label="Pincode" name={'pinCode'}>
-                <Input required placeholder="Enter your pinCode" name="pinCode"
-                               value={user.pinCode}
+                   ]}label="Pincode" name={'pincode'}>
+                <Input required placeholder="Enter your pinCode" name="pincode"
+                               value={deliveryboy.pincode}
                             onChange={OnTextChange} />
               </Form.Item>
-              <button className="btn btn-primary"  style={{marginLeft:"100px",display:"block"}} onClick={saveUser}>
+              <Form.Item rules={[
+                {
+                  required:true,
+                },
+                   ]}label="aadhar" name={'aadhar'}>
+                <Input required placeholder="Enter your aadhar" name="aadhar"
+                               value={deliveryboy.aadhar}
+                            onChange={OnTextChange} />
+              </Form.Item>
+              <Form.Item rules={[
+                {
+                  required:true,
+                },
+                   ]}label="salary" name={'salary'}>
+                <Input required placeholder="Enter your salary" name="salary"
+                               value={deliveryboy.salary}
+                            onChange={OnTextChange} />
+              </Form.Item>
+              <button className="btn btn-primary"  style={{marginLeft:"100px",display:"block"}} onClick={saveDeliveryBoy}>
                 REGISTER
               </button>
               <input type="reset"  className="btn btn-success" value={"Reset"} onClick={Reset}/>
@@ -140,7 +158,7 @@ return(
     </div>
     </div>
     </center>
-)
-};
+    )
+}
 
-export default UserRegistration;
+export default DeliveryRegistration;

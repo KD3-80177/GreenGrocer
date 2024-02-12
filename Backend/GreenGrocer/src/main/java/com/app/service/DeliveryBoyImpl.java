@@ -39,8 +39,10 @@ public class DeliveryBoyImpl implements DeliveryBoyInterface {
 	}
 
 	@Override
-	public DeliveryBoy addDeliveryBoy(DeliveryBoy deliveryBoy) {
+	public DeliveryBoy addDeliveryBoy(DeliveryBoy deliveryBoy, Long sId) {
 		String message="Sorry we are unable to process we can't add right now";
+		Seller sel = sellerDao.findById(sId).orElseThrow(()->new ResourceNotFoundException("Seller", "Id", sId));
+		deliveryBoy.setSeller(sel);
 		DeliveryBoy del = deliveryBoyDao.save(deliveryBoy);
 		return del;
 	}

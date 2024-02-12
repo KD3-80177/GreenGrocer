@@ -66,55 +66,6 @@ function UserLogin() {
        
 
         <center>
-        {/* <div className="container" style={{height:200,width:500,textAlign:"center",margin:50 }} >
-            <h1><strong>User Login  </strong></h1>
-         <div className="jumbotron" style={{height:200,width:500,textAlign:"center",margin:0}}>
-
-        <div className="table-responsive" >
-            <table 
-               className="table"
-               style={{width:500,textAlign:"center",}} >
-            <tbody>
-            
-            
-                <tr>
-                    <td>User Name: </td>
-                    <td>
-                        <input type='text'
-                               name="email" 
-                               value={loginDetails.email}
-                               onChange={(e)=>handleChange(e,'email')}/>
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td>Password: </td>
-                    <td>
-                        <input type='password'
-                               name="password" 
-                               value={loginDetails.password}
-                               onChange={(e)=>handleChange(e,'password')}/>
-                    </td>
-                </tr>
-                
-                 <tr>
-                    <td><button
-                           className='btn btn-primary' onClick={DoLogin}>Login</button></td>
-                    
-                    <td>
-                       <button 
-                       className='btn btn-primary' onClick={Reset}>Reset</button>
-                    </td>
-                </tr>
-                
-            </tbody>
-        </table>
-        
-        </div>
-        </div>
-        </div>
-    */}
-         
         <div className="appBg">
         <Form className="loginForm">
           <Typography.Title>Welcome Back!</Typography.Title>

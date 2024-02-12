@@ -43,10 +43,10 @@ public class DeliveryBoyController {
 		}
 	}
 	
-	@PostMapping("/addDeliveryboy")
-	public ResponseEntity<DeliveryBoy> addDeliveryBoy(@RequestBody DeliveryBoy deliveryBoy)
+	@PostMapping("/addDeliveryboy/{sellerId}")
+	public ResponseEntity<DeliveryBoy> addDeliveryBoy(@RequestBody DeliveryBoy deliveryBoy,@PathVariable Long sellerId)
 	{
-		DeliveryBoy del = deliveryBoyService.addDeliveryBoy(deliveryBoy);
+		DeliveryBoy del = deliveryBoyService.addDeliveryBoy(deliveryBoy,sellerId);
 		return new ResponseEntity<>(del,HttpStatus.CREATED);
 	}
 	

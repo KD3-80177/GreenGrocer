@@ -11,7 +11,7 @@ public interface DeliveryBoyInterface {
 
 	DeliveryBoy findById(Long id);
 
-	DeliveryBoy addDeliveryBoy(DeliveryBoy deliveryBoy);
+	DeliveryBoy addDeliveryBoy(DeliveryBoy deliveryBoy, Long sellerId);
 
 	DeliveryBoy updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto);
 

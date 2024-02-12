@@ -29,13 +29,11 @@ public class AdminController {
 		return ResponseEntity.ok(adminInterfaceService.getAdminById(id));
 	}
 	
-<<<<<<< HEAD
 	@PostMapping("/addAdmin")
 	public String addAdmin(@RequestBody Admin admin)
 	{
 		return adminInterfaceService.addNewAdmin(admin);
 	}
-=======
 	@GetMapping
 	public ResponseEntity<List<Admin>> getAll(){
 		return ResponseEntity.ok(adminInterfaceService.getAllAdmin());
@@ -43,5 +41,4 @@ public class AdminController {
 	
 	
 	
->>>>>>> cdfd1fe20e913aaaff723e592d1738073af47b9d
 }
