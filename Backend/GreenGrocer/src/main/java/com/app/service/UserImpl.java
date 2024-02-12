@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custome_exception.ResourceNotFoundException;
 import com.app.dao.UserDao;
+import com.app.dto.ApiResponse;
 import com.app.entities.User;
 
 @Service
@@ -33,18 +34,17 @@ public class UserImpl implements UserInterface{
 	}
 
 	@Override
-	public User findUserByEmail(User u) {
+	public ApiResponse findUserByEmail(User u) {
 		String email = u.getEmail();
-		String password = u.getPassword();
-		User user=registerDao.findUserRegistrationByEmail(email);
+		User user=registerDao.findUserByEmail(email);
 		if(user!=null)
 		{
-			if(user.getPassword()==password)
+			if(user.getPassword().equals(u.getPassword()))
 			{
-				return user;
+				return new ApiResponse("User Login Succesfull",true);
 			}
 		}
-		return user;
+		return new ApiResponse("User Login is unsuccesfull",false);
 	}
 
 	@Override

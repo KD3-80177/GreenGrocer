@@ -40,9 +40,14 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<User> getUserByEmail(@RequestBody User user)
+	public ApiResponse getUserByEmail(@RequestBody User user)
 	{
-		return ResponseEntity.ok(register.findUserByEmail(user));
+		ApiResponse api = register.findUserByEmail(user);
+		if(api.getSuccess()) {
+			return new ApiResponse("Login Succesfull",true);
+		}else {
+			return new ApiResponse("Login failed",false);
+		}
 	}
 	
 	@PostMapping("/newUser")

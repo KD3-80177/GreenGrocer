@@ -60,10 +60,12 @@ public class SellerImpl implements SellerInterface{
 		
 		Seller seller = sellerDao.findSellerByEmail(email);
 		
-		if(seller.getPassword().equals(seller.getPassword())) {
-			return new ApiResponse("Login Succesfull",true);
+		if(seller != null) {
+			if(seller.getPassword().equals(seller.getPassword())) {
+				return new ApiResponse("Seller Login Succesfull",true);
+			}
 		}
-		return new ApiResponse("Invalid Username or password",false);
+		return new ApiResponse("Seller Login is unsuccesfull",false);
 	}
 	
 	@Override
