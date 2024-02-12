@@ -1,6 +1,9 @@
 package com.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +22,16 @@ public class AdminController {
 	private AdminInterface adminInterfaceService;
 	
 	@GetMapping("/{id}")
-	public Admin findAdmin(@PathVariable Long id)
+	public ResponseEntity<Admin> findAdmin(@PathVariable Long id)
 	{
-		return adminInterfaceService.findAdmin(id);
+		return ResponseEntity.ok(adminInterfaceService.getAdminById(id));
 	}
+	
+	@GetMapping
+	public ResponseEntity<List<Admin>> getAll(){
+		return ResponseEntity.ok(adminInterfaceService.getAllAdmin());
+	}
+	
+	
+	
 }

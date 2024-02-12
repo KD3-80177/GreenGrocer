@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.custome_exception.ResourceNotFoundException;
 import com.app.dao.AssignedOrderDao;
 import com.app.dao.OrderDao;
 import com.app.dao.ProductDao;
@@ -15,6 +16,7 @@ import com.app.entities.Orders;
 import com.app.dao.DeliveryBoyDao;
 import com.app.dao.ProductDao;
 import com.app.dao.SellerDao;
+import com.app.dto.ApiResponse;
 import com.app.dto.SellerDTO;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Product;
@@ -30,45 +32,38 @@ public class SellerImpl implements SellerInterface{
 	
 	@Autowired
 	private ProductDao productDao;
-	
 	@Autowired
 	private AssignedOrderDao assignedOrderDao;
-	
 	@Autowired
 	private UserDao userDao;
-	
 	@Autowired
 	private OrderDao orderDao;
+	@Autowired
 	private DeliveryBoyDao dbDao;
 	
 	@Override
-	public String addNewSeller(Seller seller) {
-		sellerDao.save(seller);
-		return "Seller Added Successfully";
+	public Seller addNewSeller(Seller seller) {
+		Seller s = sellerDao.save(seller);
+		return s;
 	}
 	
 	@Override
 	public Seller findSellerById(Long id) {
-		Seller tempSeller = sellerDao.findById(id).orElseThrow();
+		Seller tempSeller = sellerDao.findById(id).orElseThrow(()->new ResourceNotFoundException("Seller", "Id", id));
 		return tempSeller;
 	}
 	
 	@Override
-	public Seller findSellerByEmail(Seller findSeller) {
+	public ApiResponse findSellerByEmail(Seller findSeller) {
 		String email = findSeller.getEmail();
 		String password =  findSeller.getPassword();
 		
 		Seller seller = sellerDao.findSellerByEmail(email);
 		
-		if(seller!=null)
-		{
-			if(seller.getPassword()==password)
-			{
-				
-				return seller;
-			}
+		if(seller.getPassword().equals(seller.getPassword())) {
+			return new ApiResponse("Login Succesfull",true);
 		}
-		return seller;
+		return new ApiResponse("Invalid Username or password",false);
 	}
 	
 	@Override
