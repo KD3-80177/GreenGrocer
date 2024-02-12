@@ -1,19 +1,20 @@
 package com.app.service;
 
 
+import com.app.dto.ApiResponse;
 import com.app.dto.DeliveryBoyDTO;
 import com.app.entities.DeliveryBoy;
 
 public interface DeliveryBoyInterface {
 
-	DeliveryBoy findDeliveryBoyByEmail(DeliveryBoy deliveryBoy);
+	ApiResponse findDeliveryBoyByEmail(DeliveryBoy deliveryBoy);
 
 	DeliveryBoy findById(Long id);
 
-	String addDeliveryBoy(DeliveryBoy deliveryBoy);
+	DeliveryBoy addDeliveryBoy(DeliveryBoy deliveryBoy);
 
-	String updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto);
+	DeliveryBoy updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto);
 
-	String deleteDeliveryBoy(Long id);
+	void deleteDeliveryBoy(Long id);
 
 }

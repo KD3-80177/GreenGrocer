@@ -1,10 +1,13 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.custome_exception.ResourceNotFoundException;
 import com.app.dao.UserDao;
 import com.app.entities.User;
 
@@ -16,16 +19,16 @@ public class UserImpl implements UserInterface{
 	private UserDao registerDao;
 
 	@Override
-	public String addUser(User user) {
+	public User addUser(User user) {
 		// TODO Auto-generated method stub
-		registerDao.save(user);
-		return "user added succesfully";
+		User u = registerDao.save(user);
+		return u;
 	}
 
 	@Override
 	public User getUserInfo(Long id) {
 		// TODO Auto-generated method stub
-		User user=registerDao.findById(id).orElseThrow();
+		User user=registerDao.findById(id).orElseThrow(()-> new ResourceNotFoundException("User", "Id", id));
 		return user;
 	}
 
@@ -45,9 +48,9 @@ public class UserImpl implements UserInterface{
 	}
 
 	@Override
-	public String updateUser(User user) {
+	public User updateUser(User user) {
 		// TODO Auto-generated method stub
-		User u = registerDao.findById(user.getUid()).orElseThrow();
+		User u = registerDao.findById(user.getUid()).orElseThrow(()-> new ResourceNotFoundException("User", "Id", user.getUid()));
 		u.setFullName(user.getFullName());
 		u.setAddress(user.getAddress());
 		u.setCity(user.getCity());
@@ -56,15 +59,22 @@ public class UserImpl implements UserInterface{
 		u.setPassword(user.getPassword());
 		u.setPinCode(user.getPinCode());
 		u.setState(user.getState());
-		registerDao.save(u);
-		return "User Updated Succesfully";
+		User u1 = registerDao.save(u);
+		return u1;
 	}
 
 	@Override
-	public String delUser(Long userId) {
+	public void delUser(Long userId) {
 		// TODO Auto-generated method stub
-		registerDao.deleteById(userId);
-		return "User Deleted Succesfully";
+		User user = registerDao.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User", "Id", userId));
+		registerDao.delete(user);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		List<User> user = registerDao.findAll();
+		return user;
 	}
 
 }
