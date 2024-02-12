@@ -49,7 +49,7 @@ public class ProductImpl implements ProductInterface{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new ApiResponse("Image Uploaded Succesfully for product id: "+productId);
+		return new ApiResponse("Image Uploaded Succesfully",true);
 	}
 
 	@Override
