@@ -23,15 +23,27 @@ public class EmailAppConfig {
 	@Bean
 	public JavaMailSender getJavaMailSender()
 	{
+<<<<<<< HEAD
 		JavaMailSenderImpl javaMailSender=new JavaMailSenderImpl();
+=======
+		JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+>>>>>>> 882778326f16d9744311712a4dcd15cfe63e793c
 		javaMailSender.setHost(mailHost);
 		javaMailSender.setPort(Integer.parseInt(mailPort));
 		javaMailSender.setUsername(mailUsername);
 		javaMailSender.setPassword(mailPassword);
+<<<<<<< HEAD
 		
 		Properties props=javaMailSender.getJavaMailProperties();
 		props.put("mail.smtp.starttls.enable", "true");
 		return javaMailSender;
 	}
 	
+=======
+
+		Properties props = javaMailSender.getJavaMailProperties();
+		props.put("mail.smtp.starttls.enable", "true");
+		return javaMailSender;
+	}
+>>>>>>> 882778326f16d9744311712a4dcd15cfe63e793c
 }

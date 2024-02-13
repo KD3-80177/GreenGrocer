@@ -48,7 +48,7 @@ function DeliveryRegistration()
        
 
 <Form className="registerForm" >
-              <Typography.Title style={{fontFamily:"sans-serif",textAlign:"center",color:"green",marginTop:"20px"}}>SELLER REGISTRATION</Typography.Title>
+              <Typography.Title style={{fontFamily:"sans-serif",textAlign:"center",color:"green",marginTop:"60px"}}>SELLER REGISTRATION</Typography.Title>
               <Divider style={{borderColor:'green'}}></Divider>
 
               <Form.Item rules={[
@@ -149,6 +149,7 @@ function DeliveryRegistration()
               <button className="btn btn-primary"  style={{marginLeft:"100px",display:"block"}} onClick={saveDeliveryBoy}>
                 REGISTER
               </button>
+              <br/>
               <input type="reset"  className="btn btn-success" value={"Reset"} onClick={Reset}/>
 
               
