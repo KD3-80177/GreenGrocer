@@ -8,13 +8,28 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custome_exception.ResourceNotFoundException;
 import com.app.dao.AdminDao;
+import com.app.dao.DeliveryBoyDao;
+import com.app.dao.SellerDao;
+import com.app.dao.UserDao;
 import com.app.entities.Admin;
+import com.app.entities.DeliveryBoy;
+import com.app.entities.Seller;
+import com.app.entities.User;
 
 @Service
 @Transactional
 public class AdminImpl implements AdminInterface{
 	@Autowired
 	private AdminDao adminDao;
+	
+	@Autowired
+	private SellerDao sellerDao;
+	
+	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
+	private DeliveryBoyDao deliveryBoyDao;
 
 	@Override
 	public Admin getAdminById(Long id) {
@@ -40,5 +55,25 @@ public class AdminImpl implements AdminInterface{
 		
 		return "FAILED!!!";
 	}
+
+	@Override
+	public List<Seller> findAllSeller() {
+		List <Seller> list=sellerDao.findAll();
+		return list;
+	}
+
+	@Override
+	public List<User> findAllUser() {
+		List<User> list=userDao.findAll();
+		return list;
+	}
+
+	@Override
+	public List<DeliveryBoy> findAllDeliveryBoy() {
+		List<DeliveryBoy> list=deliveryBoyDao.findAll();
+		return list;
+	}
+	
+	
 	
 }
