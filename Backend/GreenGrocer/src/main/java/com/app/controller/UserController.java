@@ -69,9 +69,9 @@ public class UserController {
 		return new ResponseEntity(new ApiResponse("User Deleted Succesfully",true),HttpStatus.OK);
 	}
 	
-	@PutMapping("/forgot-password")
-	public ResponseEntity<String> forgotPassword(@RequestParam String email)
-	{
-		return new ResponseEntity<>(register.forgotPassword(email),HttpStatus.OK);
-	}
+//	@PutMapping("/forgot-password")
+//	public ResponseEntity<String> forgotPassword(@RequestParam String email)
+//	{
+//		return new ResponseEntity<>(register.forgotPassword(email),HttpStatus.OK);
+//	}
 }
