@@ -17,4 +17,6 @@ public interface UserInterface {
 	void delUser(Long userId);
 
 	List<User> getAllUsers();
+
+	Object forgotPassword(String email);
 }
