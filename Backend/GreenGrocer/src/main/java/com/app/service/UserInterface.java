@@ -3,6 +3,7 @@ package com.app.service;
 import java.util.List;
 
 import com.app.dto.ApiResponse;
+import com.app.dto.UserDto;
 import com.app.entities.User;
 
 public interface UserInterface {
@@ -17,4 +18,6 @@ public interface UserInterface {
 	void delUser(Long userId);
 
 	List<User> getAllUsers();
+
+	String addNewUser(UserDto userDto);
 }

@@ -1,3 +1,4 @@
+
 package com.app.controller;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApiResponse;
+import com.app.dto.UserDto;
 import com.app.entities.User;
 import com.app.service.UserInterface;
 
@@ -66,5 +68,11 @@ public class UserController {
 	public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long userId) {
 		register.delUser(userId);
 		return new ResponseEntity(new ApiResponse("User Deleted Succesfully",true),HttpStatus.OK);
+	}
+	
+	@PostMapping("/addUser")
+	public String addNewUser(@RequestBody UserDto userDto) {
+		return register.addNewUser(userDto);
+		
 	}
 }

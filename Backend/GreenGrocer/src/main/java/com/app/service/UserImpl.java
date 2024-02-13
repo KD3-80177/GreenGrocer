@@ -3,13 +3,15 @@ package com.app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custome_exception.ResourceNotFoundException;
 import com.app.dao.UserDao;
 import com.app.dto.ApiResponse;
+import com.app.dto.UserDto;
 import com.app.entities.User;
 
 @Service
@@ -18,6 +20,9 @@ public class UserImpl implements UserInterface{
 	
 	@Autowired
 	private UserDao registerDao;
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
 
 	@Override
 	public User addUser(User user) {
@@ -75,6 +80,32 @@ public class UserImpl implements UserInterface{
 		// TODO Auto-generated method stub
 		List<User> user = registerDao.findAll();
 		return user;
+	}
+
+	@Override
+	public String addNewUser(UserDto userDto) {
+		User user=new User();
+		user.setAddress(userDto.getAddress());
+		user.setCity(userDto.getCity());
+		user.setEmail(userDto.getEmail());
+		user.setFullName(userDto.getFullName());
+		user.setMobileNo(userDto.getMobileNo());
+		user.setPassword(userDto.getPassword());
+		user.setOtp("654123");
+		user.setStatus(false);
+		user.setPinCode(userDto.getPinCode());
+		user.setState(userDto.getState());
+		registerDao.save(user);
+		
+		SimpleMailMessage simpleMsg=new SimpleMailMessage();
+		simpleMsg.setTo(user.getEmail());
+		simpleMsg.setSubject("Otp verify");
+		simpleMsg.setText(user.getOtp());
+		
+		javaMailSender.send(simpleMsg);
+		
+		
+		return "Email sent";
 	}
 
 }

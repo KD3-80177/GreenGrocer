@@ -42,19 +42,19 @@ public class AdminController {
 		return ResponseEntity.ok(adminInterfaceService.getAllAdmin());
 	}
 	
-	@GetMapping
+	@GetMapping("/getAllSeller")
 	public List<Seller> findAllSeller()
 	{
 		return adminInterfaceService.findAllSeller();
 	}
 	
-	@GetMapping
+	@GetMapping("/getAllUser")
 	public List<User> findAllUser()
 	{
 		return adminInterfaceService.findAllUser();
 	}
 	
-	@GetMapping
+	@GetMapping("/getAllDeliveryBoy")
 	public List<DeliveryBoy> findAllDeliveryBoy()
 	{
 		return adminInterfaceService.findAllDeliveryBoy();

@@ -39,6 +39,10 @@ public class User {
 	private String city;
 	@Column(length = 20, nullable = false)
 	private String state;
+	@Column(length=6, nullable=false)
+	private String otp;
+	@Column(nullable = false)
+	private boolean status; 
 	
 	public User(String email, String password) {
 		super();
