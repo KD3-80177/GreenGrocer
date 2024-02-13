@@ -59,4 +59,5 @@ public class ProductController {
 		return ResponseEntity.ok(prod.downloadImage(productId));
 	}
 	
+	
 }

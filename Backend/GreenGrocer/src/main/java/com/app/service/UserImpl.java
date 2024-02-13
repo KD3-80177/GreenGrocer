@@ -76,5 +76,17 @@ public class UserImpl implements UserInterface{
 		List<User> user = registerDao.findAll();
 		return user;
 	}
+	
+	@Override
+	public Object forgotPassword(String email) {
+		User user=registerDao.findUserByEmail(email);
+		if(user!=null)
+		{
+			return new ApiResponse("User Login Succesfull",true);
+			
+		}
+		return new ApiResponse("User Login is unsuccesfull",false);
+		
+	}
 
 }

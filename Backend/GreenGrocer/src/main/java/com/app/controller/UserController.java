@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApiResponse;
@@ -66,5 +67,11 @@ public class UserController {
 	public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long userId) {
 		register.delUser(userId);
 		return new ResponseEntity(new ApiResponse("User Deleted Succesfully",true),HttpStatus.OK);
+	}
+	
+	@PutMapping("/forgot-password")
+	public ResponseEntity<String> forgotPassword(@RequestParam String email)
+	{
+		return new ResponseEntity<>(register.forgotPassword(email),HttpStatus.OK);
 	}
 }
