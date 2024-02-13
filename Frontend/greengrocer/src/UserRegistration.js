@@ -128,11 +128,13 @@ return(
                                value={user.pinCode}
                             onChange={OnTextChange} />
               </Form.Item>
+              
               <button className="btn btn-primary"  style={{marginLeft:"100px",display:"block"}} onClick={saveUser}>
                 REGISTER
               </button>
+              <br/>
               <input type="reset"  className="btn btn-success" value={"Reset"} onClick={Reset}/>
-
+              
               
               <Divider style={{borderColor:'green'}}></Divider>
               
