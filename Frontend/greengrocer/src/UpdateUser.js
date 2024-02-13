@@ -18,7 +18,7 @@ function UpdateUser(){
 
         <h1><strong> UPDATE USER DETAILS </strong></h1>
     <div className="table-responsive">
-            <table className="table table-dark table-striped"  style={{width:500,textAlign:"center"}}>
+            <table className="table table-dark"  style={{width:500,textAlign:"center"}}>
                 <tbody>
                     <tr>
                         <td><b>Name</b></td>
