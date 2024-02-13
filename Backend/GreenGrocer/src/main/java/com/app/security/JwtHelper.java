@@ -9,11 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
-<<<<<<< HEAD
-=======
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
->>>>>>> f013124cba683e3613403d6786fb11e15da4bbe1
 
 @Component
 public class JwtHelper {
