@@ -13,6 +13,7 @@ import com.app.dao.UserDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.UserDto;
 import com.app.entities.User;
+import com.app.utils.OtpGenerator;
 
 @Service
 @Transactional
@@ -81,17 +82,31 @@ public class UserImpl implements UserInterface{
 		List<User> user = registerDao.findAll();
 		return user;
 	}
+	
+	@Override
+	public Object forgotPassword(String email) {
+		User user=registerDao.findUserByEmail(email);
+		if(user!=null)
+		{
+			return new ApiResponse("User Login Succesfull",true);
+			
+		}
+		return new ApiResponse("User Login is unsuccesfull",false);
+		
+	}
 
 	@Override
 	public String addNewUser(UserDto userDto) {
 		User user=new User();
+		OtpGenerator otp=new OtpGenerator();
 		user.setAddress(userDto.getAddress());
 		user.setCity(userDto.getCity());
 		user.setEmail(userDto.getEmail());
 		user.setFullName(userDto.getFullName());
 		user.setMobileNo(userDto.getMobileNo());
 		user.setPassword(userDto.getPassword());
-		user.setOtp("654123");
+		String otpvalue=otp.GenerateOtp();
+		user.setOtp(otpvalue);
 		user.setStatus(false);
 		user.setPinCode(userDto.getPinCode());
 		user.setState(userDto.getState());

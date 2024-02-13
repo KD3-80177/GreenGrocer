@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +51,7 @@ public class DeliveryBoyController {
 		return new ResponseEntity<>(del,HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public ApiResponse updateDeliveryBoy(@RequestBody DeliveryBoyDTO deliveryBoyDto)
 	{
 		DeliveryBoy del = deliveryBoyService.updateDeliveryBoy(deliveryBoyDto);
@@ -67,4 +68,5 @@ public class DeliveryBoyController {
 		deliveryBoyService.deleteDeliveryBoy(id);
 		return new ResponseEntity(new ApiResponse("Delivery Boy account deleted succesfully",true),HttpStatus.OK);
 	}
+	
 }

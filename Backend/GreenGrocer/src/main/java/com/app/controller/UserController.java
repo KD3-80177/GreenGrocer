@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ApiResponse;
@@ -71,8 +72,14 @@ public class UserController {
 	}
 	
 	@PostMapping("/addUser")
-	public String addNewUser(@RequestBody UserDto userDto) {
+	public String addNewUser(@RequestBody UserDto  userDto) {
 		return register.addNewUser(userDto);
 		
 	}
+
+//	@PutMapping("/forgot-password")
+//	public ResponseEntity<String> forgotPassword(@RequestParam String email)
+//	{
+//		return new ResponseEntity<>(register.forgotPassword(email),HttpStatus.OK);
+//	}
 }

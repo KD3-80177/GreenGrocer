@@ -43,6 +43,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/getAllSeller")
+
 	public List<Seller> findAllSeller()
 	{
 		return adminInterfaceService.findAllSeller();
@@ -54,7 +55,9 @@ public class AdminController {
 		return adminInterfaceService.findAllUser();
 	}
 	
+
 	@GetMapping("/getAllDeliveryBoy")
+
 	public List<DeliveryBoy> findAllDeliveryBoy()
 	{
 		return adminInterfaceService.findAllDeliveryBoy();

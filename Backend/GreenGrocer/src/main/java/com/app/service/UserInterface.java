@@ -20,4 +20,7 @@ public interface UserInterface {
 	List<User> getAllUsers();
 
 	String addNewUser(UserDto userDto);
+
+	Object forgotPassword(String email);
+
 }
