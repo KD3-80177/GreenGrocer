@@ -16,9 +16,10 @@ function AdminSidebar({openSidebarToggle, OpenSidebar})
 
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsGrid1X2Fill className='icon'/>Admin Dashboard
-                    </a>
+                    <Link to={'/goToAdminDashboard'}>
+                    <BsGrid1X2Fill className='icon'/>Admin Dashboard
+                    </Link>
+                    
                 </li>
                 <li className='sidebar-list-item'>
                     <Link to={'/getAllProducts'}>
@@ -35,9 +36,9 @@ function AdminSidebar({openSidebarToggle, OpenSidebar})
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <Link to={'/getAllDeliveryBoys'}>
                         <BsPeopleFill className='icon'/>Delivery Boys
-                    </a>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <a href="">

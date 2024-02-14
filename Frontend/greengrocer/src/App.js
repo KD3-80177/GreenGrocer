@@ -17,6 +17,7 @@ import DeliveryRegistration from './DeliveryRegistration';
 import UpdateUser from './UpdateUser';
 import AllUser from './AllUser';
 import AllProducts from './AllProducts';
+import AllDelieryBoy from './AllDeliveryBoy';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
           <Route exact path = '/getAllSellers' Component={AllSeller}/>
           <Route exact path = '/getAllUsers' Component={AllUser}/>
           <Route exact path = '/getAllProducts' Component={AllProducts}/>
+          <Route exact path = '/getAllDeliveryBoys' Component={AllDelieryBoy}/>
+          <Route exact path = '/goToAdminDashboard' Component={AdminDashboard}/>
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
           <Route exact path = '/Update' element={<UpdateUser/>}/>
