@@ -2,6 +2,8 @@ package com.app.service;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,10 +11,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.config.EmailAppConfig;
 import com.app.custome_exception.ResourceNotFoundException;
 import com.app.dao.UserDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.UserDto;
+import com.app.entities.JwtRequest;
 import com.app.entities.User;
 import com.app.utils.OtpGenerator;
 
@@ -29,6 +33,9 @@ public class UserImpl implements UserInterface{
 	@Autowired
 	private JavaMailSender javaMailSender;
 
+	@Autowired
+	private EmailAppConfig emailConfig;
+	
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
@@ -89,15 +96,18 @@ public class UserImpl implements UserInterface{
 	}
 	
 	@Override
-	public Object forgotPassword(String email) {
+	public String forgotPassword(String email) {
 		User user=registerDao.findUserByEmail(email);
-		if(user!=null)
+		try
 		{
-			return new ApiResponse("User Login Succesfull",true);
-			
+			emailConfig.sendSetPasswordEmail(email);
 		}
-		return new ApiResponse("User Login is unsuccesfull",false);
+		catch(MessagingException e)
+		{
+			throw new RuntimeException("Unable to send set password please try again....");	
+		}
 		
+		return "Please check your email to set new password to your account ";
 	}
 
 	@Override
