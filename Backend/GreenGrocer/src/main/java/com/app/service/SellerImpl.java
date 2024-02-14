@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -89,7 +91,13 @@ public class SellerImpl implements SellerInterface{
 		assignedOrder.setAddress(user.getAddress());
 		assignedOrder.setOid(assignedOrderDto.getOid());
 		assignedOrder.setDelId(did);
+		Long oid = assignedOrderDto.getOid();
 		assignedOrderDao.save(assignedOrder);
+		List<Orders> orders = orderDao.findByOid(oid);
+		for (Orders orders2 : orders) {
+			orders2.setStatus("Shipped");
+			orderDao.save(orders2);
+		}
 		return "Delivery Assigned Successfully";
 	}
 	
@@ -109,6 +117,13 @@ public class SellerImpl implements SellerInterface{
 		
 		sellerDao.save(s);
 		return "Seller Updated";
+	}
+
+	@Override
+	public List<Orders> findSellerOrders(Long sid) {
+		// TODO Auto-generated method stub
+		List<Orders> orders = orderDao.findBySellerSid(sid);
+		return orders;
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.app.dto.ApiResponse;
 import com.app.dto.UserDto;
+import com.app.entities.JwtRequest;
 import com.app.entities.User;
 
 public interface UserInterface {
@@ -21,6 +22,6 @@ public interface UserInterface {
 
 	String addNewUser(UserDto userDto);
 
-	Object forgotPassword(String email);
+	String forgotPassword(String email);
 
 }
