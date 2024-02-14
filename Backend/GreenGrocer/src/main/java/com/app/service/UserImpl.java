@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,9 @@ import com.app.utils.OtpGenerator;
 public class UserImpl implements UserInterface{
 	
 	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private UserDao registerDao;
 	
 	@Autowired
@@ -28,6 +32,7 @@ public class UserImpl implements UserInterface{
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		User u = registerDao.save(user);
 		return u;
 	}
@@ -104,7 +109,7 @@ public class UserImpl implements UserInterface{
 		user.setEmail(userDto.getEmail());
 		user.setFullName(userDto.getFullName());
 		user.setMobileNo(userDto.getMobileNo());
-		user.setPassword(userDto.getPassword());
+		user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 		String otpvalue=otp.GenerateOtp();
 		user.setOtp(otpvalue);
 		user.setStatus(false);

@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dao.UserRepo;
 import com.app.entities.JwtRequest;
 import com.app.entities.JwtResponse;
+import com.app.entities.UserEntity;
 import com.app.security.JwtHelper;
+import com.app.service.UserService;
 
 @RestController
 @RequestMapping("/auth")
@@ -32,6 +35,9 @@ public class AuthController {
 	private JwtHelper helper;
 	
 	private Logger logger = LoggerFactory.getLogger(AuthController.class);
+	
+	@Autowired
+	private UserService userService;
 	
 	@PostMapping("/login")
 	public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request){
@@ -54,5 +60,9 @@ public class AuthController {
 			// TODO: handle exception
 			throw new RuntimeException("Invalid Username or password");
 		}
+	}
+	@PostMapping("/createUser")
+	public UserEntity createUser(@RequestBody UserEntity user) {
+		return userService.createUser(user);
 	}
 }
