@@ -123,9 +123,5 @@ public class UserController {
 		
 	}
 
-//	@PutMapping("/forgot-password")
-//	public ResponseEntity<String> forgotPassword(@RequestParam String email)
-//	{
-//		return new ResponseEntity<>(register.forgotPassword(email),HttpStatus.OK);
-//	}
+
 }
