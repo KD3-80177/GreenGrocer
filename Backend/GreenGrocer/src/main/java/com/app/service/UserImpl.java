@@ -109,7 +109,7 @@ public class UserImpl implements UserInterface{
 		user.setEmail(userDto.getEmail());
 		user.setFullName(userDto.getFullName());
 		user.setMobileNo(userDto.getMobileNo());
-		user.setPassword(userDto.getPassword());
+		user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 		String otpvalue=otp.GenerateOtp();
 		user.setOtp(otpvalue);
 		user.setStatus(false);

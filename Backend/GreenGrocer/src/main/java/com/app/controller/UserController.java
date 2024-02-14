@@ -100,10 +100,10 @@ public class UserController {
 //		return new ResponseEntity<>(createdUser,HttpStatus.CREATED);
 //	}
 	
-	@PostMapping("/user/createUser")
-	public User createUser(@RequestBody User user) {
-		return register.addUser(user);
-	}
+//	@PostMapping("/user/createUser")
+//	public User createUser(@RequestBody User user) {
+//		return register.addUser(user);
+//	}
 	
 	@PutMapping("/greengrocer/user/updateUser")
 	public ResponseEntity<User> updateUser(@RequestBody User user) {
@@ -117,7 +117,7 @@ public class UserController {
 		return new ResponseEntity(new ApiResponse("User Deleted Succesfully",true),HttpStatus.OK);
 	}
 	
-	@PostMapping("/addUser")
+	@PostMapping("/user/createUser")
 	public String addNewUser(@RequestBody UserDto  userDto) {
 		return register.addNewUser(userDto);
 		

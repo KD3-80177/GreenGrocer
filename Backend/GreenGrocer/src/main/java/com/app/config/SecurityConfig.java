@@ -43,7 +43,7 @@ public class SecurityConfig {
         							.antMatchers("/seller/**").permitAll()
         							.antMatchers("/orders/**").permitAll()
         							.antMatchers("/deliveryboy/**").permitAll()
-        							.antMatchers("/cart").permitAll()
+        							.antMatchers("/cart/**").permitAll()
         							.anyRequest().authenticated())
         							.exceptionHandling(ex->ex.authenticationEntryPoint(point))
         							.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
