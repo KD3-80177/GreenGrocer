@@ -1,5 +1,6 @@
 import react from 'react'
 import {BsCart3, BsFillArchiveFill, BsGrid1X2Fill, BsMenuButtonWideFill, BsPeopleFill} from 'react-icons/bs'
+import './AdminStyle.css'
 
 function AdminSidebar({openSidebarToggle, OpenSidebar})
 {
