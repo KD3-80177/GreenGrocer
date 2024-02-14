@@ -9,7 +9,7 @@ const Home=()=>
                 <div className="container">
                     <div className="detail">
                         <h2>Get All fresh Vegitables</h2>
-                        <Link to="/product">Shop Now</Link>
+                        <img src="./" alt="products"></img>
                     </div>
                     <div className="img_box">
                         <img src="./images/img6.jpg" alt="products"></img>
@@ -19,3 +19,5 @@ const Home=()=>
         </>
     )
 }
+
+export default Home;
