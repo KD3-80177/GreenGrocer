@@ -1,6 +1,9 @@
 package com.app.service;
 
 import com.app.entities.AssignedOrderDto;
+import com.app.entities.Orders;
+
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
@@ -17,4 +20,5 @@ public interface SellerInterface {
 	String addNewProduct(Long sid,Product product);
 	String assignSeller(Long did, AssignedOrderDto assignedOrderDto);
 	String updateSeller(Long sid, SellerDTO seller);
+	List<Orders> findSellerOrders(Long sid);
 }

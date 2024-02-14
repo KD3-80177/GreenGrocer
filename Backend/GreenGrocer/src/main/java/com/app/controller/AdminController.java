@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.entities.User;
 import com.app.service.AdminInterface;
@@ -55,6 +56,11 @@ public class AdminController {
 		return adminInterfaceService.findAllUser();
 	}
 	
+	@GetMapping("/getAllProduct")
+	public List<Product> findAllProducts()
+	{
+		return adminInterfaceService.findAllProducts();
+	}
 
 	@GetMapping("/getAllDeliveryBoy")
 

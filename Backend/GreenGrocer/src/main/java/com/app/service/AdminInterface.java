@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.entities.User;
 
@@ -20,5 +21,7 @@ public interface AdminInterface {
 	List<User> findAllUser();
 
 	List<DeliveryBoy> findAllDeliveryBoy();
+
+	List<Product> findAllProducts();
 
 }
