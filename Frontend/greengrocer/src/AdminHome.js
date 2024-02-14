@@ -5,8 +5,6 @@ import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 
 function AdminHome()
 {
-    const url="http://localhost/seller/findAll";
-
     const data = [
         {
           name: 'June',
