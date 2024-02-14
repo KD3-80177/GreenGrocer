@@ -2,7 +2,7 @@ package com.app.entities;
 
 import java.util.Collection;
 
-import javax.persistence.Column;
+import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,80 +16,52 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
-@Table(name = "User")
-public class User implements UserDetails{
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
+@Table(name="user_entity")
+public class UserEntity implements UserDetails {
 	@Id
-	@Column(name="uid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long uid;
-	@Column(length = 50, nullable = false)
-	private String fullName;
-	@Column(length = 50, unique = true, nullable = false)
+	private Long userId;
+	private String name;
 	private String email;
-	@Column(length = 10, unique = true, nullable = false)
-	private String mobileNo;
-	@Column(nullable = false)
 	private String password;
-	@Column(length = 100,nullable = false)
-	private String address;
-	@Column(length = 6, nullable = false)
-	private String pinCode;
-	@Column(length = 20, nullable = false)
-	private String city;
-	@Column(length = 20, nullable = false)
-	private String state;
-	
-	public User(String email, String password) {
-		super();
-		this.email = email;
-		this.password = password;
-	}
-	
-	public User(Long id)
-	{
-		this.uid=id;
-	}
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return this.email;
 	}
-
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	
 }
