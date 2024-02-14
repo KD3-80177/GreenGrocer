@@ -24,4 +24,12 @@ public interface AdminInterface {
 
 	List<Product> findAllProducts();
 
+	Long getProuctCount();
+
+	Long getSellerCount();
+
+	Long getUsersCount();
+
+	Long getDeliveryCount();
+
 }
