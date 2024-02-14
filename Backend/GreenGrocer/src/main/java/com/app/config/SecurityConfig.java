@@ -44,6 +44,7 @@ public class SecurityConfig {
         							.antMatchers("/orders/**").permitAll()
         							.antMatchers("/deliveryboy/**").permitAll()
         							.antMatchers("/cart/**").permitAll()
+        							.antMatchers("/admin/**").permitAll()
         							.anyRequest().authenticated())
         							.exceptionHandling(ex->ex.authenticationEntryPoint(point))
         							.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
