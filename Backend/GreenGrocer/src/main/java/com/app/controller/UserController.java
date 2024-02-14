@@ -31,6 +31,7 @@ import com.app.entities.User;
 import com.app.entities.UserEntity;
 import com.app.security.JwtHelper;
 import com.app.service.UserInterface;
+import com.app.service.UserService;
 
 @RestController
 @RequestMapping
@@ -122,6 +123,11 @@ public class UserController {
 		return register.addNewUser(userDto);
 		
 	}
-
+	
+	@PutMapping("/forgot-password")
+	public ResponseEntity<?> forgotPassword(@RequestBody String email)
+	{
+		return new ResponseEntity<>(register.forgotPassword(email),HttpStatus.OK);
+	}
 
 }
