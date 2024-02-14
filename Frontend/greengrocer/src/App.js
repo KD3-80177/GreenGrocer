@@ -14,12 +14,12 @@ import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
 import Home from './Home';
 
-
-
 import UpdateUser from './UpdateUser';
 import AllUser from './AllUser';
 import AllProducts from './AllProducts';
 import AllDelieryBoy from './AllDeliveryBoy';
+
+import Products from './Products';
 
 function App() {
   return (
@@ -41,10 +41,8 @@ function App() {
           <Route exact path = '/getAllDeliveryBoys' Component={AllDelieryBoy}/>
           <Route exact path = '/goToAdminDashboard' Component={AdminDashboard}/>
           {/* <Route exact path = '*' element={<Login/>}/> */}
-          {<Route exact path = '/Update' element={<UpdateUser/>}/>}
           <Route exact path = '/Update' element={<UpdateUser/>}/>
-
-          <Route exact path = '/Update' element={<UpdateUser/>}/>
+          <Route exact path = '/products' element={<Products/>}/>
 
         </Routes>
       </div>
