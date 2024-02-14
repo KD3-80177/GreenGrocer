@@ -1,6 +1,7 @@
 package com.app.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.app.entities.Seller;
 
@@ -10,4 +11,7 @@ import com.app.entities.Seller;
 public interface SellerDao extends JpaRepository<Seller, Long> {
 		
 	public Seller findSellerByEmail(String email);
+	
+	@Query("slect count(*) from Seller s")
+	public Long getSCount();
 }

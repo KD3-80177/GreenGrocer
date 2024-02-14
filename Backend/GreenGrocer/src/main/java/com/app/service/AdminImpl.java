@@ -84,6 +84,30 @@ public class AdminImpl implements AdminInterface{
 		List<Product> list=productDao.findAll();
 		return list;
 	}
+
+	@Override
+	public Long getProuctCount() {
+		// TODO Auto-generated method stub
+		return productDao.getCount();
+	}
+
+	@Override
+	public Long getSellerCount() {
+		// TODO Auto-generated method stub
+		return sellerDao.getSCount();
+	}
+
+	@Override
+	public Long getUsersCount() {
+		// TODO Auto-generated method stub
+		return userDao.getUCount();
+	}
+
+	@Override
+	public Long getDeliveryCount() {
+		// TODO Auto-generated method stub
+		return deliveryBoyDao.getDCount();
+	}
 	
 	
 	

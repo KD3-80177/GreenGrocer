@@ -69,4 +69,23 @@ public class AdminController {
 		return adminInterfaceService.findAllDeliveryBoy();
 	}
 	
+	@GetMapping("/getProductCount")
+	public Long getProdCount() {
+		return adminInterfaceService.getProuctCount();
+	}
+	
+	@GetMapping("/getSellerCount")
+	public Long getSellCount() {
+		return adminInterfaceService.getSellerCount();
+	}
+	
+	@GetMapping("/getUserCount")
+	public Long getUserCount() {
+		return adminInterfaceService.getUsersCount();
+	}
+	
+	@GetMapping("/getDelCount")
+	public Long getDelivCount() {
+		return adminInterfaceService.getDeliveryCount();
+	}
 }
