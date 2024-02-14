@@ -8,11 +8,8 @@ import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
 import ResetPassword from './ResetPassword';
 import AdminDashboard from './AdminDashboard';
-<<<<<<< HEAD
 
-=======
 import AllSeller from './AllSeller';
->>>>>>> 96f39104ce8f194d08eea665ff152283e3b0d220
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
 import Home from './Home';
