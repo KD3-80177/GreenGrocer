@@ -8,12 +8,10 @@ import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
 import ResetPassword from './ResetPassword';
 import AdminDashboard from './AdminDashboard';
-<<<<<<< HEAD
-=======
 
->>>>>>> Shivshankar
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
+import Home from './Home';
 
 
 
@@ -24,6 +22,7 @@ function App() {
     <BrowserRouter>
       <div>
         <Routes>
+          <Route exact path = '/' element={<Home/>}/>
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>
@@ -35,13 +34,10 @@ function App() {
           
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
-<<<<<<< HEAD
           <Route exact path = '/Update' element={<UpdateUser/>}/>
-=======
 
           <Route exact path = '/Update' element={<UpdateUser/>}/>
 
->>>>>>> Shivshankar
         </Routes>
       </div>
     </BrowserRouter>
