@@ -8,16 +8,13 @@ import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
 import ResetPassword from './ResetPassword';
 import AdminDashboard from './AdminDashboard';
-<<<<<<< HEAD
-=======
-
->>>>>>> Shivshankar
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
-
+import DeliveryBoyDash from './DeliveryBoyDash';
 
 
 import UpdateUser from './UpdateUser';
+
 
 function App() {
   return (
@@ -32,16 +29,15 @@ function App() {
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
+          <Route exact path='/DeliveryBoy' element={<DeliveryBoyDash/>}/>
           
+ 
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
-<<<<<<< HEAD
-          <Route exact path = '/Update' element={<UpdateUser/>}/>
-=======
+          
 
-          <Route exact path = '/Update' element={<UpdateUser/>}/>
+         {/* <DeliveryBoyDash/> */}
 
->>>>>>> Shivshankar
         </Routes>
       </div>
     </BrowserRouter>
