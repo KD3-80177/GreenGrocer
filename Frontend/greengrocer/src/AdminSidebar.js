@@ -1,6 +1,7 @@
 import react from 'react'
 import {BsCart3, BsFillArchiveFill, BsGrid1X2Fill, BsMenuButtonWideFill, BsPeopleFill} from 'react-icons/bs'
 import './AdminStyle.css'
+import { Link } from 'react-router-dom'
 
 function AdminSidebar({openSidebarToggle, OpenSidebar})
 {
@@ -15,29 +16,29 @@ function AdminSidebar({openSidebarToggle, OpenSidebar})
 
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsGrid1X2Fill className='icon'/>Admin Dashboard
-                    </a>
+                    <Link to={'/goToAdminDashboard'}>
+                    <BsGrid1X2Fill className='icon'/>Admin Dashboard
+                    </Link>
+                    
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsFillArchiveFill className='icon'/>Products
-                    </a>
+                    <Link to={'/getAllProducts'}>
+                    <BsFillArchiveFill className='icon'/>Products
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <Link to={'/getAllUsers'}>
                         <BsPeopleFill className='icon'/>Customers
-                    </a>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsPeopleFill className='icon'/>Sellers
-                    </a>
+                    <Link to={'/getAllSellers'}><BsPeopleFill className='icon'/>Sellers
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <Link to={'/getAllDeliveryBoys'}>
                         <BsPeopleFill className='icon'/>Delivery Boys
-                    </a>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <a href="">

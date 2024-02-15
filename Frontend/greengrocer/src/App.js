@@ -8,12 +8,18 @@ import SellerRegistration from './SellerRegistration';
 import SellerLogin from './SellerLogin';
 import ResetPassword from './ResetPassword';
 import AdminDashboard from './AdminDashboard';
+
+import AllSeller from './AllSeller';
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
-import DeliveryBoyDash from './DeliveryBoyDash';
-
+import Home from './Home';
 
 import UpdateUser from './UpdateUser';
+import AllUser from './AllUser';
+import AllProducts from './AllProducts';
+import AllDelieryBoy from './AllDeliveryBoy';
+
+import Products from './Products';
 
 
 function App() {
@@ -21,6 +27,7 @@ function App() {
     <BrowserRouter>
       <div>
         <Routes>
+          <Route exact path = '/' element={<Home/>}/>
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>
@@ -37,6 +44,15 @@ function App() {
           
 
          {/* <DeliveryBoyDash/> */}
+
+          <Route exact path = '/getAllSellers' Component={AllSeller}/>
+          <Route exact path = '/getAllUsers' Component={AllUser}/>
+          <Route exact path = '/getAllProducts' Component={AllProducts}/>
+          <Route exact path = '/getAllDeliveryBoys' Component={AllDelieryBoy}/>
+          <Route exact path = '/goToAdminDashboard' Component={AdminDashboard}/>
+          {/* <Route exact path = '*' element={<Login/>}/> */}
+          <Route exact path = '/Update' element={<UpdateUser/>}/>
+          <Route exact path = '/products' element={<Products/>}/>
 
         </Routes>
       </div>
