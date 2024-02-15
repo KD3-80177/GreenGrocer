@@ -14,6 +14,7 @@ function UserLogin() {
     const url = "http://localhost:8080/user/login";
     const[message,setMessage] = useState("");
     const[loginDetails,setLoginDetails] = useState({email:"",password:""});
+    const navigate = useNavigate();
 
     const handleChange = (event,field) =>{
         let actualVal = event.target.value;
@@ -30,6 +31,11 @@ function UserLogin() {
         })
     }
 
+    const storeInSessionStorage = (token,username)=>{
+      sessionStorage.setItem('jwtToken',token);
+      sessionStorage.setItem('email',username);
+    }
+
     const DoLogin = ()=>
     {
         console.log(loginDetails);
@@ -41,8 +47,16 @@ function UserLogin() {
         }
 
         axios.post(url,loginDetails)
-            .then((result)=>
-            result.data)
+            .then((result)=>{
+              const{jwtToken,username,status} = result.data;
+              if(status === "success"){
+                storeInSessionStorage(jwtToken,username);
+                navigate("/AdminDashboard");
+              }
+            })
+            .catch((error)=>{
+              alert("Invalid Username or Password");
+            })
 
         // axios.get(newUrl).then((result)=>{
         //     var validUser = result.data;
