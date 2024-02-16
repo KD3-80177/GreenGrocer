@@ -139,12 +139,5 @@ public class SellerImpl implements SellerInterface{
 		return list;
 	}
 
-	@Override
-	public List<AssignedOrderDto> getUniqueOrders(Long sid) {
-		// TODO Auto-generated method stub
-		List<AssignedOrderDto> list = orderDao.getUniqOrders(sid);
-		return list;
-	}
-
 	
 }

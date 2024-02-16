@@ -86,8 +86,4 @@ public class SellerController {
 		return sellerService.getAllDeliveryBoys(sid);
 	}
 	
-	@GetMapping("/getUniqueOrderDetails/{sid}")
-	public List<AssignedOrderDto> getOrderDetails(@PathVariable Long sid){
-		return sellerService.getUniqueOrders(sid);
-	}
 }

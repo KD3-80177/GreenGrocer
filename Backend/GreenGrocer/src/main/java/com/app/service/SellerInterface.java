@@ -24,5 +24,4 @@ public interface SellerInterface {
 	String assignDeliveryBoy(Long did, AssignedOrderDto assignedOrderDto);
 	List<Product> getProdBySeller(Long sid);
 	List<DeliveryBoy> getAllDeliveryBoys(Long sid);
-	List<AssignedOrderDto> getUniqueOrders(Long sid);
 }
