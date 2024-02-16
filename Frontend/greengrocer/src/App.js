@@ -22,6 +22,8 @@ import SellerDashboard from './SellerDashboard';
 import Products from './Products';
 import AllOrder from './AllOrder';
 
+import DeliveryBoyDash from './DeliveryBoyDash';
+
 function App() {
   return (
     <BrowserRouter>
@@ -62,7 +64,8 @@ function App() {
           {/* <Route exact path = '*' element={<Login/>}/> */}
           <Route exact path = '/Update' element={<UpdateUser/>}/>
           <Route exact path = '/products' element={<Products/>}/>
-
+           
+           <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
         </Routes>
       </div>
     </BrowserRouter>
