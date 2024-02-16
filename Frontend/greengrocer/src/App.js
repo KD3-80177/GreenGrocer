@@ -38,12 +38,9 @@ function App() {
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
-<<<<<<< HEAD
          
           
-=======
           <Route exact path = '/SellerDashboard' element={<SellerDashboard/>}/>
->>>>>>> Shivshankar
  
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
@@ -66,6 +63,16 @@ function App() {
           <Route exact path = '/products' element={<Products/>}/>
            
            <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
+
+
+
+
+           
+           <Route exact path='/goToDeliveyDashboard' Component={DeliveryBoyDash}/>
+
+
+
+
         </Routes>
       </div>
     </BrowserRouter>

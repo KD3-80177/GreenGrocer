@@ -2,6 +2,7 @@ import React from "react";
 import {BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
   BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
 from 'react-icons/bs'
+import { Link } from "react-router-dom";
 
 function DeliveryBoySidebar({openSidebarToggle, OpenSidebar}){
     return(
@@ -15,24 +16,24 @@ function DeliveryBoySidebar({openSidebarToggle, OpenSidebar}){
     
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                <Link to={'/goToDeliveyDashboard'}>
                         <BsGrid1X2Fill className='icon'/> Dashboard
-                    </a>
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsFillArchiveFill className='icon'/> CompletedOrder
-                    </a>
+                <Link to={'/goToCompleteOrder'}>
+                        <BsFillArchiveFill className='icon'/> Update
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsFillGrid3X3GapFill className='icon'/> PendingOrder
-                    </a>
+                <Link to={'/goToPendingOrder'}>
+                        <BsFillGrid3X3GapFill className='icon'/> Delete
+                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                <Link to={'/goToCustomerInfo'}>
                         <BsPeopleFill className='icon'/> CustomersInfo.
-                    </a>
+                    </Link>
                 </li>
                
             </ul>
