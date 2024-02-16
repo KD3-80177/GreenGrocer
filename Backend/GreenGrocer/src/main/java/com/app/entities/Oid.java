@@ -24,5 +24,4 @@ public class Oid {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long oid;
 	private Long uid;
-	private Long sid;
 }

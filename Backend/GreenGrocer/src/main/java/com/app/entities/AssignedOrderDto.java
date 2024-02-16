@@ -12,5 +12,4 @@ import lombok.Setter;
 public class AssignedOrderDto {
 	private Long oid;
 	private Long uid;
-	private Long sid;
 }
