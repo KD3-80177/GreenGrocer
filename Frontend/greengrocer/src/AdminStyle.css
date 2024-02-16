@@ -162,6 +162,13 @@ body {
     background-color: #d50000;
   }
   
+  #blank1 {
+    background-color: #ff6d00;
+  }
+  #blank2 {
+    background-color: pink;
+  }
+
   .card-inner {
     display: flex;
     align-items: center;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.AllCountDataDTO;
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Product;
@@ -87,5 +88,11 @@ public class AdminController {
 	@GetMapping("/getDelCount")
 	public Long getDelivCount() {
 		return adminInterfaceService.getDeliveryCount();
+	}
+	
+	@GetMapping("/allData")
+	public AllCountDataDTO getAllData()
+	{
+		return adminInterfaceService.getAllData();
 	}
 }
