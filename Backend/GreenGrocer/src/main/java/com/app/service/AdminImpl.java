@@ -12,6 +12,7 @@ import com.app.dao.DeliveryBoyDao;
 import com.app.dao.ProductDao;
 import com.app.dao.SellerDao;
 import com.app.dao.UserDao;
+import com.app.dto.AllCountDataDTO;
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Product;
@@ -107,6 +108,16 @@ public class AdminImpl implements AdminInterface{
 	public Long getDeliveryCount() {
 		// TODO Auto-generated method stub
 		return deliveryBoyDao.getDCount();
+	}
+
+	@Override
+	public AllCountDataDTO getAllData() {
+		AllCountDataDTO result=new AllCountDataDTO();
+		result.setDeliveryboyCount(deliveryBoyDao.getDCount());
+		result.setProductCount(productDao.getCount());
+		result.setSellerCount(sellerDao.getSCount());
+		result.setUserCount(userDao.getUCount());
+		return result;
 	}
 	
 	

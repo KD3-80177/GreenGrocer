@@ -2,6 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.dto.AllCountDataDTO;
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Product;
@@ -31,5 +32,7 @@ public interface AdminInterface {
 	Long getUsersCount();
 
 	Long getDeliveryCount();
+
+	AllCountDataDTO getAllData();
 
 }
