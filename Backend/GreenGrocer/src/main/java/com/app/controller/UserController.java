@@ -81,6 +81,7 @@ public class UserController {
 		
 		JwtResponse response = JwtResponse.builder()
 				.jwtToken(token)
+				.status("success")
 				.username(userDetails.getUsername()).build();
 		return new ResponseEntity<>(response,HttpStatus.OK);
 	}
