@@ -28,6 +28,7 @@ function Products()
                         <tr>
                             <th>Product Id</th> 
                             <th>Product Name</th>
+                            <th>Image</th>
                             <th>Price</th>
                             <th>Seller Id</th>
                             <th>Seller Name</th>
@@ -42,6 +43,7 @@ function Products()
                                 <tr key={product.pid}>
                                     <td>{product.pid}</td>
                                     <td>{product.pname}</td>
+                                    <td><img src="https://img.freepik.com/free-photo/front-view-vegetable_140725-103355.jpg?size=626&ext=jpg" style={{width:"20%" ,height:"10%"}}></img></td>
                                     <td>{product.price}</td>
                                     <td>{product.seller.sid}</td>
                                     <td>{product.seller.fullName}</td>
