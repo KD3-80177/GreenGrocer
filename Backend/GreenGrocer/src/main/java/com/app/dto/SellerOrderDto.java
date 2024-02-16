@@ -1,4 +1,4 @@
-package com.app.entities;
+package com.app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssignedOrderDto {
-	private Long oid;
+public class SellerOrderDto {
+
 	private Long uid;
+	private Long oid;
 	private Long sid;
 }
