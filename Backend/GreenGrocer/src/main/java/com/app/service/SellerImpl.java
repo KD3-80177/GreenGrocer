@@ -81,7 +81,7 @@ public class SellerImpl implements SellerInterface{
 	}
 
 	@Override
-	public String assignSeller(Long did, AssignedOrderDto assignedOrderDto) {
+	public String assignDeliveryBoy(Long did, AssignedOrderDto assignedOrderDto) {
 		Long uid=assignedOrderDto.getUid();
 		User user=userDao.findById(uid).orElseThrow();
 		AssigndOrders assignedOrder=new AssigndOrders();
@@ -125,5 +125,12 @@ public class SellerImpl implements SellerInterface{
 		List<Orders> orders = orderDao.findBySellerSid(sid);
 		return orders;
 	}
+
+	@Override
+	public List<Product> getProdBySeller(Long sid) {
+		// TODO Auto-generated method stub
+		return productDao.findBySellerSid(sid);
+	}
+
 	
 }

@@ -32,6 +32,8 @@ public class Product {
 	private int price;
 	@Column(name = "availableQuantity", nullable = false)
 	private int availableQuantity;
+	@Column(name = "url")
+	private String imageUrl;
 	@Lob
 	private byte[] image;
 	@ManyToOne

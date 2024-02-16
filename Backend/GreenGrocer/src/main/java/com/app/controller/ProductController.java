@@ -53,11 +53,14 @@ public class ProductController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(prod.uplodImage(productId,imageFile));
 	}
 	
-	@GetMapping(value = "/images/{productId}",produces = {IMAGE_GIF_VALUE,IMAGE_JPEG_VALUE,IMAGE_PNG_VALUE})
+	@PostMapping(value = "/getImages/{productId}",produces = {IMAGE_GIF_VALUE,IMAGE_JPEG_VALUE,IMAGE_PNG_VALUE})
 	public ResponseEntity<?>serveProductImage(@PathVariable Long productId) throws IOException{
 		System.out.println("in download img "+productId);
 		return ResponseEntity.ok(prod.downloadImage(productId));
 	}
 	
-	
+	@GetMapping("/searchProduct/{pname}")
+	public List<Product> search(@PathVariable String pname) {
+		return prod.searchByName(pname);
+	}
 }

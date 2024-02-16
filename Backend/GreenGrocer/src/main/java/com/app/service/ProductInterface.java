@@ -20,4 +20,6 @@ public interface ProductInterface {
 
 	byte[] downloadImage(Long productId) throws IOException;
 
+	List<Product> searchByName(String pname);
+
 }

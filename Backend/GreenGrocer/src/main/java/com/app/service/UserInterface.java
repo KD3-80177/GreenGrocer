@@ -24,4 +24,6 @@ public interface UserInterface {
 
 	String forgotPassword(String email);
 
+	User getByMail(String email);
+
 }

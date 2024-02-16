@@ -33,7 +33,7 @@ function AllSeller() {
         <AdminHeader OpenSidebar={OpenSidebar}/>
         <main className='main-container'>
             <div className="table-responsive">
-                        <table className="table table-bordered">
+                        <table className="table table-success table-striped-columns">
                             <thead>
                                <tr>
                                  <th>Seller Id</th> 

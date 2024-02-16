@@ -36,7 +36,8 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
         					.cors(cors->cors.disable())
         					.authorizeHttpRequests(
-        							auth->auth.antMatchers("/greengocer/**").authenticated()
+        							auth->auth.antMatchers("/greengoce/**").authenticated()
+        							.antMatchers("/greengrocer/**").permitAll()
         							.antMatchers("/user/login").permitAll()
         							.antMatchers("/user/createUser").permitAll()
         							.antMatchers("/products/**").permitAll()
