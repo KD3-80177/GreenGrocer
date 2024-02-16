@@ -1,6 +1,7 @@
 package com.app.service;
 
 import com.app.entities.AssignedOrderDto;
+import com.app.entities.DeliveryBoy;
 import com.app.entities.Orders;
 
 import java.util.List;
@@ -22,4 +23,5 @@ public interface SellerInterface {
 	List<Orders> findSellerOrders(Long sid);
 	String assignDeliveryBoy(Long did, AssignedOrderDto assignedOrderDto);
 	List<Product> getProdBySeller(Long sid);
+	List<DeliveryBoy> getAllDeliveryBoys(Long sid);
 }

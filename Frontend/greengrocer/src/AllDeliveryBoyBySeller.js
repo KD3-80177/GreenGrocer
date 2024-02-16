@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {BsCart3, BsFillArchiveFill, BsGrid1X2Fill, BsMenuButtonWideFill, BsPeopleFill} from 'react-icons/bs'
 import './AdminStyle.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
-import AdminSidebar from "./AdminSidebar";
-import AdminHeader from "./AdminHeader";
-
-
-function AllProducts() {
+import SellerSidebar from "./SellerSidebar";
+import SellerHeader from "./SellerHeader";
+function AllDelieryBoyBySeller() {
 
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
 
@@ -14,42 +14,47 @@ function AllProducts() {
         setOpenSidebarToggle(!openSidebarToggle)
     }
 
-    const [products,setProducts]=useState([]);
+    const [deliveryboys,setDeliveryboys]=useState([]);
     
-    const url="http://127.0.0.1:8080/admin/getAllProduct"
+    const url=`http://127.0.0.1:8080/seller/getDeliveryboys/${1}`
     
     const FetchRecords =() =>{
         axios.get(url).then((result)=>{
-            setProducts(result.data);
+            setDeliveryboys(result.data);
         })
     }
 
     useEffect(()=>{FetchRecords()},[])
     return ( 
        <div className='grid-container'>
-        <AdminSidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-        <AdminHeader OpenSidebar={OpenSidebar}/>
+        <SellerSidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
+        <SellerHeader OpenSidebar={OpenSidebar}/>
         <main className='main-container'>
+            <br/>
+            <center><button className="btn btn-success">Add New Delivery Boy</button></center>
+            <br/>
+            <br/>
+            <hr/>
             <div className="table-responsive">
                         <table className="table table-success table-striped-columns">
                             <thead>
                                <tr>
-                                 <th>Product Id</th> 
-                                 <th>Product Name</th>
-                                 <th>Price</th>
-                                 <th>Seller Id</th>
-                                 <th>Seller Name</th>
+                                 <th>Id</th> 
+                                 <th>Full Name</th>
+                                 <th>Mobile</th>
+                                 <th>Address</th>
+                                 <th>Action</th>
                                </tr>
                             </thead>
                             <tbody>
                                 {
-                                    products.map((product)=>{
-                                        return (<tr key={product.pid}>
-                                            <td>{product.pid}</td>
-                                            <td>{product.pname}</td>
-                                            <td>{product.price}</td>
-                                            <td>{product.seller.sid}</td>
-                                            <td>{product.seller.fullName}</td>
+                                    deliveryboys.map((deliveryboy)=>{
+                                        return (<tr key={deliveryboy.uid}>
+                                            <td>{deliveryboy.delId}</td>
+                                            <td>{deliveryboy.fullName}</td>
+                                            <td>{deliveryboy.mobile}</td>
+                                            <td>{deliveryboy.address}</td>
+                                            <td><button className="btn btn-danger">Delete</button></td>
                                            {/* <td>
                                          <button className="btn  
                                             btn-danger"  
@@ -72,4 +77,4 @@ function AllProducts() {
      );
 }
 
-export default AllProducts;
+export default AllDelieryBoyBySeller;
