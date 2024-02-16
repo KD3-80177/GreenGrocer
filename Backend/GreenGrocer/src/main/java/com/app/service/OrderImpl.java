@@ -14,6 +14,7 @@ import com.app.dao.ProductDao;
 import com.app.dao.SellerDao;
 import com.app.dao.UserDao;
 import com.app.dto.OrdersDTO;
+import com.app.entities.Bucket;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Oid;
 import com.app.entities.Orders;
@@ -55,30 +56,6 @@ public class OrderImpl implements OrderInterface {
 		return "Order Placed!!!!!";
 	}
 
-	@Override
-	public String addOrderDto(OrdersDTO orderDto) {
-		// TODO Auto-generated method stub
-		Long pid = orderDto.getPid();
-		Product prod = prodDao.findById(pid).orElseThrow();
-		Seller seller = sellerDao.findById(orderDto.getSid()).orElseThrow();
-		User user = userDao.findById(orderDto.getUid()).orElseThrow();
-		Orders order = new Orders();
-		order.setOdate(LocalDate.now());
-		order.setProduct(prod);
-		order.setSeller(seller);
-		order.setUser(user);
-		order.setStatus("pending");
-		int quantity = orderDto.getQuantity();
-		int price = prod.getPrice();
-		double bill = price*quantity;
-		order.setBill(bill);
-		order.setQuantity(orderDto.getQuantity());
-		int updatedQuantity = prod.getAvailableQuantity() - quantity;
-		prod.setAvailableQuantity(updatedQuantity);
-		prodDao.save(prod);
-		orderDao.save(order);
-		return "Order Placed...";
-	}
 
 	@Override
 	public String addOrderList(List<OrdersDTO> orders) {
@@ -121,5 +98,41 @@ public class OrderImpl implements OrderInterface {
 		Orders order = orderDao.findById(oid).orElseThrow();
 		orderDao.delete(order);
 		return "Order Deleted Successfully!!!!";
+	}
+	
+	@Override
+	public String confirmOrder(List<Bucket> bucket) {
+		Oid oid = new Oid();
+		for (Bucket b : bucket) {
+			Long uid = b.getUser().getUid();
+			oid.setUid(uid);
+		}
+		oDao.save(oid);
+		
+		Long oid1 = oid.getOid();
+		
+		for (Bucket b : bucket) {
+			Product prod = prodDao.findById(b.getProduct().getPid()).orElseThrow();
+			Seller seller = sellerDao.findById(b.getSeller().getSid()).orElseThrow();
+			User user = userDao.findById(b.getUser().getUid()).orElseThrow();
+			Orders order = new Orders();
+			order.setOid(oid1);
+			order.setOdate(LocalDate.now());
+			order.setProduct(prod);
+			order.setSeller(seller);
+			order.setUser(user);
+			order.setStatus("pending");
+			int quantity = b.getQuantity();
+			int price = prod.getPrice();
+			double bill = price*quantity;
+			order.setBill(bill);
+			order.setQuantity(b.getQuantity());
+			int updatedQuantity = prod.getAvailableQuantity() - quantity;
+			prod.setAvailableQuantity(updatedQuantity);
+			prodDao.save(prod);
+			orderDao.save(order);
+		}
+		return "All order placed";
+
 	}
 }

@@ -31,14 +31,20 @@ public class BucketController {
 		return new ApiResponse("Products Added to cart Succesfully",true);
 	}
 	
-	@GetMapping
-	public List<Bucket> getAllBucket(){
-		return bucketService.getBucket();
+	@GetMapping("/findBucket/{uid}")
+	public List<Bucket> getAllBucket(@PathVariable Long uid){
+		return bucketService.getBucket(uid);
 	}
 	
 	@DeleteMapping("/{bucketId}")
 	public String deleteBucket(@PathVariable Long bucketId)
 	{
 		return bucketService.deleteMyBucket(bucketId);
+	}
+	
+	@GetMapping("/{productId}")
+	public Bucket getBucket(@PathVariable Long bucketId)
+	{
+		return bucketService.getBucketById(bucketId);
 	}
 }

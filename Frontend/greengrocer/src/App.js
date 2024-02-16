@@ -12,7 +12,7 @@ import AdminDashboard from './AdminDashboard';
 import AllSeller from './AllSeller';
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
-import Home from './Home';
+import UserHome from './UserHome';
 
 import UpdateUser from './UpdateUser';
 import AllUser from './AllUser';
@@ -20,14 +20,18 @@ import AllProducts from './AllProducts';
 import AllDelieryBoy from './AllDeliveryBoy';
 
 import Products from './Products';
-
+import Cart from './Cart';
+import UserDashboard from './UserDashboard';
+import CombineHome from './CombineHome';
+import ControlledCarousel from './ControlledCarousel';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
         <Routes>
-          <Route exact path = '/' element={<Home/>}/>
+          <Route exact path = '/' element={<ControlledCarousel/>}/>
+          <Route exact path = '/UserHome' element={<CombineHome/>}/>
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>
@@ -36,9 +40,8 @@ function App() {
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
-         
-          
- 
+          <Route exact path = '/UserDashboard' element={<UserDashboard/>}/>
+
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
           
@@ -53,7 +56,7 @@ function App() {
           {/* <Route exact path = '*' element={<Login/>}/> */}
           <Route exact path = '/Update' element={<UpdateUser/>}/>
           <Route exact path = '/products' element={<Products/>}/>
-
+          <Route exact path = '/cart' element={<Cart/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.OrdersDTO;
+import com.app.entities.Bucket;
 import com.app.entities.Orders;
 import com.app.entities.Product;
 import com.app.service.OrderInterface;
@@ -39,14 +40,15 @@ public class OrderController {
 		return orderService.addNewOrder(userId,order);
 	}
 	
-	@PostMapping("/addOrder")
-	public String addOrderByDto(@RequestBody OrdersDTO orderDto) {
-		return orderService.addOrderDto(orderDto);
-	}
-	
 	@PostMapping("/listOrder")
 	public String addOrderList(@RequestBody List<OrdersDTO> orders) {
 		return orderService.addOrderList(orders);
+	}
+	
+	@PostMapping("/confirmOrder")
+	public String confirm(@RequestBody List<Bucket> bucket )
+	{
+		return orderService.confirmOrder(bucket);
 	}
 	
 	@DeleteMapping("/deleteOrder/{oid}")

@@ -9,7 +9,9 @@ import com.app.entities.Bucket;
 public interface BucketInterface {
 	ApiResponse addToBucket(List<BucketDTO> bucket);
 
-	List<Bucket> getBucket();
+	List<Bucket> getBucket(Long uid);
 
-	String deleteMyBucket(Long id);	
+	String deleteMyBucket(Long id);
+
+	Bucket getBucketById(Long bucketId);	
 }
