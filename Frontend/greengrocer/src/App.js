@@ -18,9 +18,9 @@ import UpdateUser from './UpdateUser';
 import AllUser from './AllUser';
 import AllProducts from './AllProducts';
 import AllDelieryBoy from './AllDeliveryBoy';
-
+import SellerDashboard from './SellerDashboard';
 import Products from './Products';
-
+import AllOrder from './AllOrder';
 
 function App() {
   return (
@@ -36,8 +36,12 @@ function App() {
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
+<<<<<<< HEAD
          
           
+=======
+          <Route exact path = '/SellerDashboard' element={<SellerDashboard/>}/>
+>>>>>>> Shivshankar
  
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
@@ -50,6 +54,11 @@ function App() {
           <Route exact path = '/getAllProducts' Component={AllProducts}/>
           <Route exact path = '/getAllDeliveryBoys' Component={AllDelieryBoy}/>
           <Route exact path = '/goToAdminDashboard' Component={AdminDashboard}/>
+
+
+          {/* Seller Dashboard */}
+          <Route exact path = '/getAllOrders' Component={AllOrder}/>
+
           {/* <Route exact path = '*' element={<Login/>}/> */}
           <Route exact path = '/Update' element={<UpdateUser/>}/>
           <Route exact path = '/products' element={<Products/>}/>

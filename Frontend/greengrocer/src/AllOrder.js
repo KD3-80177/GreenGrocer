@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import './AdminStyle.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
-import AdminSidebar from "./AdminSidebar";
-import AdminHeader from "./AdminHeader";
+import SellerHeader from "./SellerHeader";
+import SellerSidebar from "./SellerSidebar";
 
-
-function AllProducts() {
+function AllOrder() {
 
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
 
@@ -14,42 +13,44 @@ function AllProducts() {
         setOpenSidebarToggle(!openSidebarToggle)
     }
 
-    const [products,setProducts]=useState([]);
+    const [orders,setOrders]=useState([]);
     
-    const url="http://127.0.0.1:8080/admin/getAllProduct"
+    const url=`http://127.0.0.1:8080/seller/getSellerOrders/${1}`
     
     const FetchRecords =() =>{
         axios.get(url).then((result)=>{
-            setProducts(result.data);
+            setOrders(result.data);
         })
     }
 
     useEffect(()=>{FetchRecords()},[])
     return ( 
        <div className='grid-container'>
-        <AdminSidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-        <AdminHeader OpenSidebar={OpenSidebar}/>
+        <SellerSidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
+        <SellerHeader OpenSidebar={OpenSidebar}/>
         <main className='main-container'>
             <div className="table-responsive">
                         <table className="table table-success table-striped-columns">
                             <thead>
                                <tr>
-                                 <th>Product Id</th> 
+                                 <th>Order Id</th> 
+                                 <th>User Id</th>
+                                 <th>User Name</th>
+                                 <th>Product Id</th>
                                  <th>Product Name</th>
-                                 <th>Price</th>
-                                 <th>Seller Id</th>
-                                 <th>Seller Name</th>
+                                 <th>Quantity </th>
                                </tr>
                             </thead>
                             <tbody>
                                 {
-                                    products.map((product)=>{
-                                        return (<tr key={product.pid}>
-                                            <td>{product.pid}</td>
-                                            <td>{product.pname}</td>
-                                            <td>{product.price}</td>
-                                            <td>{product.seller.sid}</td>
-                                            <td>{product.seller.fullName}</td>
+                                    orders.map((order)=>{
+                                        return (<tr key={order.pid}>
+                                            <td>{order.oid}</td>
+                                            <td>{order.user.uid}</td>
+                                            <td>{order.user.userName}</td>
+                                            <td>{order.product.pid}</td>
+                                            <td>{order.product.pname}</td>
+                                            <td>{order.quantity}</td>
                                            {/* <td>
                                          <button className="btn  
                                             btn-danger"  
@@ -72,4 +73,4 @@ function AllProducts() {
      );
 }
 
-export default AllProducts;
+export default AllOrder;
