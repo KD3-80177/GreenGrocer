@@ -18,7 +18,8 @@ public interface SellerInterface {
 	Seller findSellerById(Long id);
 	ApiResponse findSellerByEmail(Seller findSeller);
 	String addNewProduct(Long sid,Product product);
-	String assignSeller(Long did, AssignedOrderDto assignedOrderDto);
 	String updateSeller(Long sid, SellerDTO seller);
 	List<Orders> findSellerOrders(Long sid);
+	String assignDeliveryBoy(Long did, AssignedOrderDto assignedOrderDto);
+	List<Product> getProdBySeller(Long sid);
 }
