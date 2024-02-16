@@ -75,9 +75,9 @@ public class BucketImpl implements BucketInterface{
 	}
 
 	@Override
-	public List<Bucket> getBucket() {
+	public List<Bucket> getBucket(Long uid) {
 		// TODO Auto-generated method stub
-		List<Bucket> bList = bucketDao.findAll();
+		List<Bucket> bList = bucketDao.findBucketByUserUid(uid);
 		return bList;
 	}
 	
@@ -91,6 +91,16 @@ public class BucketImpl implements BucketInterface{
 		}
 		
 		return "Bucket Not Deleted";
+	}
+	
+	@Override
+	public Bucket getBucketById(Long bucketId) {
+		Bucket bucket = bucketDao.findById(bucketId).orElseThrow(()->new ResourceNotFoundException("Bucket", "bucketId", bucketId));
+		if(bucket!=null)
+		{
+			return bucket;
+		}
+		return bucket;
 	}
 	
 

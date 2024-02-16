@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entities.AssignedOrderDto;
+import com.app.entities.DeliveryBoy;
 import com.app.entities.Orders;
 import com.app.dto.ApiResponse;
 import com.app.dto.SellerDTO;
@@ -78,4 +79,11 @@ public class SellerController {
 	public List<Product> getSellerProd(@PathVariable Long sid){
 		return sellerService.getProdBySeller(sid);
 	}
+	
+	@GetMapping("/getDeliveryboys/{sid}")
+	public List<DeliveryBoy> getAllDeliveryBoys(@PathVariable Long sid)
+	{
+		return sellerService.getAllDeliveryBoys(sid);
+	}
+	
 }

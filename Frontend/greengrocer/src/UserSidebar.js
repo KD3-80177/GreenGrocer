@@ -1,8 +1,9 @@
+import react from 'react'
 import {BsCart3, BsFillArchiveFill, BsGrid1X2Fill, BsMenuButtonWideFill, BsPeopleFill} from 'react-icons/bs'
 import './AdminStyle.css'
 import { Link } from 'react-router-dom'
 
-function SellerSidebar({openSidebarToggle, OpenSidebar})
+function UserSidebar({openSidebarToggle, OpenSidebar})
 {
     return(
         <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive":""}>
@@ -14,38 +15,33 @@ function SellerSidebar({openSidebarToggle, OpenSidebar})
         </div>
 
             <ul className='sidebar-list'>
+
                 <li className='sidebar-list-item'>
-                    <Link to={'/goToSellerDashboard'}>
-                    <BsGrid1X2Fill className='icon'/>Seller Dashboard
-                    </Link>
-                    
-                </li>
-                <li className='sidebar-list-item'>
-                    <Link to={'/getAllOrders'}>
-                        <BsPeopleFill className='icon'/>View orders
+                    <Link to={'/cart'}>
+                    <BsFillArchiveFill className='icon'/>My Bucket
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <Link to={'/updateSeller'}><BsPeopleFill className='icon'/>Update Profile
+                    <Link to={'/'}>
+                        <BsPeopleFill className='icon'/>Customers
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <Link to={'/getAllDelieryBoyBySeller'}>
+                    <Link to={'/'}><BsPeopleFill className='icon'/>Sellers
+                    </Link>
+                </li>
+                <li className='sidebar-list-item'>
+                    <Link to={'/'}>
                         <BsPeopleFill className='icon'/>Delivery Boys
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <a href="">
-                        <BsMenuButtonWideFill className='icon'/>Assign Order
-                    </a>
-                </li>
-                <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsMenuButtonWideFill className='icon'/>Logout
+                        <BsMenuButtonWideFill className='icon'/>Reports
                     </a>
                 </li>
             </ul>
         </aside>
     )
 }
-export default SellerSidebar
+export default UserSidebar
