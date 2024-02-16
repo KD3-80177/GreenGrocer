@@ -58,4 +58,11 @@ public class ProductImpl implements ProductInterface{
 		return product.getImage();
 	}
 
+	@Override
+	public List<Product> searchByName(String pname) {
+		// TODO Auto-generated method stub
+		
+		return prod.findByPname(pname);
+	}
+
 }

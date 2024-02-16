@@ -51,7 +51,7 @@ function UserLogin() {
               const{jwtToken,username,status} = result.data;
               if(status === "success"){
                 storeInSessionStorage(jwtToken,username);
-                navigate("/AdminDashboard");
+                navigate("/");
               }
             })
             .catch((error)=>{

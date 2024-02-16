@@ -130,5 +130,11 @@ public class UserController {
 	{
 		return new ResponseEntity<>(register.forgotPassword(email),HttpStatus.OK);
 	}
+	
+	@GetMapping("/greengrocer/user/getUserByEmail/{email}")
+	public User getByEmail(@PathVariable String email){
+		User u = register.getByMail(email);
+		return u;
+	}
 
 }

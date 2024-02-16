@@ -138,4 +138,11 @@ public class UserImpl implements UserInterface{
 		return "Email sent";
 	}
 
+	@Override
+	public User getByMail(String email) {
+		// TODO Auto-generated method stub
+		User u = registerDao.findByEmail(email);
+		return u;
+	}
+
 }

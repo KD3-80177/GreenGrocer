@@ -12,4 +12,6 @@ public interface ProductDao extends JpaRepository<Product, Long>{
 	
 	@Query("select count(*) from Product p")
 	public Long getCount();
+	
+	@Query("select * from Product p where ")
 }

@@ -59,5 +59,8 @@ public class ProductController {
 		return ResponseEntity.ok(prod.downloadImage(productId));
 	}
 	
-	
+	@GetMapping("/searchProduct/{pname}")
+	public List<Product> search(@PathVariable String pname) {
+		return prod.searchByName(pname);
+	}
 }
