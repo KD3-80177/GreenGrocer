@@ -15,15 +15,10 @@ function SellerSidebar({openSidebarToggle, OpenSidebar})
 
             <ul className='sidebar-list'>
                 <li className='sidebar-list-item'>
-                    <Link to={'/goToAdminDashboard'}>
+                    <Link to={'/goToSellerDashboard'}>
                     <BsGrid1X2Fill className='icon'/>Seller Dashboard
                     </Link>
                     
-                </li>
-                <li className='sidebar-list-item'>
-                    <Link to={'/getAllProducts'}>
-                    <BsFillArchiveFill className='icon'/>Add Delivery Boy
-                    </Link>
                 </li>
                 <li className='sidebar-list-item'>
                     <Link to={'/getAllOrders'}>
@@ -31,13 +26,18 @@ function SellerSidebar({openSidebarToggle, OpenSidebar})
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <Link to={'/getAllSellers'}><BsPeopleFill className='icon'/>Update Profile
+                    <Link to={'/updateSeller'}><BsPeopleFill className='icon'/>Update Profile
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <Link to={'/getAllDeliveryBoys'}>
+                    <Link to={'/getAllDelieryBoyBySeller'}>
                         <BsPeopleFill className='icon'/>Delivery Boys
                     </Link>
+                </li>
+                <li className='sidebar-list-item'>
+                    <a href="">
+                        <BsMenuButtonWideFill className='icon'/>Assign Order
+                    </a>
                 </li>
                 <li className='sidebar-list-item'>
                     <a href="">

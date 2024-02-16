@@ -16,45 +16,57 @@ function SellerHome()
         setOpenSidebarToggle(!openSidebarToggle)
     }
 
-    const [orders,setOrders]=useState([]);
+    const [products,setProducts]=useState([]);
     
-    const url=`http://127.0.0.1:8080/seller/getSellerOrders/${1}`
+    const url=`http://127.0.0.1:8080/seller/sellerProducts/${1}`
     
     const FetchRecords =() =>{
         axios.get(url).then((result)=>{
-            setOrders(result.data);
+            setProducts(result.data);
         })
     }
 
     useEffect(()=>{FetchRecords()},[])
-
+    
     return(
             <main className='main-container'>
+                <div className="table-responsive" id='addProductTable'>
+                    <table className="table table-bordered">
+                        <tbody>
+                            <tr><td><strong>Product Name</strong></td><td><input type="text" value="" readOnly/></td></tr>
+                            <tr><td><strong>Quantity</strong></td><td><input type="number" value=""/></td></tr>
+                            <tr>
+                            <td colSpan={2}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button className='btn btn-success' >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <button className='btn btn-warning'>Update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button className='btn btn-primary'>Reset</button>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr/>
             <div className="table-responsive">
                         <table className="table table-success table-striped-columns">
                             <thead>
                                <tr>
-                                 <th>Order Id</th> 
-                                 <th>User Id</th>
-                                 <th>User Name</th>
-                                 <th>Product Id</th>
+                                 <th>Product Id</th> 
                                  <th>Product Name</th>
-                                 <th>Quantity </th>
-                                 <th>Action </th>
-                               </tr>
+                                 <th>Price</th>
+                                 <th>Quantity</th>
+                                 <th>Action</th>
+                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    orders.map((order)=>{
-                                        return (<tr key={order.pid}>
-                                            <td>{order.oid}</td>
-                                            <td>{order.user.uid}</td>
-                                            <td>{order.user.userName}</td>
-                                            <td>{order.product.pid}</td>
-                                            <td>{order.product.pname}</td>
-                                            <td>{order.quantity}</td>
+                                    products.map((product)=>{
+                                        return (<tr key={product.pid}>
+                                            <td>{product.pid}</td>
+                                            <td>{product.pname}</td>
+                                            <td>{product.price}</td>
+                                            <td>{product.availableQuantity}</td>
                                             <td><button className='btn btn-success'>Edit</button></td>
-                                           {/* <td>
+                                            {/* <td>
                                          <button className="btn  
                                             btn-danger"  
                                             onClick={()=>{
@@ -69,7 +81,7 @@ function SellerHome()
                                 }
                             </tbody>
                         </table>
-            </div>
+                </div>
             </main>
     )
 }

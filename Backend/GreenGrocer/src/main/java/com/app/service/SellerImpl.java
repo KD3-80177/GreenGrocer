@@ -132,5 +132,12 @@ public class SellerImpl implements SellerInterface{
 		return productDao.findBySellerSid(sid);
 	}
 
+	@Override
+	public List<DeliveryBoy> getAllDeliveryBoys(Long sid) {
+		Seller s=sellerDao.findById(sid).orElseThrow();
+		List<DeliveryBoy> list=dbDao.findDeliveryBoysBySeller(s);
+		return list;
+	}
+
 	
 }
