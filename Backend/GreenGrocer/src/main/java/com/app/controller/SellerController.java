@@ -65,13 +65,17 @@ public class SellerController {
 		return ResponseEntity.ok(sellerService.findSellerOrders(sid));
 	}
 	
-	@PostMapping("/assignSeller/{did}")
-	public String assignSeller(@PathVariable Long did, @RequestBody AssignedOrderDto assignedOrderDto){
-		return sellerService.assignSeller(did,assignedOrderDto);
+	@PostMapping("/assignDeliveryBoy/{did}")
+	public String assignDelivery(@PathVariable Long did, @RequestBody AssignedOrderDto assignedOrderDto){
+		return sellerService.assignDeliveryBoy(did,assignedOrderDto);
 	}
 	@PutMapping("/updateSeller/{sid}")
 	public String updateSeller(@PathVariable Long sid,@RequestBody SellerDTO seller)
 	{
 		return sellerService.updateSeller(sid,seller);
+	}
+	@GetMapping("/sellerProducts/{sid}")
+	public List<Product> getSellerProd(@PathVariable Long sid){
+		return sellerService.getProdBySeller(sid);
 	}
 }

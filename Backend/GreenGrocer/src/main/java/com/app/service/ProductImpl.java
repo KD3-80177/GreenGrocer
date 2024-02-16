@@ -62,7 +62,7 @@ public class ProductImpl implements ProductInterface{
 	public List<Product> searchByName(String pname) {
 		// TODO Auto-generated method stub
 		
-		return prod.findByPname(pname);
+		return prod.findByPnameContaining(pname);
 	}
 
 }
