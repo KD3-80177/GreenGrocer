@@ -36,7 +36,7 @@ function App() {
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
-          <Route exact path='/DeliveryBoy' element={<DeliveryBoyDash/>}/>
+         
           
  
           {/* <Route exact path = '*' element={<Login/>}/> */}
