@@ -9,6 +9,7 @@ import axios from "axios";
 
 const Home=()=>
 {
+  const [images, setImages] = useState([]);
 
     const [products, setProducts] = useState([]);
 
@@ -37,6 +38,8 @@ const Home=()=>
       return updatedList; // Return the updated state
     });
   };
+
+  
 
    const handleAddToCart = (product) => {
      setCartDetails(
@@ -93,15 +96,20 @@ const Home=()=>
         {products.map(product => (
           <div key={product.pid} style={{ width: '300px', margin: '10px', padding: '15px', border: '1px solid #ccc',textAlign:"center" }}>
             <h3>{product.pname}</h3>
+            <img key={product.pid} src={product.image} alt={`Image ${product.pid}`} />
             <img src="https://img.freepik.com/free-photo/front-view-vegetable_140725-103355.jpg?size=626&ext=jpg" style={{width:"40%" ,height:"40%"}}></img>
             <p>Price: ${product.price}</p>
             <p>Available Quantity: {product.availableQuantity}</p>
             <p>Quantity: {quantities[product.pid]}</p>
             {/* <button onClick={() => handleQuantityChange(parseInt(product.pid), -1)}>-</button>
             <button onClick={() => handleQuantityChange(parseInt(product.pid), 1)}>+</button> */}
+            
+        
+
             <input type="number" max={product.availableQuantity} name="quantity" onChange={(e)=>handleChange(e,product,"quantity")} />
             <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
-          
+            <hr></hr>
+            <hr></hr>
           </div>
         ))}
       </div>
