@@ -3,87 +3,65 @@ import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill}
  from 'react-icons/bs'
  import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
  from 'recharts';
+ import { useState,useEffect } from "react";
+ import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function DeliveryBoyHome(){
     
-        const data = [
-            {
-              name: 'Page A',
-              uv: 4000,
-              pv: 2400,
-              amt: 2400,
-            },
-            {
-              name: 'Page B',
-              uv: 3000,
-              pv: 1398,
-              amt: 2210,
-            },
-            {
-              name: 'Page C',
-              uv: 2000,
-              pv: 9800,
-              amt: 2290,
-            },
-            {
-              name: 'Page D',
-              uv: 2780,
-              pv: 3908,
-              amt: 2000,
-            },
-            {
-              name: 'Page E',
-              uv: 1890,
-              pv: 4800,
-              amt: 2181,
-            },
-            {
-              name: 'Page F',
-              uv: 2390,
-              pv: 3800,
-              amt: 2500,
-            },
-            {
-              name: 'Page G',
-              uv: 3490,
-              pv: 4300,
-              amt: 2100,
-            },
-          ];
+  const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+  const navigate = useNavigate();
+  const OpenSidebar = () => {setOpenSidebarToggle(!openSidebarToggle)
+}
+        const[orderDetails,setOrderDetails] = useState([]);
          
+        const url="http://127.0.0.1:8080/deliveryboy/getOrders/1";
     
+    const FetchRecords =() =>{
+        axios.get(url).then((result)=>{
+            setOrderDetails(result.data);
+        })
+    }
+
+  
+    useEffect(()=>{FetchRecords()},[]);
+        
       return (
-        <main className='main-container'>
-            <div className='main-title'>
-                <h3>DASHBOARD</h3>
-            </div>
-    
-            <div className='main-cards'>
-                <div className='card'>
-                    <div className='card-inner'>
-                        <h3>Orders</h3>
-                        <BsFillArchiveFill className='card_icon'/>
-                    </div>
-                    <h1>300</h1>
-                </div>
-                <div className='card'>
-                    <div className='card-inner'>
-                        <h3>CompleteOrder</h3>
-                        <BsFillGrid3X3GapFill className='card_icon'/>
-                    </div>
-                    <h1>12</h1>
-                </div>
-                <div className='card'>
-                    <div className='card-inner'>
-                        <h3>PendingOrder</h3>
-                        <BsPeopleFill className='card_icon'/>
-                    </div>
-                    <h1>33</h1>
-                </div>
-                
-            </div>
+      
+        
+        <main className="main-container">
+          <div className="table-responsive">
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Order Id</th>
+                <th>Full name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Mobile No</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+               orderDetails.map((order)=>{
+                return (<tr key={order.aoid}>
+                  <td>{order.oid}</td>
+                  <td>{order.fullName}</td>
+                  <td>{order.address}</td>
+                  <td>{order.city}</td>
+                  <td>{order.mobile}</td>
+                </tr>)
+
+               })
+              }
+            </tbody>
+          </table>
+          </div>
+
         </main>
+       
       )
         
     
 }
-export default DeliveryBoyHome
+export default DeliveryBoyHome;

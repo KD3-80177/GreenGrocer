@@ -23,4 +23,15 @@ public class DeliveryBoyDTO {
 	private String aadhar;
 	private double salary;
 	private Long sellerId;
+	
+	public DeliveryBoyDTO(String fullName, String address, String city, String state, String pincode) {
+		super();
+		this.fullName = fullName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+	}
+	
+	
 }

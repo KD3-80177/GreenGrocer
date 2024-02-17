@@ -12,7 +12,7 @@ import AdminDashboard from './AdminDashboard';
 import AllSeller from './AllSeller';
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
-import Home from './Home';
+// import Home from './Home';
 
 import UpdateUser from './UpdateUser';
 import AllUser from './AllUser';
@@ -27,13 +27,14 @@ import ControlledCarousel from './ControlledCarousel';
 import AllOrder from './AllOrder';
 
 import DeliveryBoyDash from './DeliveryBoyDash';
+import DeliveryBoyUpdate from './DeliveryBoyUpdate';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
         <Routes>
-          <Route exact path = '/' element={<Home/>}/>
+          {/* <Route exact path = '/' element={<Home/>}/> */}
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>
@@ -72,6 +73,7 @@ function App() {
           <Route exact path = '/cart' element={<Cart/>}/>
            
            <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
+           <Route exact path='/goToDeliveyBoyUpdate' Component={DeliveryBoyUpdate}/>
         </Routes>
       </div>
     </BrowserRouter>

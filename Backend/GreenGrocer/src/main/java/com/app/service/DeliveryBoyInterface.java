@@ -1,8 +1,11 @@
 package com.app.service;
 
 
+import java.util.List;
+
 import com.app.dto.ApiResponse;
 import com.app.dto.DeliveryBoyDTO;
+import com.app.entities.AssigndOrders;
 import com.app.entities.DeliveryBoy;
 
 public interface DeliveryBoyInterface {
@@ -13,8 +16,10 @@ public interface DeliveryBoyInterface {
 
 	DeliveryBoy addDeliveryBoy(DeliveryBoy deliveryBoy, Long sellerId);
 
-	DeliveryBoy updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto);
+	DeliveryBoy updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto, Long id);
 
 	void deleteDeliveryBoy(Long id);
+
+	List<AssigndOrders> getAllPending(Long did);
 
 }
