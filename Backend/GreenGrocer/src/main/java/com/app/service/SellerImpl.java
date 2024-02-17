@@ -155,7 +155,7 @@ public class SellerImpl implements SellerInterface{
 	@Override
 	public Seller getSellerByEmail(String email) {
 
-		Seller seller = sellerDao.findSellerByEmail(email);
+		Seller seller = sellerDao.findByEmail(email);
 		return seller;
 	}
 

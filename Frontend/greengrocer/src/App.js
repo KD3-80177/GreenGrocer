@@ -33,7 +33,7 @@ function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route exact path = '/' element={<UserDashboard/>}/>
+          <Route exact path = '/' element={<SellerLogin/>}/>
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>

@@ -46,12 +46,7 @@ function SellerLogin()
             .catch(error => console.error("Error fetching user: ",error));
 
     }
-    const save = () =>{
-      sessionStorage.setItem("sid",seller.sid);
-      sessionStorage.setItem("email",seller.email);
-    }
-   
-
+    
     return (
 
         <center>
