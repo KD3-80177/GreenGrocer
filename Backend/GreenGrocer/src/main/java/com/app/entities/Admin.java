@@ -35,4 +35,7 @@ public class Admin {
 	
 	@Column(name="mobile",length=10,nullable = false)
 	private String mobile;
+	
+	@Column(name="password")
+	private String password;
 }

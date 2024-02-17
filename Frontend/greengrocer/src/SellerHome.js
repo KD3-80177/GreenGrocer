@@ -1,5 +1,6 @@
 import react, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link,useNavigate,useParams} from "react-router-dom";
 
 import { BsFillArchiveFill, BsPeopleFill } from 'react-icons/bs'
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -11,22 +12,21 @@ function SellerHome()
 {
 
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
-
+    const navigate  = useNavigate();
     const[seller,setSeller] = useState([]);
 
     const email = sessionStorage.getItem("email");
-
+    
     const OpenSidebar = () => {
         setOpenSidebarToggle(!openSidebarToggle)
     }
 
+    
     const [products,setProducts]=useState([]);
     
     const [newproduct,setNewproduct]=useState({pname: "",price: "",availableQuantity: "",imageUrl:""});
 
-    const url=`http://127.0.0.1:8080/seller/sellerProducts/${1}`
     
-    const urlToAdd=`http://localhost:8080/seller/addNewProduct/${1}`
 
     const sellerUrl = "http://localhost:8080/seller/getSellerByEmail/"+ email;
 
@@ -36,10 +36,19 @@ function SellerHome()
         .then((result) =>
         {
             setSeller(result.data);
+            mysid = result.data;
+            console.log(result)
+
         })
         .catch(error=>console.error("Error fetching seller : ",error));
     }
-    sessionStorage.setItem("sid",JSON.stringify(seller.sid));
+
+    const mysid = sessionStorage.getItem("sid");
+    const url=`http://127.0.0.1:8080/seller/sellerProducts/`+ parseInt(mysid);
+    
+    const urlToAdd=`http://localhost:8080/seller/addNewProduct/`+parseInt(mysid);   
+
+    
 
     const OnTextChange = (args)=>{
         var newproduct1 = {...newproduct};

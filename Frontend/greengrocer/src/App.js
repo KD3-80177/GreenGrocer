@@ -27,6 +27,7 @@ import ControlledCarousel from './ControlledCarousel';
 import AllOrder from './AllOrder';
 
 import DeliveryBoyDash from './DeliveryBoyDash';
+import AdminLogin from './AdminLogin';
 
 function App() {
   return (
@@ -70,7 +71,7 @@ function App() {
            <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
            <Route exact path='/goToDeliveyDashboard' Component={DeliveryBoyDash}/>
           <Route exact path = '/cart' element={<Cart/>}/>
-           
+          <Route exact path = '/AdminLogin' element={<AdminLogin/>}/>
            <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
         </Routes>
       </div>

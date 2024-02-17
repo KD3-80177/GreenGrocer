@@ -6,12 +6,12 @@ import "./style.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function SellerLogin()
+function AdminLogin()
 {
     const navigate = useNavigate();
-    const url = "http://localhost:8080/seller/login";
+    const url = "http://localhost:8080/admin/login";
     const[loginDetails,setLoginDetails] = useState({email:"",password:""});
-    const[seller,setSeller] = useState([]);
+    const[admin,setAdmin] = useState([]);
     const[message,setMessage] = useState("");
 
     const handleChange = (event,field) =>{
@@ -41,10 +41,10 @@ function SellerLogin()
 
         axios.post(url,loginDetails)
             .then((result)=>{
-              setSeller(result.data);
+              setAdmin(result.data);
               sessionStorage.setItem("email",JSON.stringify(loginDetails.email));
-              sessionStorage.setItem("sid",seller.sid)
-              if(seller.sid!=undefined)
+              sessionStorage.setItem("adminId",admin.adminId)
+              if(admin.adminId!==undefined)
               {
                 nav();
               }
@@ -55,7 +55,7 @@ function SellerLogin()
     
     const nav = ()=>
     {
-      navigate("/SellerDashboard");
+      navigate("/AdminDashboard");
 
     }
     
@@ -103,4 +103,4 @@ function SellerLogin()
     )
 }
 
-export default SellerLogin;
+export default AdminLogin;

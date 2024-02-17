@@ -133,7 +133,7 @@ public class UserImpl implements UserInterface{
 		simpleMsg.setText(user.getOtp());
 		
 		javaMailSender.send(simpleMsg);
-		
+			
 		
 		return "Email sent";
 	}
