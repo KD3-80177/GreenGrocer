@@ -11,8 +11,9 @@ const UserHome=()=>
   const [products, setProducts] = useState([]);
   const[cartDetails,setCartDetails] = useState({pid:"",sid:"",uid:"",quantity:""});
   const[bucket,setBucket] = useState([]);
+  const[user,setUser] = useState([]);
+  const email = sessionStorage.getItem("email");
   const url = "http://localhost:8080/cart/addbucket";
-
   const addProduct =  (cartDetails) => {
      setBucket(prevList => 
       [...prevList, cartDetails]);
@@ -39,15 +40,35 @@ const UserHome=()=>
 
   }
 
-  useEffect(() => {
-    // Fetch products from the Spring Boot backend
-   axios.get('http://localhost:8080/products')
+
+
+  const GetUser = () =>{
+    const getUserUrl = "http://localhost:8080/greengrocer/user/getUserByEmail/"+email;
+    axios.get(getUserUrl)
+      .then((result) => {
+        setUser(result.data);
+      })
+      .catch(error => console.error("Error fetching user: ",error));
+
+  }
+  console.log(user);
+  sessionStorage.setItem("uid",JSON.stringify(user.uid));
+
+  const getProducts = ()=>{
+    axios.get('http://localhost:8080/products')
       .then((result) => {
         
         setProducts(result.data);
       })
       .catch(error => console.error('Error fetching products:', error));
+  }
+
+  useEffect(() => {
+    // Fetch products from the Spring Boot backend
+   getProducts();
+   GetUser();
   }, []);
+
 
   const handleChange=(event,product,field)=>
   {
@@ -58,7 +79,7 @@ const UserHome=()=>
       [field]:parseInt(actualValue),
       pid:parseInt(product.pid),
       sid:parseInt(product.seller.sid),
-      uid:1 
+      uid:parseInt(sessionStorage.getItem("uid"))
     })
     
   }
