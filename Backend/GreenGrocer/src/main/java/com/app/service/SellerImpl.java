@@ -159,5 +159,23 @@ public class SellerImpl implements SellerInterface{
 		return seller;
 	}
 
+	@Override
+	public String addDeliveryBoy(DeliveryBoy deliveryBoy, Long sid) {
+		String msg="Delivery boy not added..";
+		Seller seller=sellerDao.findById(sid).orElseThrow();
+		deliveryBoy.setSeller(seller);
+		DeliveryBoy d= dbDao.save(deliveryBoy);
+		if(d!=null)
+			msg="Delivery boy added..";
+		return msg;
+	}
+
+	@Override
+	public String deleteDeliveryBoy(Long did) {
+		DeliveryBoy deliBoy=dbDao.findById(did).orElseThrow();
+		dbDao.delete(deliBoy);
+		return "Delivery boy deleted";
+	}
+
 	
 }

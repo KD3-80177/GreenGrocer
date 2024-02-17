@@ -24,6 +24,20 @@ function AllDelieryBoyBySeller() {
         })
     }
 
+    const RemoveRecord=(No)=>{
+        console.log(`${No} record is about to get deleted`);
+        const deleteUrl=`http://127.0.0.1:8080/seller`;
+        axios.delete(deleteUrl + "/" + No).then((result)=>{
+            FetchRecords();
+           if(result.data.affectedRows!==undefined && 
+              result.data.affectedRows > 0)
+              {
+                FetchRecords()
+              }
+        });
+    }
+
+
     useEffect(()=>{FetchRecords()},[])
     return ( 
        <div className='grid-container'>
@@ -31,7 +45,7 @@ function AllDelieryBoyBySeller() {
         <SellerHeader OpenSidebar={OpenSidebar}/>
         <main className='main-container'>
             <br/>
-            <center><button className="btn btn-success">Add New Delivery Boy</button></center>
+            <center> <button className="btn btn-success"> <Link to={'/goToAddDeliveryBoy'}>Add New Delivery Boy </Link> </button></center>
             <br/>
             <br/>
             <hr/>
@@ -43,19 +57,17 @@ function AllDelieryBoyBySeller() {
                                  <th>Full Name</th>
                                  <th>Mobile</th>
                                  <th>Address</th>
-                                 <th>Action</th>
-                               </tr>
+                                </tr>
                             </thead>
                             <tbody>
                                 {
                                     deliveryboys.map((deliveryboy)=>{
-                                        return (<tr key={deliveryboy.uid}>
+                                        return (<tr key={deliveryboy.delId}>
                                             <td>{deliveryboy.delId}</td>
                                             <td>{deliveryboy.fullName}</td>
                                             <td>{deliveryboy.mobile}</td>
                                             <td>{deliveryboy.address}</td>
-                                            <td><button className="btn btn-danger">Delete</button></td>
-                                           {/* <td>
+                                            {/* <td>
                                          <button className="btn  
                                             btn-danger"  
                                             onClick={()=>{

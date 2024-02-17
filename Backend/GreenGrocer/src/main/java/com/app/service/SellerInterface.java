@@ -27,4 +27,6 @@ public interface SellerInterface {
 	List<DeliveryBoy> getAllDeliveryBoys(Long sid);
 	String addProductByDto(Long sid, ProductDto product);
 	Seller getSellerByEmail(String email);
+	String addDeliveryBoy(DeliveryBoy deliveryBoy, Long sid);
+	String deleteDeliveryBoy(Long did);
 }
