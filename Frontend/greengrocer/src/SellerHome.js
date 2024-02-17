@@ -18,11 +18,32 @@ function SellerHome()
 
     const [products,setProducts]=useState([]);
     
+    const [newproduct,setNewproduct]=useState({pname: "",price: "",availableQuantity: "",imageUrl:""});
+
     const url=`http://127.0.0.1:8080/seller/sellerProducts/${1}`
     
+    const urlToAdd=`http://localhost:8080/seller/addNewProduct/${1}`
+
+    const OnTextChange = (args)=>{
+        var newproduct1 = {...newproduct};
+        newproduct1[args.target.name] = args.target.value;
+        setNewproduct(newproduct1)
+    }
+
+    const ClearBoxes =()=>{
+        setNewproduct({pname:"",price:"",availableQuantity:"",imageUrl:""});
+    }
+
     const FetchRecords =() =>{
         axios.get(url).then((result)=>{
             setProducts(result.data);
+        })
+    }
+
+    const AddRecord = ()=>{
+        axios.post(urlToAdd,newproduct).then((result)=>{
+                  ClearBoxes();
+                  FetchRecords();
         })
     }
 
@@ -33,13 +54,15 @@ function SellerHome()
                 <div className="table-responsive" id='addProductTable'>
                     <table className="table table-bordered">
                         <tbody>
-                            <tr><td><strong>Product Name</strong></td><td><input type="text" value="" readOnly/></td></tr>
-                            <tr><td><strong>Quantity</strong></td><td><input type="number" value=""/></td></tr>
+                            <tr><td><strong>Product Name</strong></td><td><input  onChange={OnTextChange} name="pname" value={newproduct.pname}/></td></tr>
+                            <tr><td><strong>Price </strong></td><td><input  onChange={OnTextChange} name="price" value={newproduct.price}/></td></tr>
+                            <tr><td><strong>Image Url</strong></td><td><input onChange={OnTextChange} name="imageUrl" value={newproduct.imageUrl}/></td></tr>
+                            <tr><td><strong>Quantity</strong></td><td><input onChange={OnTextChange} name="availableQuantity" value={newproduct.availableQuantity}/></td></tr>
                             <tr>
                             <td colSpan={2}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button className='btn btn-success' >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                <button className='btn btn-success' onClick={AddRecord} >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                 <button className='btn btn-warning'>Update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button className='btn btn-primary'>Reset</button>
+                                <button className='btn btn-primary'onClick={ClearBoxes}>Reset</button>
                             </td>
                             </tr>
                         </tbody>

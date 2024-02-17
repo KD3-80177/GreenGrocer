@@ -19,6 +19,7 @@ import com.app.dao.DeliveryBoyDao;
 import com.app.dao.ProductDao;
 import com.app.dao.SellerDao;
 import com.app.dto.ApiResponse;
+import com.app.dto.ProductDto;
 import com.app.dto.SellerDTO;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Product;
@@ -137,6 +138,22 @@ public class SellerImpl implements SellerInterface{
 		Seller s=sellerDao.findById(sid).orElseThrow();
 		List<DeliveryBoy> list=dbDao.findDeliveryBoysBySeller(s);
 		return list;
+	}
+
+	@Override
+	public String addProductByDto(Long sid, ProductDto product) {
+		String msg="Product not added";
+		Product p=new Product();
+		p.setAvailableQuantity(product.getAvailableQuantity());
+		p.setImageUrl(product.getImageUrl());
+		p.setPname(product.getPname());
+		p.setPrice(product.getPrice());
+		Seller seller = sellerDao.findById(sid).orElseThrow();
+		p.setSeller(seller);
+		Product test= productDao.save(p);
+		if(test!=null)
+			msg="Product added";
+		return msg;
 	}
 
 	
