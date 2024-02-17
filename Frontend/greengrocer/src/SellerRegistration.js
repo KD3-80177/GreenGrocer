@@ -229,11 +229,8 @@ function SellerRegistration()
                 REGISTER
               </button>
               <br/>
-              <input type="reset"  className="btn btn-success" value={"Reset"} onClick={Reset}/>
-
-              
               <Divider style={{borderColor:'green'}}></Divider>
-              
+              <a href="/SellerLogin" style={{color:"Black"}}><b>Already a seller, Click here to login</b></a>
             </Form>
     </div>
     </div>

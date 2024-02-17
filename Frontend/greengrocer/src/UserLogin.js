@@ -112,6 +112,7 @@ function UserLogin() {
           </button>
           
           <Divider style={{borderColor:'black'}}></Divider>
+          <a href="/UserRegistration" style={{color:"Black"}}><b>New User, Click here to register</b></a>
         </Form>
     </div>
           {/* <div class="pass" style={{textAlign:"center" ,margin:"100"}}> Forget Password

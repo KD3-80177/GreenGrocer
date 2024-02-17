@@ -4,6 +4,7 @@ import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {Form  ,Item,Input,BreadcrumbItemPropsnput,message, Typography, Divider} from "antd"; 
 import "./style.css";
+import { redirect } from "react-router-dom";
 
 function UserRegistration(){
     
@@ -34,6 +35,7 @@ function UserRegistration(){
         .then((result)=>{
             if(result.data.affectedRows !== undefined && result.data.affectedRows>0){
                 showMessage("Customer Added Successfully!!!!!");
+                redirect("http://localhost:3000/UserRegistration");
             }
             Reset();
         });
@@ -133,11 +135,8 @@ return(
                 REGISTER
               </button>
               <br/>
-              <input type="reset"  className="btn btn-success" value={"Reset"} onClick={Reset}/>
-              
-              
               <Divider style={{borderColor:'green'}}></Divider>
-              
+              <a href="/UserLogin" style={{color:"Black"}}><b>Already a user, Click here to login</b></a>
             </Form>
     </div>
     </div>

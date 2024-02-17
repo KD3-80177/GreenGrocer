@@ -27,13 +27,14 @@ import ControlledCarousel from './ControlledCarousel';
 import AllOrder from './AllOrder';
 
 import DeliveryBoyDash from './DeliveryBoyDash';
+import Common from './common';
 
 function App() {
   return (
     <BrowserRouter>
       <div>
         <Routes>
-          <Route exact path = '/' element={<SellerLogin/>}/>
+          <Route exact path = '/' element={<UserLogin/>}/>
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>
@@ -43,9 +44,7 @@ function App() {
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
           <Route exact path = '/UserDashboard' element={<UserDashboard/>}/>
-
-         
-          
+          <Route exact path = '/Common' element={<Common/>}/>
           <Route exact path = '/SellerDashboard' element={<SellerDashboard/>}/>
  
           {/* <Route exact path = '*' element={<Login/>}/> */}

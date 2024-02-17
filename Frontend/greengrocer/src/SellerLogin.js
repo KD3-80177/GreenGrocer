@@ -85,6 +85,7 @@ function SellerLogin()
           </button>
           
           <Divider style={{borderColor:'black'}}></Divider>
+          <a href="/SellerRegistration" style={{color:"Black"}}><b>New Seller, Click here to register</b></a>
         </Form>
     </div>
   </center>
