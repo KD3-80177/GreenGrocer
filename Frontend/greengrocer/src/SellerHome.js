@@ -1,5 +1,5 @@
-import react, { useEffect, useState } from 'react'
-import axios from 'axios';
+import react, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { BsFillArchiveFill, BsPeopleFill } from 'react-icons/bs'
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -10,8 +10,10 @@ import SellerHeader from './SellerHeader';
 function SellerHome()
 {
 
-    const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+    const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+
     const[seller,setSeller] = useState([]);
+
     const email = sessionStorage.getItem("email");
 
     const OpenSidebar = () => {
@@ -26,20 +28,18 @@ function SellerHome()
     
     const urlToAdd=`http://localhost:8080/seller/addNewProduct/${1}`
 
+    const sellerUrl = "http://localhost:8080/seller/getSellerByEmail/"+ email;
 
-    const getSeller=()=>
+    const GetSeller = ()=>
     {
-        const sellerUrl = "http://localhost:8080/seller/getSellerByEmail/"+email;
         axios.get(sellerUrl)
-        .then((result)=>
+        .then((result) =>
         {
             setSeller(result.data);
-            console.log(result.data);
         })
         .catch(error=>console.error("Error fetching seller : ",error));
     }
-
-    console.log(seller);
+    sessionStorage.setItem("sid",JSON.stringify(seller.sid));
 
     const OnTextChange = (args)=>{
         var newproduct1 = {...newproduct};
@@ -64,9 +64,9 @@ function SellerHome()
         })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         FetchRecords();
-        getSeller();
+        GetSeller();
         },[])
     
     return(
