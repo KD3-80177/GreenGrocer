@@ -12,6 +12,7 @@ public interface SellerDao extends JpaRepository<Seller, Long> {
 		
 	public Seller findSellerByEmail(String email);
 	
+	
 	@Query("select count(*) from Seller s")
 	public Long getSCount();
 }

@@ -46,14 +46,9 @@ public class SellerController {
 	}
 	
 	@PostMapping("/login")
-	public ApiResponse getSellerByEmail(@RequestBody Seller findSeller)
+	public Seller getSellerByEmail(@RequestBody Seller findSeller)
 	{
-		ApiResponse api = sellerService.findSellerByEmail(findSeller);
-		if(api.getSuccess()) {
-			return new ApiResponse("Login Succesfull",true);
-		}else {
-			return new ApiResponse("Login failed",false);
-		}
+		return sellerService.findSellerByEmail(findSeller);
 	}
 	
 	@PostMapping("/addNewProduct/{sid}")
@@ -92,5 +87,12 @@ public class SellerController {
 	{
 		return sellerService.getAllDeliveryBoys(sid);
 	}
+	
+	@GetMapping("/getSellerByEmail/{email}")
+	public Seller getSeller(@PathVariable String email)
+	{
+		return sellerService.getSellerByEmail(email);
+	}
+	
 	
 }

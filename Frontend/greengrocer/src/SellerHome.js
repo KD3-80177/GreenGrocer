@@ -11,6 +11,8 @@ function SellerHome()
 {
 
     const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+    const[seller,setSeller] = useState([]);
+    const email = sessionStorage.getItem("email");
 
     const OpenSidebar = () => {
         setOpenSidebarToggle(!openSidebarToggle)
@@ -23,6 +25,21 @@ function SellerHome()
     const url=`http://127.0.0.1:8080/seller/sellerProducts/${1}`
     
     const urlToAdd=`http://localhost:8080/seller/addNewProduct/${1}`
+
+
+    const getSeller=()=>
+    {
+        const sellerUrl = "http://localhost:8080/seller/getSellerByEmail/"+email;
+        axios.get(sellerUrl)
+        .then((result)=>
+        {
+            setSeller(result.data);
+            console.log(result.data);
+        })
+        .catch(error=>console.error("Error fetching seller : ",error));
+    }
+
+    console.log(seller);
 
     const OnTextChange = (args)=>{
         var newproduct1 = {...newproduct};
@@ -47,7 +64,10 @@ function SellerHome()
         })
     }
 
-    useEffect(()=>{FetchRecords()},[])
+    useEffect(()=>{
+        FetchRecords();
+        getSeller();
+        },[])
     
     return(
             <main className='main-container'>

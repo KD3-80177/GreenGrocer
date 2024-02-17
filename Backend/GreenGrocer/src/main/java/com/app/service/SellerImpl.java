@@ -57,18 +57,13 @@ public class SellerImpl implements SellerInterface{
 	}
 	
 	@Override
-	public ApiResponse findSellerByEmail(Seller findSeller) {
+	public Seller findSellerByEmail(Seller findSeller) {
 		String email = findSeller.getEmail();
 		String password =  findSeller.getPassword();
 		
 		Seller seller = sellerDao.findSellerByEmail(email);
 		
-		if(seller != null) {
-			if(seller.getPassword().equals(seller.getPassword())) {
-				return new ApiResponse("Seller Login Succesfull",true);
-			}
-		}
-		return new ApiResponse("Seller Login is unsuccesfull",false);
+		return seller;
 	}
 	
 	@Override
@@ -154,6 +149,14 @@ public class SellerImpl implements SellerInterface{
 		if(test!=null)
 			msg="Product added";
 		return msg;
+	}
+	
+	
+	@Override
+	public Seller getSellerByEmail(String email) {
+
+		Seller seller = sellerDao.findSellerByEmail(email);
+		return seller;
 	}
 
 	

@@ -12,7 +12,6 @@ import AdminDashboard from './AdminDashboard';
 import AllSeller from './AllSeller';
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
-import Home from './Home';
 
 import UpdateUser from './UpdateUser';
 import AllUser from './AllUser';
@@ -33,7 +32,7 @@ function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route exact path = '/' element={<Home/>}/>
+          <Route exact path = '/' element={<UserDashboard/>}/>
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>

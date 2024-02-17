@@ -1,12 +1,15 @@
 import { useState,useEffect } from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import {Form  ,Item,Input,BreadcrumbItemPropsnput,message, Typography, Divider} from "antd"; 
 import "./style.css";
 
 function SellerLogin()
 {
+    const navigate = useNavigate();
     const url = "http://localhost:8080/seller/login";
     const[loginDetails,setLoginDetails] = useState({email:"",password:""});
+    const[seller,setSeller] = useState([]);
     const[message,setMessage] = useState("");
 
     const handleChange = (event,field) =>{
@@ -35,9 +38,17 @@ function SellerLogin()
         }
 
         axios.post(url,loginDetails)
-            .then((result)=>
-            result.data)
+            .then((result)=>{
+              setSeller(result.data);
+              sessionStorage.setItem("email",JSON.stringify(loginDetails.email));
+              navigate("/SellerDashboard");
+            })
+            .catch(error => console.error("Error fetching user: ",error));
 
+    }
+    const save = () =>{
+      sessionStorage.setItem("sid",seller.sid);
+      sessionStorage.setItem("email",seller.email);
     }
    
 
