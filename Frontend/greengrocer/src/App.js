@@ -28,22 +28,14 @@ import ControlledCarousel from './ControlledCarousel';
 import AllOrder from './AllOrder';
 
 import DeliveryBoyDash from './DeliveryBoyDash';
-<<<<<<< HEAD
 import Common from './common';
-=======
-<<<<<<< HEAD
->>>>>>> 6e0ea89fe84cf749edaba6c9e08dfe93e735314a
 import AdminLogin from './AdminLogin';
-<<<<<<< HEAD
-=======
+
 import SellerUpdate from './SellerUpdate';
 import AssignOrder from './AssignOrder';
 import AllDelieryBoyBySeller from './AllDeliveryBoyBySeller';
 import AddDeliveryBoy from './AddDeliveryBoy';
->>>>>>> Shivshankar
-=======
 import DeliveryBoyUpdate from './DeliveryBoyUpdate';
->>>>>>> 048ea549fe0a23c038b47ee9e43454028167a10e
 
 function App() {
   return (
