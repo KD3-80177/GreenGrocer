@@ -15,7 +15,8 @@ function Cart()
   const [orders, setOrders] = useState([]);
 
   var totalBill=0;
-  const url = "http://localhost:8080/cart/findBucket/1";
+  const uid = parseInt(sessionStorage.getItem("uid"));
+  const url = "http://localhost:8080/cart/findBucket/"+uid;
 
   const url2 = "http://localhost:8080/orders/confirmOrder";
 

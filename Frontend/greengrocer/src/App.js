@@ -20,6 +20,10 @@ import AllProducts from './AllProducts';
 import AllDelieryBoy from './AllDeliveryBoy';
 import SellerDashboard from './SellerDashboard';
 import Products from './Products';
+import Cart from './Cart';
+import UserDashboard from './UserDashboard';
+import CombineHome from './CombineHome';
+import ControlledCarousel from './ControlledCarousel';
 import AllOrder from './AllOrder';
 
 import DeliveryBoyDash from './DeliveryBoyDash';
@@ -38,6 +42,8 @@ function App() {
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
+          <Route exact path = '/UserDashboard' element={<UserDashboard/>}/>
+
          
           
           <Route exact path = '/SellerDashboard' element={<SellerDashboard/>}/>
@@ -61,18 +67,11 @@ function App() {
           {/* <Route exact path = '*' element={<Login/>}/> */}
           <Route exact path = '/Update' element={<UpdateUser/>}/>
           <Route exact path = '/products' element={<Products/>}/>
+           <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
+           <Route exact path='/goToDeliveyDashboard' Component={DeliveryBoyDash}/>
+          <Route exact path = '/cart' element={<Cart/>}/>
            
            <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
-
-
-
-
-           
-           <Route exact path='/goToDeliveyDashboard' Component={DeliveryBoyDash}/>
-
-
-
-
         </Routes>
       </div>
     </BrowserRouter>

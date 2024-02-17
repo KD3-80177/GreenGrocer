@@ -15,7 +15,6 @@ function UserLogin() {
     const[message,setMessage] = useState("");
     const[loginDetails,setLoginDetails] = useState({email:"",password:""});
     const navigate = useNavigate();
-
     const handleChange = (event,field) =>{
         let actualVal = event.target.value;
         setLoginDetails({
@@ -45,13 +44,12 @@ function UserLogin() {
         if(loginDetails.password === null){
             toast.error("Password is required");
         }
-
         axios.post(url,loginDetails)
             .then((result)=>{
               const{jwtToken,username,status} = result.data;
               if(status === "success"){
                 storeInSessionStorage(jwtToken,username);
-                navigate("/");
+                navigate("/UserDashboard");
               }
             })
             .catch((error)=>{
