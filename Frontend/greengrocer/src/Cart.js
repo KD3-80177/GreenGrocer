@@ -25,6 +25,7 @@ function Cart()
     // Fetch products from the Spring Boot backend
    axios.get(url) 
       .then((result) => { 
+        console.log(result.data)
         setBucket(result.data);
       })
       .catch(error => console.error('Error fetching products:', error));
