@@ -1,6 +1,8 @@
 package com.app.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dao.AssignedOrderDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.DeliveryBoyDTO;
+import com.app.entities.AssigndOrders;
+import com.app.entities.AssignedOrderDto;
 import com.app.entities.DeliveryBoy;
 import com.app.service.DeliveryBoyInterface;
 
@@ -26,6 +31,9 @@ public class DeliveryBoyController {
 	
 	@Autowired
 	private DeliveryBoyInterface deliveryBoyService;
+	
+	@Autowired
+	private AssignedOrderDao assignDao;
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<DeliveryBoy> findById(@PathVariable Long id)
@@ -51,10 +59,10 @@ public class DeliveryBoyController {
 		return new ResponseEntity<>(del,HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/update")
-	public ApiResponse updateDeliveryBoy(@RequestBody DeliveryBoyDTO deliveryBoyDto)
+	@PutMapping("/update/{id}")
+	public ApiResponse updateDeliveryBoy(@RequestBody DeliveryBoyDTO deliveryBoyDto,@PathVariable Long id)
 	{
-		DeliveryBoy del = deliveryBoyService.updateDeliveryBoy(deliveryBoyDto);
+		DeliveryBoy del = deliveryBoyService.updateDeliveryBoy(deliveryBoyDto,id);
 		if(del != null) {
 			return new ApiResponse("Delivery Boy details updated succesfully",true);
 		}else {
@@ -67,6 +75,11 @@ public class DeliveryBoyController {
 	{
 		deliveryBoyService.deleteDeliveryBoy(id);
 		return new ResponseEntity(new ApiResponse("Delivery Boy account deleted succesfully",true),HttpStatus.OK);
+	}
+	
+	@GetMapping("/getOrders/{did}")
+	public List<AssigndOrders> getAssignedOrders(@PathVariable Long did){
+		return deliveryBoyService.getAllPending(did);
 	}
 	
 }

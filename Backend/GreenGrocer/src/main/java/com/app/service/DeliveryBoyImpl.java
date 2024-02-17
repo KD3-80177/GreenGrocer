@@ -1,14 +1,18 @@
 package com.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custome_exception.ResourceNotFoundException;
+import com.app.dao.AssignedOrderDao;
 import com.app.dao.DeliveryBoyDao;
 import com.app.dao.SellerDao;
 import com.app.dto.ApiResponse;
 import com.app.dto.DeliveryBoyDTO;
+import com.app.entities.AssigndOrders;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Seller;
 
@@ -18,7 +22,8 @@ public class DeliveryBoyImpl implements DeliveryBoyInterface {
 
 	@Autowired
 	private DeliveryBoyDao deliveryBoyDao;
-	
+	@Autowired
+	private AssignedOrderDao assignDao;
 	@Autowired
 	private SellerDao sellerDao;
 	
@@ -48,30 +53,28 @@ public class DeliveryBoyImpl implements DeliveryBoyInterface {
 	}
 
 	@Override
-	public DeliveryBoy updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto) {
-		DeliveryBoy dBoy=new DeliveryBoy();
-		Seller seller=sellerDao.findById(deliveryBoyDto.getSellerId()).orElseThrow(()->new ResourceNotFoundException("Delivery Boy", "id", deliveryBoyDto.getDelId()));
-		dBoy.setAadhar(deliveryBoyDto.getAadhar());
+	public DeliveryBoy updateDeliveryBoy(DeliveryBoyDTO deliveryBoyDto,Long id) {
+		
+		DeliveryBoy dBoy= deliveryBoyDao.findDeliveryBoyByDelId(id);
 		dBoy.setAddress(deliveryBoyDto.getAddress());
 		dBoy.setCity(deliveryBoyDto.getCity());
-		dBoy.setDelId(deliveryBoyDto.getDelId());
-		dBoy.setSeller(seller);
-		dBoy.setEmail(deliveryBoyDto.getEmail());
 		dBoy.setFullName(deliveryBoyDto.getFullName());
-		dBoy.setMobile(deliveryBoyDto.getMobile());
-		dBoy.setPassword(deliveryBoyDto.getPassword());
-		dBoy.setSalary(deliveryBoyDto.getSalary());
-		dBoy.setState(deliveryBoyDto.getState());
-		dBoy.setDelId(deliveryBoyDto.getDelId());
 		dBoy.setPincode(deliveryBoyDto.getPincode());
-		DeliveryBoy del = deliveryBoyDao.save(dBoy);
-		
-		return del;
+		dBoy.setState(deliveryBoyDto.getState());
+		deliveryBoyDao.save(dBoy);
+		return dBoy;
 	}
 
 	@Override
 	public void deleteDeliveryBoy(Long id) {
 		DeliveryBoy dboy=deliveryBoyDao.findById(id).orElseThrow(()->new ResourceNotFoundException("Delivery Boy", "id", id));
 		deliveryBoyDao.deleteById(id);
+	}
+
+	@Override
+	public List<AssigndOrders> getAllPending(Long did) {
+		// TODO Auto-generated method stub
+		List<AssigndOrders> assignedOrders = assignDao.findByDelId(did);
+		return assignedOrders;
 	}
 }
