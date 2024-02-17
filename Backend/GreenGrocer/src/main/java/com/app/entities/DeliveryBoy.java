@@ -67,4 +67,18 @@ public class DeliveryBoy {
 		this.email=email;
 		this.password=password;
 	}
+	
+	public DeliveryBoy(String email,String password,String fullName,String mobile,String address,String city,String state,String pincode,String aadhar,double salary)
+	{
+		this.email=email;
+		this.password=password;
+		this.fullName=fullName;
+		this.mobile=mobile;
+		this.address=address;
+		this.city=city;
+		this.state=state;
+		this.pincode=pincode;
+		this.aadhar=aadhar;
+		this.salary=salary;
+	}
 }

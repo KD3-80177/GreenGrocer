@@ -89,8 +89,9 @@ function SellerHome()
                             <tr><td><strong>Quantity</strong></td><td><input onChange={OnTextChange} name="availableQuantity" value={newproduct.availableQuantity}/></td></tr>
                             <tr>
                             <td colSpan={2}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button className='btn btn-success' onClick={AddRecord} >Add</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                <button className='btn btn-warning'>Update</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button className='btn btn-primary'onClick={ClearBoxes}>Reset</button>
                             </td>
                             </tr>
@@ -106,7 +107,6 @@ function SellerHome()
                                  <th>Product Name</th>
                                  <th>Price</th>
                                  <th>Quantity</th>
-                                 <th>Action</th>
                                  </tr>
                             </thead>
                             <tbody>
@@ -117,7 +117,6 @@ function SellerHome()
                                             <td>{product.pname}</td>
                                             <td>{product.price}</td>
                                             <td>{product.availableQuantity}</td>
-                                            <td><button className='btn btn-success'>Edit</button></td>
                                             {/* <td>
                                          <button className="btn  
                                             btn-danger"  
