@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.dto.AllCountDataDTO;
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.JwtRequest;
 import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.entities.User;
@@ -95,4 +96,13 @@ public class AdminController {
 	{
 		return adminInterfaceService.getAllData();
 	}
+	
+	@PostMapping("/login")
+	public  Admin getAdmin(@RequestBody JwtRequest request)
+	{
+		return adminInterfaceService.getAdminByEmail(request);
+	}
+
+	
+	
 }

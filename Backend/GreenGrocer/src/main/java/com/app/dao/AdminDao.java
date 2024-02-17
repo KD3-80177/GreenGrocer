@@ -6,4 +6,5 @@ import com.app.entities.Admin;
 
 public interface AdminDao extends JpaRepository<Admin, Long>{
 
+	public Admin findAdminByEmail(String email);
 }

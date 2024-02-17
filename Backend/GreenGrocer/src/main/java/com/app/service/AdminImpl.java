@@ -15,6 +15,7 @@ import com.app.dao.UserDao;
 import com.app.dto.AllCountDataDTO;
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.JwtRequest;
 import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.entities.User;
@@ -120,6 +121,14 @@ public class AdminImpl implements AdminInterface{
 		return result;
 	}
 	
-	
+	@Override
+	public Admin getAdminByEmail(JwtRequest request) {
+		Admin admin = adminDao.findAdminByEmail(request.getEmail());
+		if(admin.getPassword().equals(request.getPassword()))
+		{
+			return admin;
+		}
+		return null;
+	}
 	
 }

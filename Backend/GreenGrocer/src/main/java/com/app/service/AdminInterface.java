@@ -5,6 +5,7 @@ import java.util.List;
 import com.app.dto.AllCountDataDTO;
 import com.app.entities.Admin;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.JwtRequest;
 import com.app.entities.Product;
 import com.app.entities.Seller;
 import com.app.entities.User;
@@ -34,5 +35,7 @@ public interface AdminInterface {
 	Long getDeliveryCount();
 
 	AllCountDataDTO getAllData();
+
+	Admin getAdminByEmail(JwtRequest request);
 
 }
