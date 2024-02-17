@@ -21,7 +21,7 @@ function DeliveryBoySidebar({openSidebarToggle, OpenSidebar}){
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                <Link to={'/goToCompleteOrder'}>
+                <Link to={'/goToDeliveyBoyUpdate'}>
                         <BsFillArchiveFill className='icon'/> Update
                     </Link>
                 </li>

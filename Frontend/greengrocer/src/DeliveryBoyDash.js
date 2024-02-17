@@ -13,4 +13,4 @@ function DeliveryBoyDash(){
        </div>
     )
 }
-export default DeliveryBoyDash
+export default DeliveryBoyDash;
