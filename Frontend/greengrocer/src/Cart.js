@@ -51,6 +51,7 @@ function Cart()
               'Content-Type': 'application/json', // Change to the desired content type
             },
             body: JSON.stringify(bucket),
+          
           })
           .then(response => response.json())
           .then(data => {
@@ -59,6 +60,7 @@ function Cart()
           .catch(error => {
             console.error('Error:', error);
           });
+          toast.success("Order Placed Successfully!!")
     }
 
   return(
