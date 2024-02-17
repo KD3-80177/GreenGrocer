@@ -18,6 +18,7 @@ import com.app.entities.AssignedOrderDto;
 import com.app.entities.DeliveryBoy;
 import com.app.entities.Orders;
 import com.app.dto.ApiResponse;
+import com.app.dto.ProductDto;
 import com.app.dto.SellerDTO;
 import com.app.entities.Product;
 import com.app.entities.Seller;
@@ -53,6 +54,12 @@ public class SellerController {
 		}else {
 			return new ApiResponse("Login failed",false);
 		}
+	}
+	
+	@PostMapping("/addNewProduct/{sid}")
+	public String addProductByDto(@PathVariable Long sid,@RequestBody ProductDto product)
+	{
+		return sellerService.addProductByDto(sid,product);
 	}
 	
 	@PostMapping("/addProduct/{sid}")

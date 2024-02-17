@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.app.dto.ApiResponse;
+import com.app.dto.ProductDto;
 import com.app.dto.SellerDTO;
 import com.app.entities.Product;
 import com.app.entities.Seller;
@@ -24,4 +25,5 @@ public interface SellerInterface {
 	String assignDeliveryBoy(Long did, AssignedOrderDto assignedOrderDto);
 	List<Product> getProdBySeller(Long sid);
 	List<DeliveryBoy> getAllDeliveryBoys(Long sid);
+	String addProductByDto(Long sid, ProductDto product);
 }
