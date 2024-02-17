@@ -13,6 +13,7 @@ import AllSeller from './AllSeller';
 import DeliveryLogin from './DeliveryLogin';
 import DeliveryRegistration from './DeliveryRegistration';
 
+
 import UpdateUser from './UpdateUser';
 import AllUser from './AllUser';
 import AllProducts from './AllProducts';
