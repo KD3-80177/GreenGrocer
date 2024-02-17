@@ -28,18 +28,13 @@ import ControlledCarousel from './ControlledCarousel';
 import AllOrder from './AllOrder';
 
 import DeliveryBoyDash from './DeliveryBoyDash';
-<<<<<<< HEAD
 import AdminLogin from './AdminLogin';
-<<<<<<< HEAD
-=======
+
 import SellerUpdate from './SellerUpdate';
 import AssignOrder from './AssignOrder';
 import AllDelieryBoyBySeller from './AllDeliveryBoyBySeller';
 import AddDeliveryBoy from './AddDeliveryBoy';
->>>>>>> Shivshankar
-=======
 import DeliveryBoyUpdate from './DeliveryBoyUpdate';
->>>>>>> 048ea549fe0a23c038b47ee9e43454028167a10e
 
 function App() {
   return (
