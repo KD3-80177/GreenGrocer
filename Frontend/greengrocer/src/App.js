@@ -28,9 +28,22 @@ import ControlledCarousel from './ControlledCarousel';
 import AllOrder from './AllOrder';
 
 import DeliveryBoyDash from './DeliveryBoyDash';
+<<<<<<< HEAD
 import Common from './common';
+=======
+<<<<<<< HEAD
+>>>>>>> 6e0ea89fe84cf749edaba6c9e08dfe93e735314a
 import AdminLogin from './AdminLogin';
+<<<<<<< HEAD
+=======
+import SellerUpdate from './SellerUpdate';
+import AssignOrder from './AssignOrder';
+import AllDelieryBoyBySeller from './AllDeliveryBoyBySeller';
+import AddDeliveryBoy from './AddDeliveryBoy';
+>>>>>>> Shivshankar
+=======
 import DeliveryBoyUpdate from './DeliveryBoyUpdate';
+>>>>>>> 048ea549fe0a23c038b47ee9e43454028167a10e
 
 function App() {
   return (
@@ -43,7 +56,7 @@ function App() {
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
           <Route exact path = '/DeliveryLogin' element={<DeliveryLogin/>}/>
-          <Route exact path= '/DeliveryRegistration' element={<DeliveryRegistration />}/>
+          <Route exact path = '/DeliveryRegistration' element={<DeliveryRegistration />}/>
           <Route exact path = '/SellerRegistration' element={<SellerRegistration/>}/>
           <Route exact path = '/SellerLogin' element={<SellerLogin/>}/>
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
@@ -67,7 +80,12 @@ function App() {
 
           {/* Seller Dashboard */}
           <Route exact path = '/getAllOrders' Component={AllOrder}/>
-
+          <Route exact path = '/goToSellerDashboard' Component={SellerDashboard}/>
+          <Route exact path = '/updateSeller' Component={SellerUpdate}/>
+          <Route exact path = '/getAssignOrder' Component={AssignOrder}/>
+          <Route exact path = '/getAllDelieryBoyBySeller' Component={AllDelieryBoyBySeller}/>
+          <Route exact path = '/goToAddDeliveryBoy' Component={AddDeliveryBoy}/>
+          
           {/* <Route exact path = '*' element={<Login/>}/> */}
           <Route exact path = '/Update' element={<UpdateUser/>}/>
           <Route exact path = '/products' element={<Products/>}/>
