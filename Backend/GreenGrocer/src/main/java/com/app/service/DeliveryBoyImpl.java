@@ -14,6 +14,7 @@ import com.app.dto.ApiResponse;
 import com.app.dto.DeliveryBoyDTO;
 import com.app.entities.AssigndOrders;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.JwtRequest;
 import com.app.entities.Seller;
 
 @Service
@@ -76,5 +77,23 @@ public class DeliveryBoyImpl implements DeliveryBoyInterface {
 		// TODO Auto-generated method stub
 		List<AssigndOrders> assignedOrders = assignDao.findByDelId(did);
 		return assignedOrders;
+	}
+
+	@Override
+	public void delAssin(Long oid) {
+		// TODO Auto-generated method stub
+		AssigndOrders assignedOrder = assignDao.findByOid(oid);
+		assignDao.delete(assignedOrder);
+		
+	}
+
+	@Override
+	public DeliveryBoy login(JwtRequest request) {
+		// TODO Auto-generated method stub
+		DeliveryBoy del = deliveryBoyDao.findDeliveryBoyByEmail(request.getEmail());
+		if(del.getPassword().equals(request.getPassword())) {
+			return del;
+		}
+		return null;
 	}
 }

@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.OrdersDTO;
+import com.app.entities.AssignedOrderDto;
 import com.app.entities.Bucket;
 import com.app.entities.Orders;
 import com.app.entities.Product;
@@ -55,5 +57,10 @@ public class OrderController {
 	public String deleteOrder(@PathVariable Long oid)
 	{
 		return orderService.deleteOrderById(oid);
+	}
+	
+	@PutMapping("/delBoyStatus/{oid}")
+	public void updateStatus(@PathVariable Long oid) {
+		orderService.statusCompleted(oid);
 	}
 }

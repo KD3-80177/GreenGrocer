@@ -10,16 +10,33 @@ function DeliveryBoyHome(){
     
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const navigate = useNavigate();
-  const OpenSidebar = () => {setOpenSidebarToggle(!openSidebarToggle)
-}
-        const[orderDetails,setOrderDetails] = useState([]);
-         
-        const url="http://127.0.0.1:8080/deliveryboy/getOrders/1";
+  const OpenSidebar = () => {setOpenSidebarToggle(!openSidebarToggle)}
+  const delId = sessionStorage.getItem("delId");
+  const[orderDetails,setOrderDetails] = useState([]);
+
+  const url="http://localhost:8080/deliveryboy/getOrders/"+ parseInt(delId);
     
-    const FetchRecords =() =>{
-        axios.get(url).then((result)=>{
-            setOrderDetails(result.data);
-        })
+  const FetchRecords =() =>{
+      axios.get(url).then((result)=>{
+          setOrderDetails(result.data);
+      })
+  }
+
+  const OrderStatus = (id) =>{
+  const changeUrl = "http://localhost:8080/orders/delBoyStatus/" + id;
+  axios.put(changeUrl).then((result)=>{
+      DelAssign(id);
+    })
+    .catch(error=>console.error("Error changing status : ",error));
+
+        
+    }
+
+    const DelAssign = (id) =>{
+      const delUrl = "http://localhost:8080/deliveryboy/deleteAssigned/"+id;
+      axios.delete(delUrl).then(result=>
+        result.data)
+        .catch(error=>console.error("Error deleting order : ",error));
     }
 
   
@@ -50,6 +67,9 @@ function DeliveryBoyHome(){
                   <td>{order.address}</td>
                   <td>{order.city}</td>
                   <td>{order.mobile}</td>
+                  <td>
+                    <button className="btn btn-success" onClick={OrderStatus(order.oid)}>Order Completed</button>
+                  </td>
                 </tr>)
 
                })

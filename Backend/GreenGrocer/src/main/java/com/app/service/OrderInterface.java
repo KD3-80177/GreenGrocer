@@ -20,5 +20,7 @@ public interface OrderInterface {
 
 	String confirmOrder(List<Bucket> bucket);
 
+	void statusCompleted(Long oid);
+
 
 }

@@ -22,6 +22,7 @@ import com.app.dto.DeliveryBoyDTO;
 import com.app.entities.AssigndOrders;
 import com.app.entities.AssignedOrderDto;
 import com.app.entities.DeliveryBoy;
+import com.app.entities.JwtRequest;
 import com.app.service.DeliveryBoyInterface;
 
 @RestController
@@ -42,14 +43,9 @@ public class DeliveryBoyController {
 	}
 	
 	@PostMapping("/login")
-	public ApiResponse findDeliveryBoyByEmail(@RequestBody DeliveryBoy deliveryBoy)
+	public DeliveryBoy findDeliveryBoyByEmail(@RequestBody JwtRequest request)
 	{
-		ApiResponse api = deliveryBoyService.findDeliveryBoyByEmail(deliveryBoy);
-		if(api.getSuccess()) {
-			return new ApiResponse("Login Suucesfull",true);
-		}else {
-			return new ApiResponse("Login failed",false);
-		}
+		return deliveryBoyService.login(request);
 	}
 	
 	@PostMapping("/addDeliveryboy/{sellerId}")
@@ -80,6 +76,11 @@ public class DeliveryBoyController {
 	@GetMapping("/getOrders/{did}")
 	public List<AssigndOrders> getAssignedOrders(@PathVariable Long did){
 		return deliveryBoyService.getAllPending(did);
+	}
+	
+	@DeleteMapping("/deleteAssigned/{oid}")
+	public void delComplOrder(@PathVariable Long oid) {
+		deliveryBoyService.delAssin(oid);
 	}
 	
 }

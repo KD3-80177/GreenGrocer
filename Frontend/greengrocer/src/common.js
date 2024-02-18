@@ -35,7 +35,7 @@ function Common(){
                 <div className="appBg" >
                     <Row>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-  <Col sm="2" style={{width:"25%",marginLeft:"130px"}}>
+  <Col sm="2" style={{width:"20%",marginLeft:"100px"}}>
     <Card body className="loginForm">
       <CardTitle tag="h5">
         <b>SELLER</b>
@@ -49,7 +49,7 @@ function Common(){
     </Card>
   </Col>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <Col sm="2" style={{width:"25%"}}>
+  <Col sm="2" style={{width:"20%"}}>
     <Card body className="loginForm">
       <CardTitle tag="h5">
         <b>ADMIN</b>
@@ -64,7 +64,7 @@ function Common(){
   </Col>
   &nbsp;&nbsp;&nbsp;&nbsp;
 
-  <Col sm="2" style={{width:"25%"}}>
+  <Col sm="2" style={{width:"20%"}}>
     <Card body className="loginForm">
       <CardTitle tag="h5">
         <b>USER</b>
@@ -74,6 +74,21 @@ function Common(){
       </CardText>
       <Button href="/UserLogin" className="btn btn-success" >
          Login As User
+      </Button>
+    </Card>
+  </Col>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <Col sm="2" style={{width:"20%"}}>
+    <Card body className="loginForm">
+      <CardTitle tag="h5">
+        <b>DELIVERY BOY</b>
+      </CardTitle>
+      <CardText>
+      Login for DeliveryBoy!!!
+      </CardText>
+      <Button href="/DeliveryLogin" className="btn btn-success" >
+         Login As DeliveryBoy
       </Button>
     </Card>
   </Col>

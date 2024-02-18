@@ -9,7 +9,8 @@ import "./style.css";
 function DeliveryLogin(){
     const url = "http://localhost:8080/deliveryboy/login";
     const[loginDetails,setLoginDetails] = useState({email:"",password:""});
-
+    const [deliveryBoy,setDeliveryBoy] = useState([]);
+    const navigate = useNavigate();
     const handleChange = (event,field) =>{
         let actualVal = event.target.value;
         setLoginDetails({
@@ -20,7 +21,18 @@ function DeliveryLogin(){
 
     const DoLogin = ()=>{
         axios.post(url,loginDetails)
-            .then((result)=>result.data)
+            .then((result)=>{
+                setDeliveryBoy(result.data);
+                sessionStorage.setItem("email",JSON.stringify(loginDetails.email));
+                sessionStorage.setItem("delId",deliveryBoy.delId);
+                if(deliveryBoy.delId != undefined){
+                    nav();
+                }
+            })
+    }
+
+    const nav = ()=>{
+        navigate("/DeliveryBoyDash")
     }
 
     return(

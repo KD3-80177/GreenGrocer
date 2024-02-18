@@ -135,4 +135,14 @@ public class OrderImpl implements OrderInterface {
 		return "All order placed";
 
 	}
+
+	@Override
+	public void statusCompleted(Long oid) {
+		// TODO Auto-generated method stub
+		List<Orders> order = orderDao.findByOid(oid);
+		for (Orders orders : order) {
+			orders.setStatus("Completed");
+		}
+		
+	}
 }

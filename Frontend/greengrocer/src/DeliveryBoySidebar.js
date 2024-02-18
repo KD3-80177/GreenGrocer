@@ -26,16 +26,16 @@ function DeliveryBoySidebar({openSidebarToggle, OpenSidebar}){
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                <Link to={'/goToPendingOrder'}>
-                        <BsFillGrid3X3GapFill className='icon'/> Delete
+                <Link to={'/'}>
+                        <BsFillGrid3X3GapFill className='icon'/> Logout
                     </Link>
                 </li>
-                <li className='sidebar-list-item'>
+                {/* <li className='sidebar-list-item'>
                 <Link to={'/goToCustomerInfo'}>
                         <BsPeopleFill className='icon'/> CustomersInfo.
                     </Link>
                 </li>
-               
+                */}
             </ul>
         </aside>
     )
