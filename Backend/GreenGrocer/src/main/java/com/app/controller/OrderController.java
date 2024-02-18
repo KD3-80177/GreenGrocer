@@ -61,13 +61,9 @@ public class OrderController {
 	
 	@PutMapping("/delBoyStatus/{oid}")
 	public void updateStatus(@PathVariable Long oid) {
-<<<<<<< HEAD
-		orderService.statusCompleted(oid);}
-=======
 		orderService.statusCompleted(oid);
 	}
 	
->>>>>>> 77c63aac486081b0e37f7a1c36b983c316981c5c
 	@GetMapping("/getUserOrders/{uid}")
 	public List<Orders> getAllUserOrders(@PathVariable Long uid){
 		return orderService.userAllOrders(uid);

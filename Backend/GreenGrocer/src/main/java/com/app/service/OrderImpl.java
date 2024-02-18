@@ -143,7 +143,6 @@ public class OrderImpl implements OrderInterface {
 		for (Orders orders : order) {
 			orders.setStatus("Completed");}
 		}
-	}
 		
 	public List<Orders> userAllOrders(Long uid) {
 		// TODO Auto-generated method stub
