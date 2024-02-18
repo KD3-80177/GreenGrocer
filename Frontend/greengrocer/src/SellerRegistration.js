@@ -3,12 +3,13 @@ import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {Form  ,Item,Input,BreadcrumbItemPropsnput,message, Typography, Divider} from "antd"; 
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 function SellerRegistration()
 {
     const[seller,setSeller] = useState({fullName:"",mobileNo:"",email:"",password:"",address:"",city:"",state:"",pinCode:""});
     const[message,setMessage] = useState("");
-
+    const navigate = useNavigate();
     const url = "http://localhost:8080/seller/newSeller";
 
     const OnTextChange = (args) =>{
@@ -35,6 +36,8 @@ function SellerRegistration()
                 showMessage("Customer Added Successfully!!!!!");
             }
             Reset();
+            navigate("/SellerLogin")
+
         });
         
     }
