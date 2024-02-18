@@ -36,6 +36,7 @@ import AssignOrder from './AssignOrder';
 import AllDelieryBoyBySeller from './AllDeliveryBoyBySeller';
 import AddDeliveryBoy from './AddDeliveryBoy';
 import DeliveryBoyUpdate from './DeliveryBoyUpdate';
+import ActivateLogin from './ActivateLogin';
 
 function App() {
   return (
@@ -56,7 +57,7 @@ function App() {
           <Route exact path = '/UserDashboard' element={<UserDashboard/>}/>
           <Route exact path = '/Common' element={<Common/>}/>
           <Route exact path = '/SellerDashboard' element={<SellerDashboard/>}/>
- 
+          <Route exact path = '/ActivateLogin' element={<ActivateLogin/>}/>
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
           
