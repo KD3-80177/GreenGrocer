@@ -41,8 +41,8 @@ function AdminSidebar({openSidebarToggle, OpenSidebar})
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsMenuButtonWideFill className='icon'/>Reports
+                    <a href="/">
+                        <BsMenuButtonWideFill className='icon'/>Logout
                     </a>
                 </li>
             </ul>

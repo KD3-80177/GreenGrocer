@@ -85,10 +85,10 @@ function Common(){
         <b>DELIVERY BOY</b>
       </CardTitle>
       <CardText>
-      Login for DeliveryBoy!!!
+      If you are a DeliveryBoy click here to Login!
       </CardText>
       <Button href="/DeliveryLogin" className="btn btn-success" >
-         Login As DeliveryBoy
+        Login As DeliveryBoy
       </Button>
     </Card>
   </Col>

@@ -39,6 +39,7 @@ import DeliveryBoyUpdate from './DeliveryBoyUpdate';
 import ActivateLogin from './ActivateLogin';
 import UserUpdate from './UserUpdate';
 import UserAllOrders from './UserAllOrders';
+import SellerAllCompletedOrders from './SellerAllCompletedOrders';
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
           <Route exact path = '/getAssignOrder' Component={AssignOrder}/>
           <Route exact path = '/getAllDelieryBoyBySeller' Component={AllDelieryBoyBySeller}/>
           <Route exact path = '/goToAddDeliveryBoy' Component={AddDeliveryBoy}/>
+          <Route exact path = '/sellerCompletedOrders' Component={SellerAllCompletedOrders}/>
           
           {/* <Route exact path = '*' element={<Login/>}/> */}
           <Route exact path = '/UserUpdate' element={<UserUpdate/>}/>
