@@ -4,14 +4,15 @@ import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {Form  ,Item,Input,BreadcrumbItemPropsnput,message, Typography, Divider} from "antd"; 
 import "./style.css";
-import { redirect } from "react-router-dom";
+import { redirect,useNavigate } from "react-router-dom";
 
 function UserRegistration(){
     
+    const navigate = useNavigate();
     const [user, setUser] = useState({fullName:"",mobileNo:"",email:"",password:"",address:"",city:"",state:"",pinCode:""});
     const [message,setMessage] = useState("");
 
-    const url = "http://localhost:8080/user/newUser";
+    const url = "http://localhost:8080/user/createUser";
 
     const OnTextChange = (args) =>{
         var user1 = {...user};
@@ -35,8 +36,8 @@ function UserRegistration(){
         .then((result)=>{
             if(result.data.affectedRows !== undefined && result.data.affectedRows>0){
                 showMessage("Customer Added Successfully!!!!!");
-                redirect("http://localhost:3000/UserRegistration");
             }
+            navigate("/ActivateLogin");
             Reset();
         });
         

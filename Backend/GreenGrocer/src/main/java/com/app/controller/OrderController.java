@@ -59,11 +59,9 @@ public class OrderController {
 		return orderService.deleteOrderById(oid);
 	}
 	
-<<<<<<< HEAD
 	@PutMapping("/delBoyStatus/{oid}")
 	public void updateStatus(@PathVariable Long oid) {
-		orderService.statusCompleted(oid);
-=======
+		orderService.statusCompleted(oid);}
 	@GetMapping("/getUserOrders/{uid}")
 	public List<Orders> getAllUserOrders(@PathVariable Long uid){
 		return orderService.userAllOrders(uid);
@@ -76,6 +74,5 @@ public class OrderController {
 	@GetMapping("/getSellerCompleted/{sid}")
 	public List<Orders> getSellerComplet(@PathVariable Long sid){
 		return orderService.sellerCompleted(sid);
->>>>>>> Vinayak
 	}
 }
