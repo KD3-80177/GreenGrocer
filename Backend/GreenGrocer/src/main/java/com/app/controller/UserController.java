@@ -108,9 +108,9 @@ public class UserController {
 //		return register.addUser(user);
 //	}
 	
-	@PutMapping("/greengrocer/user/updateUser")
-	public ResponseEntity<User> updateUser(@RequestBody User user) {
-		User u = register.updateUser(user);
+	@PutMapping("/greengrocer/user/updateUser/{uid}")
+	public ResponseEntity<User> updateUser(@PathVariable Long uid, @RequestBody UserDto user) {
+		User u = register.updateUser(uid,user);
 		return ResponseEntity.ok(u);
 	}
 	

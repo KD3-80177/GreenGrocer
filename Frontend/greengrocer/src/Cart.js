@@ -20,6 +20,7 @@ function Cart()
 
   const url2 = "http://localhost:8080/orders/confirmOrder";
 
+  const url3 = "http://localhost:8080/cart/deleteBucket/"+uid;
 
   useEffect(() => {
     // Fetch products from the Spring Boot backend
@@ -29,6 +30,7 @@ function Cart()
         setBucket(result.data);
       })
       .catch(error => console.error('Error fetching products:', error));
+ 
   }, []);
 
 
@@ -63,8 +65,20 @@ function Cart()
             console.error('Error:', error);
           });
           toast.success("Order Placed Successfully!!")
+
+         deleteBucket();
     }
 
+    const deleteBucket=()=>
+    {
+      axios.delete(url3).then((result)=>
+      {
+            if(result.data.affectedRows>0 && result.data.affectedRows!=undefined)
+            {
+               console.log("Bucket Cleared")
+            }
+      })
+    }
   return(
     
     <div className="grid-container">

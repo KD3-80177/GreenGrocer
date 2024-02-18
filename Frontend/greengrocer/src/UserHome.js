@@ -14,6 +14,7 @@ const UserHome=()=>
   const[user,setUser] = useState([]);
   const email = sessionStorage.getItem("email");
   const url = "http://localhost:8080/cart/addbucket";
+  
   const addProduct =  (cartDetails) => {
      setBucket(prevList => 
       [...prevList, cartDetails]);
@@ -88,6 +89,8 @@ const UserHome=()=>
   return (
    
     <main className="main-container">
+            <button className="btn btn-danger" onClick={addProductIndb}>Add All</button>
+
     <div >
       <h1>Product List</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap',textAlign:"center",color: "#060606"}}>
@@ -98,14 +101,13 @@ const UserHome=()=>
             {/* <img src="https://img.freepik.com/free-photo/front-view-vegetable_140725-103355.jpg?size=626&ext=jpg" style={{width:"40%" ,height:"40%"}}></img> */}
             <p>Price: ₹{product.price}</p>
             <p style={{color:"red"}}>Available Quantity: {product.availableQuantity}</p>
-            <input type="number" placeholder="Enter the quantity" max="{product.availableQuantity}" name="quantity" style={{ border: '3px solid black'}} onChange={(e)=>handleChange(e,product,"quantity")} />
+            <input type="number" placeholder="Enter the quantity" max="{product.availableQuantity}" name="quantity" style={{ border: '3px solid black',color:"white"}} onChange={(e)=>handleChange(e,product,"quantity")} />
             <br></br><br/>
             <button  className="btn btn-success" onClick={() => addProduct(cartDetails)} >Add to Cart</button>
             
           </div>
         ))}
       </div>
-      <button className="btn btn-danger" onClick={addProductIndb}>Add All</button>
     </div>
     </main>
 

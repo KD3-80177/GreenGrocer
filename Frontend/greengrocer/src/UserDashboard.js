@@ -12,7 +12,7 @@ function UserDashboard()
         setOpenSidebarToggle(!openSidebarToggle)
     }
     return(
-        <div className='grid-container'>
+        <div className='grid-container' style={{ background:"white"}}>
             <UserHeader OpenSidebar={OpenSidebar}/>
             <UserSidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
             <UserHome/>

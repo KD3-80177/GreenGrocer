@@ -67,19 +67,19 @@ public class UserImpl implements UserInterface{
 	}
 
 	@Override
-	public User updateUser(User user) {
+	public User updateUser(Long uid,UserDto user) {
 		// TODO Auto-generated method stub
-		User u = registerDao.findById(user.getUid()).orElseThrow(()-> new ResourceNotFoundException("User", "Id", user.getUid()));
+		User u = registerDao.findById(uid).orElseThrow(()-> new ResourceNotFoundException("User", "Id",uid));
 		u.setFullName(user.getFullName());
 		u.setAddress(user.getAddress());
 		u.setCity(user.getCity());
 		u.setEmail(user.getEmail());
 		u.setMobileNo(user.getMobileNo());
-		u.setPassword(user.getPassword());
+		u.setPassword(passwordEncoder.encode(user.getPassword()));
 		u.setPinCode(user.getPinCode());
 		u.setState(user.getState());
-		User u1 = registerDao.save(u);
-		return u1;
+		registerDao.save(u);
+		return u;
 	}
 
 	@Override

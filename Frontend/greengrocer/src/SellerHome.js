@@ -43,7 +43,7 @@ function SellerHome()
         .catch(error=>console.error("Error fetching seller : ",error));
     }
 
-    const mysid = sessionStorage.getItem("sid");
+    let mysid = sessionStorage.getItem("sid");
     const url=`http://127.0.0.1:8080/seller/sellerProducts/`+ parseInt(mysid);
     
     const urlToAdd=`http://localhost:8080/seller/addNewProduct/`+parseInt(mysid);   
