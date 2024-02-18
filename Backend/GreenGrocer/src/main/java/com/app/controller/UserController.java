@@ -29,6 +29,7 @@ import com.app.entities.JwtRequest;
 import com.app.entities.JwtResponse;
 import com.app.entities.User;
 import com.app.entities.UserEntity;
+import com.app.entities.ValidateUserDto;
 import com.app.security.JwtHelper;
 import com.app.service.UserInterface;
 import com.app.service.UserService;
@@ -135,6 +136,12 @@ public class UserController {
 	public User getByEmail(@PathVariable String email){
 		User u = register.getByMail(email);
 		return u;
+	}
+	
+	@PostMapping("/greengrocer/user/{email}")
+	public String validateUser(@RequestBody ValidateUserDto userInfo)
+	{
+		return register.validateUser(userInfo);
 	}
 
 }

@@ -18,6 +18,7 @@ import com.app.dto.ApiResponse;
 import com.app.dto.UserDto;
 import com.app.entities.JwtRequest;
 import com.app.entities.User;
+import com.app.entities.ValidateUserDto;
 import com.app.utils.OtpGenerator;
 
 @Service
@@ -143,6 +144,19 @@ public class UserImpl implements UserInterface{
 		// TODO Auto-generated method stub
 		User u = registerDao.findByEmail(email);
 		return u;
+	}
+
+	@Override
+	public String validateUser(ValidateUserDto userInfo) {
+		String msg="unsuccess";
+		User u=registerDao.findByEmail(userInfo.getEmail());
+		if(u.getOtp().equals(userInfo.getOtp()))
+		{
+			msg="success";
+			u.setStatus(true);
+			registerDao.save(u);
+		}
+		return msg;
 	}
 
 }

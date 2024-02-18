@@ -50,7 +50,7 @@ return(
        
 
 <Form className="registerForm" >
-              <Typography.Title style={{fontFamily:"sans-serif",textAlign:"center",color:"green",marginTop:"20px"}}>USER REGISTRATION</Typography.Title>
+              <Typography.Title style={{fontFamily:"sans-serif",textAlign:"center",color:"Black",marginTop:"20px"}}>User Registration</Typography.Title>
               <Divider style={{borderColor:'green'}}></Divider>
 
               <Form.Item rules={[
