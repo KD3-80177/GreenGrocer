@@ -20,15 +20,12 @@ public interface OrderInterface {
 
 	String confirmOrder(List<Bucket> bucket);
 
-<<<<<<< HEAD
 	void statusCompleted(Long oid);
-=======
 	List<Orders> userAllOrders(Long uid);
 
 	List<Orders> sellerPending(Long sid);
 
 	List<Orders> sellerCompleted(Long sid);
->>>>>>> Vinayak
 
 
 }

@@ -137,15 +137,14 @@ public class OrderImpl implements OrderInterface {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void statusCompleted(Long oid) {
 		// TODO Auto-generated method stub
 		List<Orders> order = orderDao.findByOid(oid);
 		for (Orders orders : order) {
 			orders.setStatus("Completed");
 		}
+	}
 		
-=======
 	public List<Orders> userAllOrders(Long uid) {
 		// TODO Auto-generated method stub
 		List<Orders> orders = orderDao.findByUserUid(uid);
@@ -164,6 +163,5 @@ public class OrderImpl implements OrderInterface {
 		// TODO Auto-generated method stub
 		List<Orders> orders = orderDao.findBySellerSidAndStatus(sid, "Completed");
 		return orders;
->>>>>>> Vinayak
 	}
 }

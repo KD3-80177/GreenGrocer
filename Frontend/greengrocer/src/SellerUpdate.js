@@ -56,7 +56,7 @@ function SellerUpdate() {
         <SellerHeader OpenSidebar={OpenSidebar}/>
         <main className='main-container'>
             <div className="table-responsive" id="updateSeller">
-                        <table className="table table-success table-striped-columns">
+                        <table className="table table-success table-striped-columns " >
                             <tbody>
                                     <tr>
                                         <td>Full Name</td>

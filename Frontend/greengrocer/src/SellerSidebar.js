@@ -29,12 +29,17 @@ function SellerSidebar({openSidebarToggle, OpenSidebar})
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
+                    <a href="/sellerCompletedOrders">
+                        <BsMenuButtonWideFill className='icon'/>Completed Orders
+                    </a>
+                </li>
+                <li className='sidebar-list-item'>
                     <Link to={'/getAllDelieryBoyBySeller'}>
                         <BsPeopleFill className='icon'/>Delivery Boys
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="/SellerLogin">
+                    <a href="/">
                         <BsMenuButtonWideFill className='icon'/>Logout
                     </a>
                 </li>
