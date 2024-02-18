@@ -36,6 +36,8 @@ import AssignOrder from './AssignOrder';
 import AllDelieryBoyBySeller from './AllDeliveryBoyBySeller';
 import AddDeliveryBoy from './AddDeliveryBoy';
 import DeliveryBoyUpdate from './DeliveryBoyUpdate';
+import UserUpdate from './UserUpdate';
+import UserAllOrders from './UserAllOrders';
 
 function App() {
   return (
@@ -54,6 +56,7 @@ function App() {
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
           <Route exact path = '/UserDashboard' element={<UserDashboard/>}/>
           <Route exact path = '/SellerDashboard' element={<SellerDashboard/>}/>
+          <Route exact path = '/myOrders' element={<UserAllOrders/>}/>
  
           {/* <Route exact path = '*' element={<Login/>}/> */}
           {<Route exact path = '/Update' element={<UpdateUser/>}/>}
@@ -77,7 +80,7 @@ function App() {
           <Route exact path = '/goToAddDeliveryBoy' Component={AddDeliveryBoy}/>
           
           {/* <Route exact path = '*' element={<Login/>}/> */}
-          <Route exact path = '/Update' element={<UpdateUser/>}/>
+          <Route exact path = '/UserUpdate' element={<UserUpdate/>}/>
           <Route exact path = '/products' element={<Products/>}/>
            <Route exact path='/DeliveryBoyDash' element={<DeliveryBoyDash/>}/>
            <Route exact path='/goToDeliveyDashboard' Component={DeliveryBoyDash}/>

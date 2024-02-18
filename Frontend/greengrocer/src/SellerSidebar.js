@@ -34,7 +34,7 @@ function SellerSidebar({openSidebarToggle, OpenSidebar})
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <a href="">
+                    <a href="/SellerLogin">
                         <BsMenuButtonWideFill className='icon'/>Logout
                     </a>
                 </li>

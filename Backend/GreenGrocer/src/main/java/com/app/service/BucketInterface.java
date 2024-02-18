@@ -11,7 +11,7 @@ public interface BucketInterface {
 
 	List<Bucket> getBucket(Long uid);
 
-	String deleteMyBucket(Long id);
+	void deleteMyBucket(Long uid);
 
 	Bucket getBucketById(Long bucketId);	
 }

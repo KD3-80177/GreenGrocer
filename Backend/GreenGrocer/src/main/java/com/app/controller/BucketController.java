@@ -36,10 +36,10 @@ public class BucketController {
 		return bucketService.getBucket(uid);
 	}
 	
-	@DeleteMapping("/{bucketId}")
-	public String deleteBucket(@PathVariable Long bucketId)
+	@DeleteMapping("/deleteBucket/{uid}")
+	public void deleteBucket(@PathVariable Long uid)
 	{
-		return bucketService.deleteMyBucket(bucketId);
+		 bucketService.deleteMyBucket(uid);
 	}
 	
 	@GetMapping("/{productId}")

@@ -9,4 +9,5 @@ import com.app.entities.Bucket;
 public interface BucketDao extends JpaRepository<Bucket, Long> {
 
 	List<Bucket>findBucketByUserUid(Long uid);
+	List<Bucket> findByUserUid(Long uid);
 }

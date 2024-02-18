@@ -14,7 +14,7 @@ public interface UserInterface {
 
 	ApiResponse findUserByEmail(User user);
 
-	User updateUser(User user);
+	User updateUser(Long uid,UserDto user);
 
 	void delUser(Long userId);
 

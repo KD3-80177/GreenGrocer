@@ -11,5 +11,8 @@ import com.app.entities.Orders;
 public interface OrderDao extends JpaRepository<Orders, Long> {
 	List<Orders> findBySellerSid(Long sid);
 	List<Orders> findByOid(Long oid);
+	List<Orders> findByUserUid(Long uid);
+	List<Orders> findByOidAndStatus(Long oid,String status);
+	List<Orders> findBySellerSidAndStatus(Long sid, String status);
 
 }

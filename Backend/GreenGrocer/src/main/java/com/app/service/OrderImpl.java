@@ -135,4 +135,25 @@ public class OrderImpl implements OrderInterface {
 		return "All order placed";
 
 	}
+
+	@Override
+	public List<Orders> userAllOrders(Long uid) {
+		// TODO Auto-generated method stub
+		List<Orders> orders = orderDao.findByUserUid(uid);
+		return orders;
+	}
+
+	@Override
+	public List<Orders> sellerPending(Long sid) {
+		// TODO Auto-generated method stub
+		List<Orders> orders = orderDao.findBySellerSidAndStatus(sid, "pending");
+		return orders;
+	}
+
+	@Override
+	public List<Orders> sellerCompleted(Long sid) {
+		// TODO Auto-generated method stub
+		List<Orders> orders = orderDao.findBySellerSidAndStatus(sid, "Completed");
+		return orders;
+	}
 }

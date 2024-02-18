@@ -20,5 +20,11 @@ public interface OrderInterface {
 
 	String confirmOrder(List<Bucket> bucket);
 
+	List<Orders> userAllOrders(Long uid);
+
+	List<Orders> sellerPending(Long sid);
+
+	List<Orders> sellerCompleted(Long sid);
+
 
 }

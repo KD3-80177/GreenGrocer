@@ -56,4 +56,18 @@ public class OrderController {
 	{
 		return orderService.deleteOrderById(oid);
 	}
+	
+	@GetMapping("/getUserOrders/{uid}")
+	public List<Orders> getAllUserOrders(@PathVariable Long uid){
+		return orderService.userAllOrders(uid);
+	}
+	
+	@GetMapping("/getSellerPending/{sid}")
+	public List<Orders> getSellerPending(@PathVariable Long sid){
+		return orderService.sellerPending(sid);
+	}
+	@GetMapping("/getSellerCompleted/{sid}")
+	public List<Orders> getSellerComplet(@PathVariable Long sid){
+		return orderService.sellerCompleted(sid);
+	}
 }

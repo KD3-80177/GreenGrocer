@@ -17,29 +17,30 @@ function UserSidebar({openSidebarToggle, OpenSidebar})
             <ul className='sidebar-list'>
 
                 <li className='sidebar-list-item'>
+                    <Link to={'/UserDashboard'}>
+                    <BsFillArchiveFill className='icon'/>Products
+                    </Link>
+                </li>
+                <li className='sidebar-list-item'>
                     <Link to={'/cart'}>
-                    <BsFillArchiveFill className='icon'/>My Bucket
+                        <BsPeopleFill className='icon'/>My Bucket
                     </Link>
                 </li>
                 <li className='sidebar-list-item'>
-                    <Link to={'/'}>
-                        <BsPeopleFill className='icon'/>Customers
-                    </Link>
-                </li>
-                <li className='sidebar-list-item'>
-                    <Link to={'/'}><BsPeopleFill className='icon'/>Sellers
-                    </Link>
-                </li>
-                <li className='sidebar-list-item'>
-                    <Link to={'/'}>
-                        <BsPeopleFill className='icon'/>Delivery Boys
-                    </Link>
-                </li>
-                <li className='sidebar-list-item'>
-                    <a href="">
-                        <BsMenuButtonWideFill className='icon'/>Reports
+                    <a href="/myOrders">
+                        <BsMenuButtonWideFill className='icon'/>My Orders
                     </a>
                 </li>
+                <li className='sidebar-list-item'>
+                    <Link to={'/UserUpdate'}><BsPeopleFill className='icon'/>Update Profile
+                    </Link>
+                </li>
+                <li className='sidebar-list-item'>
+                    <Link to={'/'}>
+                        <BsPeopleFill className='icon'/>Logout
+                    </Link>
+                </li>
+              
             </ul>
         </aside>
     )
