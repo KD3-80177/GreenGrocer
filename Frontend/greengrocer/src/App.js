@@ -42,8 +42,7 @@ function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route exact path = '/' element={<UserLogin/>}/>
-          <Route exact path = '/' element={<SellerLogin/>}/>
+          <Route exact path = '/' element={<Common/>}/>
           {/* <Route exact path = '/' element={<Home/>}/> */}
           <Route exact path = '/UserLogin' element={<UserLogin/>}/>
           <Route exact path = '/UserRegistration' element={<UserRegistration/>}/>
@@ -54,7 +53,6 @@ function App() {
           <Route exact path = '/Forget' element={<ResetPassword/>}/>
           <Route exact path = '/AdminDashboard' element={<AdminDashboard/>}/>
           <Route exact path = '/UserDashboard' element={<UserDashboard/>}/>
-          <Route exact path = '/Common' element={<Common/>}/>
           <Route exact path = '/SellerDashboard' element={<SellerDashboard/>}/>
  
           {/* <Route exact path = '*' element={<Login/>}/> */}
