@@ -15,11 +15,12 @@ function AllOrder() {
     }
 
     const [orders,setOrders]=useState([]);
+    const sid = parseInt(sessionStorage.getItem("sid"));
 
     const [assignOrder,setAssignorder]=useState({uid:"",oid:""});
     const [delivery,setDelId] = useState({delId:""});
     
-    const url=`http://127.0.0.1:8080/seller/getSellerOrders/${1}`
+    const url=`http://127.0.0.1:8080/orders/getSellerPending/`+sid;
     
     const FetchRecords =() =>{
         axios.get(url).then((result)=>{
