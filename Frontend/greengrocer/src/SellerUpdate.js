@@ -15,9 +15,8 @@ function SellerUpdate() {
     }
 
     const [seller,setSeller]=useState({fullName:"",email:"",mobileNo:"",password:"",address:"",pinCode:"",city:"",state:""});
-    
-    const url=`http://127.0.0.1:8080/seller/1`
-    
+    let mysid = sessionStorage.getItem("sid");
+    const url="http://127.0.0.1:8080/seller/" + parseInt(mysid);
     const OnTextChange = (args)=>{
         var seller1 = {...seller};
         seller1[args.target.name] = args.target.value;
@@ -35,7 +34,7 @@ function SellerUpdate() {
     }
 
     const UpdateRecord =()=>{
-        var updateurl = "http://127.0.0.1:8080/seller/updateSeller/1";
+        var updateurl = "http://127.0.0.1:8080/seller/updateSeller/"+parseInt(mysid);
 
         axios.put(updateurl,seller).then((result)=>{
             debugger;

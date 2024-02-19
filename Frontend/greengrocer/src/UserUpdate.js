@@ -15,12 +15,10 @@ function UserUpdate() {
     const OpenSidebar = () => {
         setOpenSidebarToggle(!openSidebarToggle)
     }
-
-    const [user,setUser]=useState({fullName:"",email:"",mobileNo:"",password:"",address:"",pinCode:"",city:"",state:""});
-    
-    const url=`http://127.0.0.1:8080/greengrocer/user/getUser/`+1;
-
     let myuid = sessionStorage.getItem("uid");
+    const [user,setUser]=useState({fullName:"",email:"",mobileNo:"",password:"",address:"",pinCode:"",city:"",state:""});
+    const url=`http://127.0.0.1:8080/greengrocer/user/getUser/`+parseInt(myuid);
+
     const OnTextChange = (args)=>{
         var user1 = {...user};
         user1[args.target.name] = args.target.value;
@@ -39,7 +37,7 @@ function UserUpdate() {
     
 
     const UpdateRecord =()=>{
-        var updateurl = "http://127.0.0.1:8080/greengrocer/user/updateUser/"+1;
+        var updateurl = "http://127.0.0.1:8080/greengrocer/user/updateUser/"+parseInt(myuid);
 
         axios.put(updateurl,user).then((result)=>{
             

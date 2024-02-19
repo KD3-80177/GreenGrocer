@@ -15,8 +15,8 @@ function AllDelieryBoyBySeller() {
     }
 
     const [deliveryboys,setDeliveryboys]=useState([]);
-    
-    const url=`http://127.0.0.1:8080/seller/getDeliveryboys/${1}`
+    let mysid = sessionStorage.getItem("sid");
+    const url="http://127.0.0.1:8080/seller/getDeliveryboys/"+parseInt(mysid);
     
     const FetchRecords =() =>{
         axios.get(url).then((result)=>{

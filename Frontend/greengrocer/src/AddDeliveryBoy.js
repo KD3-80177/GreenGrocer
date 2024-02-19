@@ -17,10 +17,11 @@ function AddDeliveryBoy() {
 
     const [deliveryboy,setDeliveryboy]=useState({email:"",fullName:"",password:"",mobile:"",aadhar:"",
             address:"",city:"",state:"",pincode:"",salary:""});
-    
+
+    let mysid = sessionStorage.getItem("sid");
     
     const AddDelBoy = ()=>{
-        const url = `http://localhost:8080/seller/addDeliveryBoy/${1}`;
+        const url = "http://localhost:8080/seller/addDeliveryBoy/"+parseInt(mysid);
 
         axios.post(url,deliveryboy)
         .then((result)=>{
